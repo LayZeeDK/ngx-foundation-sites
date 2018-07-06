@@ -1,6 +1,7 @@
 {
   "extends": [
-    "tslint:latest"
+    "tslint:latest",
+    "tslint-eslint-rules"
   ],
   "rulesDirectory": [
     "node_modules/codelyzer"
@@ -62,12 +63,7 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
     "no-misused-new": true,
-    "no-non-null-assertion": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -77,7 +73,6 @@
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
-    "object-literal-sort-keys": false,
     "one-line": [
       true,
       "check-open-brace",
@@ -86,10 +81,6 @@
       "check-whitespace"
     ],
     "prefer-const": true,
-    "quotemark": [
-      true,
-      "single"
-    ],
     "radix": true,
     "semicolon": [
       true,
@@ -134,26 +125,72 @@
       "call-signature",
       "arrow-call-signature",
       "parameter",
-      "property-declaration",
-      "variable-declaration",
-      "member-variable-declaration"
+      "variable-declaration"
+    ],
+    "array-type": [
+      true,
+      "array"
     ],
     "arrow-parens": [
       true,
       "ban-single-arg-parens"
     ],
-    "no-implicit-dependencies": false,
-    "no-submodule-imports": [
-      true,
-      "@angular/core",
-      "@angular/platform-browser-dynamic",
-      "@angular/router",
-      "core-js",
-      "zone.js/dist"
-    ],
     "interface-name": [
       true,
       "never-prefix"
-    ]
+    ],
+    "new-parens": true,
+    "no-conditional-assignment": true,
+    "no-consecutive-blank-lines": true,
+    "no-submodule-imports": [
+      true,
+      "@angular/common",
+      "@angular/core",
+      "@angular/platform-browser",
+      "@angular/platform-browser-dynamic",
+      "core-js",
+      "rxjs/operators",
+      "zone.js/dist"
+    ],
+    "object-literal-shorthand": false,
+    "object-literal-sort-keys": [
+      true,
+      "ignore-case"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape",
+      "avoid-template"
+    ],
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "always"
+      }
+    ],
+    "ter-max-len": [
+      true,
+      80,
+      {
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreUrls": true
+      }
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "no-implicit-dependencies": [
+      false,
+      "dev"
+    ],
+    "no-inferrable-types": false,
+    "no-non-null-assertion": false,
   }
 }
