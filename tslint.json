@@ -1,4 +1,7 @@
 {
+  "extends": [
+    "tslint:latest"
+  ],
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
@@ -125,6 +128,32 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration"
+    ],
+    "arrow-parens": [
+      true,
+      "ban-single-arg-parens"
+    ],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": [
+      true,
+      "@angular/core",
+      "@angular/platform-browser-dynamic",
+      "@angular/router",
+      "core-js",
+      "zone.js/dist"
+    ],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ]
   }
 }

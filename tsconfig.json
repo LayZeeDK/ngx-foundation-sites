@@ -17,11 +17,13 @@
       "dom"
     ],
     "paths": {
-      "lib": [
-        "dist/lib"
+      "ngx-foundation-sites": [
+        "dist/lib",
+        "src/lib/src"
       ],
-      "lib/*": [
-        "dist/lib/*"
+      "ngx-foundation-sites/*": [
+        "dist/lib/*",
+        "src/lib/src/*"
       ]
     }
   }

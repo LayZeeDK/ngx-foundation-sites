@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "defaultProject": "lib",
   "newProjectRoot": "src",
   "projects": {
     "lib": {
@@ -48,30 +49,6 @@
       "sourceRoot": "src/app/src",
       "projectType": "application",
       "prefix": "ex",
-      "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss",
-          "spec": false
-        },
-        "@schematics/angular:class": {
-          "spec": false
-        },
-        "@schematics/angular:directive": {
-          "spec": false
-        },
-        "@schematics/angular:guard": {
-          "spec": false
-        },
-        "@schematics/angular:module": {
-          "spec": false
-        },
-        "@schematics/angular:pipe": {
-          "spec": false
-        },
-        "@schematics/angular:service": {
-          "spec": false
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -186,19 +163,18 @@
       }
     }
   },
-  "defaultProject": "lib",
   "schematics": {
     "@schematics/angular:class": {
       "spec": false
     },
     "@schematics/angular:component": {
+      "prefix": "fas",
       "spec": false,
-      "prefix": "example",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "spec": false,
-      "prefix": "example"
+      "prefix": "fas",
+      "spec": false
     },
     "@schematics/angular:guard": {
       "spec": false
