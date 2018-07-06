@@ -158,14 +158,14 @@
         }
       }
     },
-    "examples-e2e": {
-      "root": "src/examples-e2e/",
+    "e2e": {
+      "root": "src/e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "src/examples-e2e/protractor.conf.js",
+            "protractorConfig": "src/e2e/protractor.conf.js",
             "devServerTarget": "examples:serve"
           },
           "configurations": {
@@ -177,7 +177,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "src/examples-e2e/tsconfig.e2e.json",
+            "tsConfig": "src/e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
