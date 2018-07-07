@@ -29,6 +29,7 @@
   },
   "exclude": [
     "src/test.ts",
+    "src/wallaby-test.ts",
     "**/*.spec.ts"
   ]
 }
