@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { TabComponent } from './tab';
+import { TabModule } from './tab';
 import { TabsModule as TabsComponentModule } from './tabs';
 
 @NgModule({
   exports: [
-    TabComponent,
+    TabModule,
     TabsComponentModule,
   ],
 })
