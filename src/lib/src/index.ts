@@ -1,5 +1,5 @@
 /*
- * Public API Surface of lib
+ * Public API Surface of ngx-foundation-sites
  */
 
 export * from './lib/lib.service';
