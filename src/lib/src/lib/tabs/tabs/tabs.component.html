@@ -1,3 +1,15 @@
-<p>
-  tabs works!
-</p>
+<ul class="tabs">
+  <li *ngFor="let tab of tabs"
+    class="tabs-title"
+    [class.is-active]="tab.isActive">
+    <a href="#0"
+      [attr.aria-selected]="tab.isActive"
+      (click)="activateTab(tab)">
+      {{tab.title}}
+    </a>
+  </li>
+</ul>
+
+<div class="tabs-content">
+  <ng-content select="fas-tab"></ng-content>
+</div>

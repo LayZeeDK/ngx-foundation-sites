@@ -1,3 +1,3 @@
-export { TabComponent } from './tab';
-export { TabsComponent } from './tabs';
+export { FoundationTabComponent } from './tab';
+export { FoundationTabsComponent } from './tabs';
 export * from './tabs.module';
