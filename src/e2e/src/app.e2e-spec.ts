@@ -1,14 +1,14 @@
 import { AppPage } from './app.po';
 
-describe('workspace-project App', () => {
+describe('Example app', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('displays welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to examples!');
+    expect(page.getParagraphText()).toEqual('Foundation for Angular Sites');
   });
 });
