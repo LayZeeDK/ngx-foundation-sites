@@ -11,6 +11,7 @@ import { FoundationTabComponent } from '../tab';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: { style: 'display: block;' },
   selector: 'fas-tabs',
   templateUrl: './tabs.component.html',
 })

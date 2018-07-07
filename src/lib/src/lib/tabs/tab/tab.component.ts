@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  HostBinding,
   Input,
   Output,
   ViewEncapsulation,
@@ -10,6 +11,10 @@ import {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'tabs-panel',
+    style: 'display: block;'
+  },
   selector: 'fas-tab',
   templateUrl: './tab.component.html',
 })
@@ -17,6 +22,7 @@ export class FoundationTabComponent {
   private _isActive: boolean = false;
 
   @Input()
+  @HostBinding('class.is-active')
   public get isActive(): boolean {
     return this._isActive;
   }
