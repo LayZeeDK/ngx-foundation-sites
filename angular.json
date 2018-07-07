@@ -42,6 +42,15 @@
             ]
           }
         }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "prefix": "fas",
+          "spec": false,
+          "styleext": "scss",
+          "viewEncapsulation": "None"
+        }
       }
     },
     "app": {
