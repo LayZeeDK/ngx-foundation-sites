@@ -18,7 +18,7 @@ export class FoundationTabsComponent {
   @ContentChildren(FoundationTabComponent)
   public tabs!: QueryList<FoundationTabComponent>;
 
-  public activateTab(tab: FoundationTabComponent): void {
+  public activate(tab: FoundationTabComponent): void {
     this.tabs.forEach(t => t.isActive =
       t === tab
       ? true
