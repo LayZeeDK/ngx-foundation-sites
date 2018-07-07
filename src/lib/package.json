@@ -1,0 +1,32 @@
+{
+  "name": "ngx-foundation-sites",
+  "description": "Foundation for Angular Sites.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Lars Gyrup Brink Nielsen",
+    "email": "larsbrinknielsen@gmail.com",
+    "url": "https://github.com/LayZeeDK"
+  },
+  "homepage": "https://github.com/LayZeeDK/ngx-foundation-sites",
+  "bugs": "https://github.com/LayZeeDK/ngx-foundation-sites/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LayZeeDK/ngx-foundation-sites.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "unknown"
+  },
+  "keywords": [
+    "angular",
+    "foundation",
+    "foundation-sites",
+    "angular-components",
+    "components"
+  ],
+  "peerDependencies": {
+    "@angular/common": ">=6.0.0 <8.0.0",
+    "@angular/core": ">=6.0.0 <8.0.0"
+  }
+}
