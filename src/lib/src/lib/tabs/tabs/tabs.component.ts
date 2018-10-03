@@ -20,9 +20,6 @@ export class FasTabsComponent {
   public tabs!: QueryList<FasTabComponent>;
 
   public activate(tab: FasTabComponent): void {
-    this.tabs.forEach(t => t.isActive =
-      t === tab
-      ? true
-      : false);
+    this.tabs.forEach(t => t.isActive = t === tab);
   }
 }

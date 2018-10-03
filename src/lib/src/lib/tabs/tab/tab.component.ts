@@ -11,9 +11,7 @@ import {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: {
-    class: 'tabs-panel',
-  },
+  host: { class: 'tabs-panel' },
   selector: 'fas-tab',
   templateUrl: './tab.component.html',
 })
