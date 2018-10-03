@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  encapsulation: ViewEncapsulation.None,
+  host: { class: 'c-example-app' },
   selector: 'example-app',
+  styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Foundation for Angular Sites';
+  public readonly title: string = 'Foundation for Angular Sites';
 }

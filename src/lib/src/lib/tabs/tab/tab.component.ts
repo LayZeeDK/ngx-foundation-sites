@@ -13,7 +13,6 @@ import {
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'tabs-panel',
-    style: 'display: block;'
   },
   selector: 'fas-tab',
   templateUrl: './tab.component.html',
