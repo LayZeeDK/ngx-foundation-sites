@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { FoundationTabComponent } from '../tab';
+import { FasTabComponent } from '../tab';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,11 +15,11 @@ import { FoundationTabComponent } from '../tab';
   selector: 'fas-tabs',
   templateUrl: './tabs.component.html',
 })
-export class FoundationTabsComponent {
-  @ContentChildren(FoundationTabComponent)
-  public tabs!: QueryList<FoundationTabComponent>;
+export class FasTabsComponent {
+  @ContentChildren(FasTabComponent)
+  public tabs!: QueryList<FasTabComponent>;
 
-  public activate(tab: FoundationTabComponent): void {
+  public activate(tab: FasTabComponent): void {
     this.tabs.forEach(t => t.isActive =
       t === tab
       ? true

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { FoundationTabComponent } from './tab.component';
+import { FasTabComponent } from './tab.component';
 
 @NgModule({
-  declarations: [FoundationTabComponent],
-  exports: [FoundationTabComponent],
+  declarations: [FasTabComponent],
+  exports: [FasTabComponent],
   imports: [],
 })
-export class FoundationTabModule {}
+export class TabModule {}

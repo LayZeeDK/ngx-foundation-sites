@@ -18,7 +18,7 @@ import {
   selector: 'fas-tab',
   templateUrl: './tab.component.html',
 })
-export class FoundationTabComponent {
+export class FasTabComponent {
   private _isActive: boolean = false;
 
   @Input()

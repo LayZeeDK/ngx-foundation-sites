@@ -1,1 +1,1 @@
-export { FoundationTabsModule } from './tabs.module';
+export { FasTabsModule } from './tabs.module';

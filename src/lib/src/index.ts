@@ -2,6 +2,6 @@
  * Public API Surface of ngx-foundation-sites
  */
 
-export { FoundationTabComponent } from './lib/tabs/tab';
-export { FoundationTabsComponent } from './lib/tabs/tabs';
-export { FoundationTabsModule } from './lib/tabs';
+export { FasTabComponent } from './lib/tabs/tab';
+export { FasTabsComponent } from './lib/tabs/tabs';
+export { FasTabsModule } from './lib/tabs';
