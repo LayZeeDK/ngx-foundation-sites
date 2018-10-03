@@ -9,10 +9,15 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+let serialNumber: number = 1;
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: { class: 'tabs-panel' },
+  host: {
+    class: 'tabs-panel',
+    role: 'tabpanel',
+  },
   selector: 'fas-tab',
   templateUrl: './tab.component.html',
 })
@@ -33,11 +38,17 @@ export class FasTabComponent {
   @Output()
   public readonly isActiveChange: EventEmitter<boolean> = new EventEmitter();
 
-  public id?: string;
+  @HostBinding('id')
+  public readonly id: string;
 
   public constructor(
     @Attribute('id') idAttribute: string | null,
   ) {
-    this.id = idAttribute || undefined;
+    if (!idAttribute) {
+      idAttribute = `fas-tab-${serialNumber}`;
+      serialNumber += 1;
+    }
+
+    this.id = idAttribute;
   }
 }

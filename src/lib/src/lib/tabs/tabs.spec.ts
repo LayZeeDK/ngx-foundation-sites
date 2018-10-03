@@ -43,27 +43,38 @@ describe('TabsComponent', () => {
   })
 
   describe('OnInit', () => {
-    it('sets ARIA attributes', () => {
-      const panel1 = host.query('#panel1');
-      const panel2 = host.query('#panel2');
-      const link1 = host.query('[href="/#panel1');
-      const link2 = host.query('[href="/#panel2');
-      const listItem1 = link1.parentElement;
+    describe('sets ARIA attributes', () => {
+      beforeEach(() => {
+        panel1 = host.query('#panel1');
+        panel2 = host.query('#panel2');
+        link1 = host.query('[href="/#panel1');
+        link2 = host.query('[href="/#panel2');
+        listItem1 = link1.parentElement as HTMLLIElement;
+      });
 
-      // Panels
-      expect(panel1).toHaveAttribute('role', 'tabpanel');
-      expect(panel1).toHaveAttribute('aria-labelledby', link1.id);
-      expect(panel1).toHaveAttribute('aria-hidden', undefined);
-      expect(panel2).toHaveAttribute('aria-hidden', 'true');
+      let panel1: HTMLElement;
+      let panel2: HTMLElement;
+      let link1: HTMLAnchorElement;
+      let link2: HTMLAnchorElement;
+      let listItem1: HTMLLIElement
 
-      // Links
-      expect(link1).toHaveAttribute('role', 'tab');
-      expect(link1).toHaveAttribute('aria-controls', panel1.id);
-      expect(link1).toHaveAttribute('aria-selected', 'true');
-      expect(link2).toHaveAttribute('aria-selected', 'false');
+      it('Panels', () => {
+        expect(panel1).toHaveAttribute('role', 'tabpanel');
+        expect(panel1).toHaveAttribute('aria-labelledby', link1.id);
+        expect(panel1).toHaveAttribute('aria-hidden', undefined);
+        expect(panel2).toHaveAttribute('aria-hidden', 'true');
+      });
 
-      // Tab list items
-      expect(listItem1).toHaveAttribute('role', 'presentation');
+      it('Links', () => {
+        expect(link1).toHaveAttribute('role', 'tab');
+        expect(link1).toHaveAttribute('aria-controls', panel1.id);
+        expect(link1).toHaveAttribute('aria-selected', 'true');
+        expect(link2).toHaveAttribute('aria-selected', 'false');
+      });
+
+      it('Tab list items', () => {
+        expect(listItem1).toHaveAttribute('role', 'presentation');
+      });
     });
   })
 
