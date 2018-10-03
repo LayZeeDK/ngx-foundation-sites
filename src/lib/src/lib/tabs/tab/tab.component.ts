@@ -38,6 +38,16 @@ export class FasTabComponent {
   @Output()
   public readonly isActiveChange: EventEmitter<boolean> = new EventEmitter();
 
+  @HostBinding('attr.aria-hidden')
+  public get ariaHidden(): 'true' | null {
+    return this.isActive
+      ? null
+      : 'true';
+  }
+  @HostBinding('attr.aria-labelledby')
+  public get ariaLabelledBy(): string {
+    return `${this.id}-label`;
+  }
   @HostBinding('id')
   public readonly id: string;
 

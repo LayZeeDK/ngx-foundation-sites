@@ -61,7 +61,7 @@ describe('TabsComponent', () => {
       it('Panels', () => {
         expect(panel1).toHaveAttribute('role', 'tabpanel');
         expect(panel1).toHaveAttribute('aria-labelledby', link1.id);
-        expect(panel1).toHaveAttribute('aria-hidden', undefined);
+        expect(panel1.getAttribute('aria-hidden')).toBeNull();
         expect(panel2).toHaveAttribute('aria-hidden', 'true');
       });
 
