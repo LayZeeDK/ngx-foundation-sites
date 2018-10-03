@@ -1,4 +1,5 @@
 import {
+  Attribute,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -31,4 +32,12 @@ export class FasTabComponent {
   public title: string = '';
   @Output()
   public readonly isActiveChange: EventEmitter<boolean> = new EventEmitter();
+
+  public id?: string;
+
+  public constructor(
+    @Attribute('id') idAttribute: string | null,
+  ) {
+    this.id = idAttribute || undefined;
+  }
 }

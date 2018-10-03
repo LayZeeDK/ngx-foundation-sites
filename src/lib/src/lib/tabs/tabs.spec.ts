@@ -1,5 +1,7 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import {
   createHostComponentFactory,
+  HostComponent,
   SpectatorWithHost,
 } from '@netbasal/spectator';
 
@@ -10,6 +12,9 @@ describe('TabsComponent', () => {
   const createHost = createHostComponentFactory({
     component: FasTabsComponent,
     imports: [
+      RouterTestingModule.withRoutes([
+        { path: '', pathMatch: 'full', component: HostComponent },
+      ]),
       TabModule,
     ],
   });
@@ -41,8 +46,8 @@ describe('TabsComponent', () => {
     it('sets ARIA attributes', () => {
       const panel1 = host.query('#panel1');
       const panel2 = host.query('#panel2');
-      const link1 = host.query('[href="#panel1');
-      const link2 = host.query('[href="#panel2');
+      const link1 = host.query('[href="/#panel1');
+      const link2 = host.query('[href="/#panel2');
       const listItem1 = link1.parentElement;
 
       // Panels

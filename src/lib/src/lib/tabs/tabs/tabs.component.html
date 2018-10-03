@@ -2,7 +2,8 @@
   <li *ngFor="let tab of tabs"
     class="tabs-title"
     [class.is-active]="tab.isActive">
-    <a [attr.aria-selected]="tab.isActive"
+    <a routerLink [fragment]="tab.id"
+      [attr.aria-selected]="tab.isActive"
       (click)="activate(tab)">
       {{tab.title}}
     </a>
