@@ -1,9 +1,12 @@
 <ul class="tabs">
   <li *ngFor="let tab of tabs"
     class="tabs-title"
-    [class.is-active]="tab.isActive">
+    [class.is-active]="tab.isActive"
+    role="presentation">
     <a id="{{tab.id}}-label" routerLink [fragment]="tab.id"
+      [attr.aria-controls]="tab.id"
       [attr.aria-selected]="tab.isActive"
+      role="tab"
       (click)="activate(tab)">
       {{tab.title}}
     </a>
