@@ -74,7 +74,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "foundation-sites": "^6.5.0-rc.3",
+    "foundation-sites": "^6.6.1",
     "rxjs": "^6.5.3",
     "zone.js": "~0.9.1"
   },
