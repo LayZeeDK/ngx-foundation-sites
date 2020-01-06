@@ -90,13 +90,7 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "typedef": [
-      true,
-      "call-signature",
-      "arrow-call-signature",
-      "parameter",
-      "variable-declaration"
-    ],
+    "typedef": [true, "call-signature", "arrow-call-signature", "parameter"],
     "array-type": [true, "array"],
     "arrow-parens": [true, "ban-single-arg-parens"],
     "interface-name": [true, "never-prefix"],
