@@ -3,7 +3,7 @@ import {
   createHostComponentFactory,
   HostComponent,
   SpectatorWithHost,
-} from '@netbasal/spectator';
+} from '@ngneat/spectator';
 
 import { TabModule } from './tab';
 import { FasTabsComponent } from './tabs';
