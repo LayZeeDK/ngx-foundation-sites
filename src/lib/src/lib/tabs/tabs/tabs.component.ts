@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { FasTabComponent } from '../tab';
+import { FasTabComponent } from '../tab/tab.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

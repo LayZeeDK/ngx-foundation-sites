@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { TabModule } from './tab';
-import { TabsModule as TabsModule } from './tabs';
+import { TabModule } from './tab/tab.module';
+import { TabsModule as TabsModule } from './tabs/tabs.module';
 
 @NgModule({
   exports: [
@@ -9,4 +9,4 @@ import { TabsModule as TabsModule } from './tabs';
     TabsModule,
   ],
 })
-export class FasTabsModule {}
+export class FasTabsModule { }
