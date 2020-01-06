@@ -1,15 +1,15 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import {
-  createHostComponentFactory,
+  createHostFactory,
   HostComponent,
-  SpectatorWithHost,
+  SpectatorHost,
 } from '@ngneat/spectator';
 
-import { TabModule } from './tab';
-import { FasTabsComponent } from './tabs';
+import { TabModule } from './tab/tab.module';
+import { FasTabsComponent } from './tabs/tabs.component';
 
 describe('TabsComponent', () => {
-  const createHost = createHostComponentFactory({
+  const createHost = createHostFactory({
     component: FasTabsComponent,
     imports: [
       RouterTestingModule.withRoutes([
@@ -18,7 +18,7 @@ describe('TabsComponent', () => {
       TabModule,
     ],
   });
-  let host: SpectatorWithHost<FasTabsComponent>;
+  let host: SpectatorHost<FasTabsComponent>;
 
   beforeEach(() => {
     host = createHost(`
@@ -44,19 +44,19 @@ describe('TabsComponent', () => {
 
   describe('OnInit', () => {
     describe('sets ARIA attributes', () => {
-      beforeEach(() => {
-        panel1 = host.query('#panel1');
-        panel2 = host.query('#panel2');
-        link1 = host.query('[href="/#panel1');
-        link2 = host.query('[href="/#panel2');
-        listItem1 = link1.parentElement as HTMLLIElement;
-      });
-
       let panel1: HTMLElement;
       let panel2: HTMLElement;
       let link1: HTMLAnchorElement;
       let link2: HTMLAnchorElement;
-      let listItem1: HTMLLIElement
+      let listItem1: HTMLLIElement;
+
+      beforeEach(() => {
+        panel1 = host.query('#panel1') as HTMLElement;
+        panel2 = host.query('#panel2') as HTMLElement;
+        link1 = host.query('[href="/#panel1') as HTMLAnchorElement;
+        link2 = host.query('[href="/#panel2') as HTMLAnchorElement;
+        listItem1 = link1.parentElement as HTMLLIElement;
+      });
 
       it('Panels', () => {
         expect(panel1).toHaveAttribute('role', 'tabpanel');
