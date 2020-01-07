@@ -3,6 +3,8 @@
   "rules": {
     "directive-selector": [true, "attribute", "fas", "camelCase"],
     "component-selector": [true, "element", "fas", "kebab-case"],
-    "no-host-metadata-property": false
+    "no-host-metadata-property": false,
+    "no-input-rename": false,
+    "no-output-rename": false
   }
 }
