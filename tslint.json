@@ -24,8 +24,8 @@
       {
         "order": [
           "static-field",
-          "instance-field",
           "static-method",
+          "instance-field",
           "instance-method"
         ]
       }
@@ -90,7 +90,7 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "typedef": [true, "call-signature", "arrow-call-signature", "parameter"],
+    "typedef": [true, "call-signature", "parameter"],
     "array-type": [true, "array"],
     "arrow-parens": [true, "ban-single-arg-parens"],
     "interface-name": [true, "never-prefix"],
