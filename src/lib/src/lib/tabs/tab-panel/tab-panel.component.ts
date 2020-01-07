@@ -18,10 +18,10 @@ let serialNumber: number = 1;
     class: 'tabs-panel',
     role: 'tabpanel',
   },
-  selector: 'fas-tab',
-  templateUrl: './tab.component.html',
+  selector: 'fas-tab-panel',
+  templateUrl: './tab-panel.component.html',
 })
-export class FasTabComponent {
+export class FasTabPanelComponent {
   private _isActive: boolean = false;
 
   @Input()
@@ -46,7 +46,7 @@ export class FasTabComponent {
   }
   @HostBinding('attr.aria-labelledby')
   public get ariaLabelledBy(): string {
-    return `${this.id}-label`;
+    return `${this.id}-tab`;
   }
   @HostBinding('id')
   public readonly id: string;
@@ -55,7 +55,7 @@ export class FasTabComponent {
     @Attribute('id') idAttribute: string | null,
   ) {
     if (!idAttribute) {
-      idAttribute = `fas-tab-${serialNumber}`;
+      idAttribute = `fas-tab-panel-${serialNumber}`;
       serialNumber += 1;
     }
 

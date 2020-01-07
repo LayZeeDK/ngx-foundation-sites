@@ -6,22 +6,20 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { FasTabComponent } from '../tab/tab.component';
+import { FasTabPanelComponent } from '../tab-panel/tab-panel.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: {
-    style: 'display: block;',
-  },
+  host: { style: 'display: block;' },
   selector: 'fas-tabs',
   templateUrl: './tabs.component.html',
 })
 export class FasTabsComponent {
-  @ContentChildren(FasTabComponent)
-  public tabs!: QueryList<FasTabComponent>;
+  @ContentChildren(FasTabPanelComponent)
+  public panels!: QueryList<FasTabPanelComponent>;
 
-  public activate(tab: FasTabComponent): void {
-    this.tabs.forEach(t => t.isActive = t === tab);
+  public activate(panel: FasTabPanelComponent): void {
+    this.panels.forEach(p => p.isActive = p === panel);
   }
 }
