@@ -5,17 +5,18 @@ import {
   SpectatorHost,
 } from '@ngneat/spectator';
 
-import { TabPanelModule } from './tab-panel/tab-panel.module';
+import { FasTabsModule } from './tabs.module';
 import { FasTabsComponent } from './tabs/tabs.component';
 
 describe('TabsComponent', () => {
   const createHost = createHostFactory({
     component: FasTabsComponent,
+    declareComponent: false,
     imports: [
       RouterTestingModule.withRoutes([
         { path: '', pathMatch: 'full', component: HostComponent },
       ]),
-      TabPanelModule,
+      FasTabsModule,
     ],
   });
   let host: SpectatorHost<FasTabsComponent>;
