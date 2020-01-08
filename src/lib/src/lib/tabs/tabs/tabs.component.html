@@ -1,15 +1,10 @@
 <ul class="tabs">
   <li *ngFor="let panel of panels"
-    class="tabs-title"
-    [class.is-active]="panel.isActive"
-    role="presentation">
-    <a id="{{panel.id}}-tab" routerLink [fragment]="panel.id"
-      [attr.aria-controls]="panel.id"
-      [attr.aria-selected]="panel.isActive"
-      role="tab"
-      (click)="activate(panel)">
-      {{panel.title}}
-    </a>
+    fasTab
+    [fasTabIsActive]="panel.isActive"
+    [fasTabPanelId]="panel.id"
+    [fasTabTitle]="panel.title"
+    (fasTabActivate)="activate(panel)">
   </li>
 </ul>
 

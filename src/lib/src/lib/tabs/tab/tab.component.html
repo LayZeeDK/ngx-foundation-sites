@@ -1,0 +1,8 @@
+<a id="{{panelId}}-tab"
+  routerLink [fragment]="panelId"
+  [attr.aria-controls]="panelId"
+  [attr.aria-selected]="isActive"
+  role="tab"
+  (click)="activate.emit()">
+  {{title}}
+</a>
