@@ -23,21 +23,21 @@ describe('TabsComponent', () => {
   beforeEach(() => {
     host = createHost(`
       <fas-tabs>
-        <fas-tab id="panel1" title="Tab 1"
+        <fas-tab-panel id="panel1" title="Tab 1"
           [isActive]="true">
           <p>one</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
-        </fas-tab>
+        </fas-tab-panel>
 
-        <fas-tab id="panel2" title="Tab 2">
+        <fas-tab-panel id="panel2" title="Tab 2">
           <p>two</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
-        </fas-tab>
+        </fas-tab-panel>
 
-        <fas-tab id="panel3" title="Tab 3">
+        <fas-tab-panel id="panel3" title="Tab 3">
           <p>three</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
-        </fas-tab>
+        </fas-tab-panel>
       </fas-tabs>
     `);
   })
