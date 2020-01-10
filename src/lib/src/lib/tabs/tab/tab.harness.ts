@@ -16,20 +16,20 @@ export class FasTabHarness extends ComponentHarness {
   static with(
     options: FasTabFilters,
   ): HarnessPredicate<FasTabHarness> {
-    return new HarnessPredicate(FasTabHarness, options);
-      // .addOption('ID', options.id, (harness, id) =>
-      //   HarnessPredicate.stringMatches(harness.getId(), id))
-      // .addOption('title', options.title, (harness, title) =>
-      //   HarnessPredicate.stringMatches(harness.getTitle(), title));
+    return new HarnessPredicate(FasTabHarness, options)
+      .addOption('ID', options.id, (harness, id) =>
+        HarnessPredicate.stringMatches(harness.getId(), id))
+      .addOption('title', options.title, (harness, title) =>
+        HarnessPredicate.stringMatches(harness.getTitle(), title));
   }
+
+  protected getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
 
   protected async getPanel(): Promise<TestElement> {
     const panelId = await this.getAriaControls();
 
     return this.documentRootLocatorFactory().locatorFor(`#${panelId}`)();
   }
-
-  protected getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
 
   protected async isSelected(): Promise<boolean> {
     const ariaSelected = await this.getAriaSelected();
@@ -84,7 +84,7 @@ export class FasTabHarness extends ComponentHarness {
     return label.getAttribute('role');
   }
 
-  async getTextContent(): Promise<string> {
+  async getTitle(): Promise<string> {
     const label = await this.getLabel();
     const text = await label.text();
 
