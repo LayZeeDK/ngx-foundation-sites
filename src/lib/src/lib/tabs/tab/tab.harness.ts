@@ -51,7 +51,9 @@ export class FasTabHarness extends ComponentHarness {
       throw new Error('No aria-controls attribute');
     }
 
-    if (maybePanelId.includes(' ')) {
+    const spaceBetweenPattern = /^.+[ ].+$/;
+
+    if (spaceBetweenPattern.test(maybePanelId)) {
       throw new Error('Multiple tab panels not supported');
     }
 
