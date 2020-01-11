@@ -66,8 +66,9 @@ export class FasTabPanelHarness extends ComponentHarness {
 
   async getTextContent(): Promise<string> {
     const host = await this.host();
+    const text = await host.text();
 
-    return (await host.text()).trim();
+    return text.trim();
   }
 
   async getTitle(): Promise<string> {
