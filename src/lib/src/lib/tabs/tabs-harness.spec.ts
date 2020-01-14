@@ -1,4 +1,3 @@
-import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -7,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FasTabPanelHarness } from './tab-panel/tab-panel.harness';
 import { FasTabHarness } from './tab/tab.harness';
 import { FasTabsModule } from './tabs.module';
+import { FasTabsHarness } from './tabs/tabs.harness';
 
 @Component({
   template: `
@@ -32,7 +32,7 @@ import { FasTabsModule } from './tabs.module';
 export class TabsTestHostComponent {}
 
 describe('Tabs (component harnesses)', () => {
-  let harnessLoader: HarnessLoader;
+  let tabs: FasTabsHarness;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -46,10 +46,11 @@ describe('Tabs (component harnesses)', () => {
     }).compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach(async () => {
     const hostFixture = TestBed.createComponent(TabsTestHostComponent);
     hostFixture.detectChanges();
-    harnessLoader = TestbedHarnessEnvironment.loader(hostFixture);
+    const harnessLoader = TestbedHarnessEnvironment.loader(hostFixture);
+    tabs = await harnessLoader.getHarness(FasTabsHarness);
   });
 
   describe('OnInit', () => {
@@ -60,10 +61,8 @@ describe('Tabs (component harnesses)', () => {
       let tab2: FasTabHarness;
 
       beforeEach(async () => {
-        panel1 = await harnessLoader.getHarness(
-          FasTabPanelHarness.with({ id: 'panel1' }));
-        panel2 = await harnessLoader.getHarness(
-          FasTabPanelHarness.with({ id: 'panel2' }));
+        panel1 = await tabs.getPanel({ id: 'panel1' });
+        panel2 = await tabs.getPanel({ id: 'panel2' });
         tab1 = await panel1.getTab();
         tab2 = await panel2.getTab();
       });
