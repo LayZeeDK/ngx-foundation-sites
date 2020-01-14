@@ -5,14 +5,14 @@ import {
 } from '@angular/cdk/testing';
 
 import { FasTabHarness } from '../tab/tab.harness';
-import { FasTabPanelFilters } from './tab-panel-harness-filters';
+import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 
 
 
 export class FasTabPanelHarness extends ComponentHarness {
   static hostSelector = '.tabs-panel';
   static with(
-    options: FasTabPanelFilters,
+    options: FasTabPanelHarnessFilters,
   ): HarnessPredicate<FasTabPanelHarness> {
     return new HarnessPredicate(FasTabPanelHarness, options)
       .addOption('ID', options.id, (harness, id) =>
