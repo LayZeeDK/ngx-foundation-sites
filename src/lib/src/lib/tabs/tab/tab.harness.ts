@@ -74,6 +74,12 @@ export class FasTabHarness extends ComponentHarness {
     return maybeAriaSelected;
   }
 
+  async getHostRole(): Promise<string | null> {
+    const host = await this.host();
+
+    return host.getAttribute('role');
+  }
+
   async getId(): Promise<string> {
     const label = await this.getLabel();
 

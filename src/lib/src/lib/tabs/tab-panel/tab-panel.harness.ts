@@ -23,10 +23,10 @@ export class FasTabPanelHarness extends ComponentHarness {
   }
 
   protected async getTab(): Promise<TestElement> {
-    const labelId = await this.getAriaLabelledBy();
+    const tabId = await this.getAriaLabelledBy();
 
-    // return this.locatorFor(FasTabHarness.with({id: labelId}));
-    return this.documentRootLocatorFactory().locatorFor(`#${labelId}`)();
+    // return this.locatorFor(FasTabHarness.with({ id: tabId }));
+    return this.documentRootLocatorFactory().locatorFor(`#${tabId}`)();
   }
 
   protected async isHidden(): Promise<boolean> {
@@ -62,6 +62,17 @@ export class FasTabPanelHarness extends ComponentHarness {
     const host = await this.host();
 
     return host.getProperty('id');
+  }
+
+  async getRole(): Promise<string> {
+    const host = await this.host();
+    const maybeRole = await host.getAttribute('role');
+
+    if (!maybeRole) {
+      throw new Error('No role attribute');
+    }
+
+    return maybeRole;
   }
 
   async getTextContent(): Promise<string> {
