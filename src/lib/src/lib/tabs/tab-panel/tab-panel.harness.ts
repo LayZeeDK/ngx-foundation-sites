@@ -1,14 +1,13 @@
 import {
-  BaseHarnessFilters,
   ComponentHarness,
   HarnessPredicate,
   TestElement,
 } from '@angular/cdk/testing';
 
-export interface FasTabPanelFilters extends BaseHarnessFilters {
-  readonly id?: string | RegExp;
-  readonly title?: string | RegExp;
-}
+import { FasTabHarness } from '../tab/tab.harness';
+import { FasTabPanelFilters } from './tab-panel-harness-filters';
+
+
 
 export class FasTabPanelHarness extends ComponentHarness {
   static hostSelector = '.tabs-panel';
@@ -22,10 +21,9 @@ export class FasTabPanelHarness extends ComponentHarness {
         HarnessPredicate.stringMatches(harness.getTitle(), title));
   }
 
-  protected async getTab(): Promise<TestElement> {
+  protected async getTabElement(): Promise<TestElement> {
     const tabId = await this.getAriaLabelledBy();
 
-    // return this.locatorFor(FasTabHarness.with({ id: tabId }));
     return this.documentRootLocatorFactory().locatorFor(`#${tabId}`)();
   }
 
@@ -36,7 +34,7 @@ export class FasTabPanelHarness extends ComponentHarness {
   }
 
   async activate(): Promise<void> {
-    const label = await this.getTab();
+    const label = await this.getTabElement();
 
     label.click();
   }
@@ -75,6 +73,14 @@ export class FasTabPanelHarness extends ComponentHarness {
     return maybeRole;
   }
 
+  async getTab(): Promise<FasTabHarness> {
+    const tabId = await this.getAriaLabelledBy();
+    const getFilteredTab = this.documentRootLocatorFactory().locatorFor(
+      FasTabHarness.with({ id: tabId }));
+
+    return getFilteredTab();
+  }
+
   async getTextContent(): Promise<string> {
     const host = await this.host();
     const text = await host.text();
@@ -83,7 +89,7 @@ export class FasTabPanelHarness extends ComponentHarness {
   }
 
   async getTitle(): Promise<string> {
-    const label = await this.getTab();
+    const label = await this.getTabElement();
     const title = await label.text();
 
     return title.trim();

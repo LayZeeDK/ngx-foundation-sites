@@ -1,29 +1,28 @@
 import { ComponentHarness } from '@angular/cdk/testing';
 
-import {
-  FasTabPanelFilters,
-  FasTabPanelHarness,
-} from '../tab-panel/tab-panel.harness';
-import { FasTabFilters, FasTabHarness } from '../tab/tab.harness';
+import { FasTabPanelFilters } from '../tab-panel/tab-panel-harness-filters';
+import { FasTabPanelHarness } from '../tab-panel/tab-panel.harness';
+import { FasTabHarnessFilters } from '../tab/tab-harness-filters';
+import { FasTabHarness } from '../tab/tab.harness';
 
 export class FasTabsHarness extends ComponentHarness {
   static hostSelector = 'fas-tabs';
 
-  async getPanels(
-    filters: FasTabPanelFilters = {},
-  ): Promise<readonly FasTabPanelHarness[]> {
-    const getFilteredPanels = await this.locatorForAll(
-      FasTabPanelHarness.with(filters));
+  async getPanel(
+    filter: FasTabPanelFilters = {},
+  ): Promise<FasTabPanelHarness> {
+    const getFilteredPanel = this.locatorFor(
+      FasTabPanelHarness.with(filter));
 
-    return getFilteredPanels();
+    return getFilteredPanel();
   }
 
-  async getTabs(
-    filters: FasTabFilters = {},
-  ): Promise<readonly FasTabHarness[]> {
-    const getFilteredTabs = await this.locatorForAll(
-      FasTabHarness.with(filters));
+  async getTab(
+    filter: FasTabHarnessFilters = {},
+  ): Promise<FasTabHarness> {
+    const getFilteredTab = await this.locatorFor(
+      FasTabHarness.with(filter));
 
-    return getFilteredTabs();
+    return getFilteredTab();
   }
 }

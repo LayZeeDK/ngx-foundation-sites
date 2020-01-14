@@ -32,13 +32,6 @@ import { FasTabsModule } from './tabs.module';
 export class TabsTestHostComponent {}
 
 describe('Tabs (component harnesses)', () => {
-  async function tabFor(
-    panelHarness: FasTabPanelHarness,
-  ): Promise<FasTabHarness> {
-    return harnessLoader.getHarness(
-      FasTabHarness.with({ title: await panelHarness.getTitle() }));
-  }
-
   let harnessLoader: HarnessLoader;
 
   beforeEach(async () => {
@@ -71,8 +64,8 @@ describe('Tabs (component harnesses)', () => {
           FasTabPanelHarness.with({ id: 'panel1' }));
         panel2 = await harnessLoader.getHarness(
           FasTabPanelHarness.with({ id: 'panel2' }));
-        tab1 = await tabFor(panel1);
-        tab2 = await tabFor(panel2);
+        tab1 = await panel1.getTab();
+        tab2 = await panel2.getTab();
       });
 
       it('Panels', async () => {
@@ -83,14 +76,14 @@ describe('Tabs (component harnesses)', () => {
       });
 
       it('Links', async () => {
-        expect(await tab1.getRole()).toBe('tab');
+        expect(await tab1.getLabelRole()).toBe('tab');
         expect(await tab1.getAriaControls()).toBe(await panel1.getId());
         expect(await tab1.getAriaSelected()).toBe('true');
         expect(await tab2.getAriaSelected()).toBe('false');
       });
 
       it('Tab list items', async () => {
-        expect(await tab1.getHostRole()).toBe('presentation');
+        expect(await tab1.getRole()).toBe('presentation');
       });
     });
   });

@@ -1,20 +1,16 @@
 import {
   AsyncFactoryFn,
-  BaseHarnessFilters,
   ComponentHarness,
   HarnessPredicate,
   TestElement,
 } from '@angular/cdk/testing';
 
-export interface FasTabFilters extends BaseHarnessFilters {
-  readonly id?: string | RegExp;
-  readonly title?: string | RegExp;
-}
+import { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
   static hostSelector = '.tabs-title';
   static with(
-    options: FasTabFilters,
+    options: FasTabHarnessFilters,
   ): HarnessPredicate<FasTabHarness> {
     return new HarnessPredicate(FasTabHarness, options)
       .addOption('ID', options.id, (harness, id) =>
@@ -74,22 +70,22 @@ export class FasTabHarness extends ComponentHarness {
     return maybeAriaSelected;
   }
 
-  async getHostRole(): Promise<string | null> {
-    const host = await this.host();
-
-    return host.getAttribute('role');
-  }
-
   async getId(): Promise<string> {
     const label = await this.getLabel();
 
     return label.getProperty('id');
   }
 
-  async getRole(): Promise<string | null> {
+  async getLabelRole(): Promise<string | null> {
     const label = await this.getLabel();
 
     return label.getAttribute('role');
+  }
+
+  async getRole(): Promise<string | null> {
+    const host = await this.host();
+
+    return host.getAttribute('role');
   }
 
   async getTitle(): Promise<string> {
