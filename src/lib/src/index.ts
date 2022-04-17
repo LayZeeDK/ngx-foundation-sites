@@ -1,7 +1,7 @@
 /*
- * Public API Surface of lib
+ * Public API Surface of ngx-foundation-sites
  */
 
-export * from './lib/lib.service';
-export * from './lib/lib.component';
-export * from './lib/lib.module';
+export { FasTabComponent } from './lib/tabs/tab';
+export { FasTabsComponent } from './lib/tabs/tabs';
+export { FasTabsModule } from './lib/tabs';
