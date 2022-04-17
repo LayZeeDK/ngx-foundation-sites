@@ -1,5 +1,5 @@
 import { ProtractorHarnessEnvironment } from '@angular/cdk/testing/protractor';
-import { browser } from 'protractor';
+import { browser, promise } from 'protractor';
 
 import { FasTabHarness } from '../../../lib/src/lib/tabs/tab/tab.harness';
 
@@ -14,7 +14,7 @@ export class TabsPage {
     return this.harnessLoader.getHarness(FasTabHarness.with({ title }));
   }
 
-  navigateTo() {
+  navigateTo(): promise.Promise<any> {
     return browser.get('/');
   }
 }

@@ -14,11 +14,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "inlineSources": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es2015"
-    ],
+    "lib": ["dom", "dom.iterable", "es2015"],
     "module": "es2015",
     "moduleResolution": "node",
     "outDir": "../../out-tsc/lib",
@@ -26,9 +22,5 @@
     "target": "es2015",
     "types": []
   },
-  "exclude": [
-    "src/test.ts",
-    "src/wallaby-test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["src/test.ts", "src/wallaby-test.ts", "**/*.spec.ts"]
 }

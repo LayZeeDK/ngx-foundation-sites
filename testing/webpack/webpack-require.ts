@@ -4,6 +4,6 @@ export interface WebpackRequire {
   context: (
     directory: string,
     useSubdirectories?: boolean /* = false */,
-    regExp?: RegExp /* = /^\.\// */,
+    regExp?: RegExp, /* = /^\.\// */
   ) => WebpackContext;
 }

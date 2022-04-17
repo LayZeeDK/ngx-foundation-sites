@@ -9,14 +9,14 @@ import { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
   static hostSelector = '.tabs-title';
-  static with(
-    options: FasTabHarnessFilters,
-  ): HarnessPredicate<FasTabHarness> {
+  static with(options: FasTabHarnessFilters): HarnessPredicate<FasTabHarness> {
     return new HarnessPredicate(FasTabHarness, options)
       .addOption('ID', options.id, (harness, id) =>
-        HarnessPredicate.stringMatches(harness.getId(), id))
+        HarnessPredicate.stringMatches(harness.getId(), id),
+      )
       .addOption('title', options.title, (harness, title) =>
-        HarnessPredicate.stringMatches(harness.getTitle(), title));
+        HarnessPredicate.stringMatches(harness.getTitle(), title),
+      );
   }
 
   protected getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
@@ -58,11 +58,11 @@ export class FasTabHarness extends ComponentHarness {
 
   async getAriaSelected(): Promise<'true' | 'false'> {
     const label = await this.getLabel();
-    const maybeAriaSelected =
-      await label.getAttribute('aria-selected');
+    const maybeAriaSelected = await label.getAttribute('aria-selected');
 
-    if (maybeAriaSelected === null
-      || (maybeAriaSelected !== 'true' && maybeAriaSelected !== 'false')
+    if (
+      maybeAriaSelected === null ||
+      (maybeAriaSelected !== 'true' && maybeAriaSelected !== 'false')
     ) {
       throw new Error('No aria-selected attribute');
     }
