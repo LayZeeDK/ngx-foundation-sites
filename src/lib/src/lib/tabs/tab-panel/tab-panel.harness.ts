@@ -1,24 +1,20 @@
-import {
-  ComponentHarness,
-  HarnessPredicate,
-  TestElement,
-} from '@angular/cdk/testing';
+import { ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
 
 import { FasTabHarness } from '../tab/tab.harness';
 import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 
-
-
 export class FasTabPanelHarness extends ComponentHarness {
   static hostSelector = '.tabs-panel';
   static with(
-    options: FasTabPanelHarnessFilters,
+    options: FasTabPanelHarnessFilters
   ): HarnessPredicate<FasTabPanelHarness> {
     return new HarnessPredicate(FasTabPanelHarness, options)
       .addOption('ID', options.id, (harness, id) =>
-        HarnessPredicate.stringMatches(harness.getId(), id))
+        HarnessPredicate.stringMatches(harness.getId(), id)
+      )
       .addOption('title', options.title, (harness, title) =>
-        HarnessPredicate.stringMatches(harness.getTitle(), title));
+        HarnessPredicate.stringMatches(harness.getTitle(), title)
+      );
   }
 
   protected async getTabElement(): Promise<TestElement> {
@@ -76,7 +72,8 @@ export class FasTabPanelHarness extends ComponentHarness {
   async getTab(): Promise<FasTabHarness> {
     const tabId = await this.getAriaLabelledBy();
     const getFilteredTab = this.documentRootLocatorFactory().locatorFor(
-      FasTabHarness.with({ id: tabId }));
+      FasTabHarness.with({ id: tabId })
+    );
 
     return getFilteredTab();
   }
