@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ContentChildren,
-  QueryList,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, ViewEncapsulation } from '@angular/core';
 
 import { FasTabComponent } from '../tab';
 
@@ -22,6 +16,6 @@ export class FasTabsComponent {
   public tabs!: QueryList<FasTabComponent>;
 
   public activate(tab: FasTabComponent): void {
-    this.tabs.forEach(t => t.isActive = t === tab);
+    this.tabs.forEach((t) => (t.isActive = t === tab));
   }
 }

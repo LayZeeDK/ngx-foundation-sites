@@ -4,9 +4,6 @@ import { TabModule } from './tab';
 import { TabsModule as TabsModule } from './tabs';
 
 @NgModule({
-  exports: [
-    TabModule,
-    TabsModule,
-  ],
+  exports: [TabModule, TabsModule],
 })
 export class FasTabsModule {}

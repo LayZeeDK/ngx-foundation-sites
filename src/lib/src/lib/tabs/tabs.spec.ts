@@ -1,9 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  createHostComponentFactory,
-  HostComponent,
-  SpectatorWithHost,
-} from '@ngneat/spectator';
+import { createHostComponentFactory, HostComponent, SpectatorWithHost } from '@ngneat/spectator';
 
 import { TabModule } from './tab';
 import { FasTabsComponent } from './tabs';
@@ -40,7 +36,7 @@ describe('TabsComponent', () => {
         </fas-tab>
       </fas-tabs>
     `);
-  })
+  });
 
   describe('OnInit', () => {
     describe('sets ARIA attributes', () => {
@@ -56,7 +52,7 @@ describe('TabsComponent', () => {
       let panel2: HTMLElement;
       let link1: HTMLAnchorElement;
       let link2: HTMLAnchorElement;
-      let listItem1: HTMLLIElement
+      let listItem1: HTMLLIElement;
 
       it('Panels', () => {
         expect(panel1).toHaveAttribute('role', 'tabpanel');
@@ -76,6 +72,5 @@ describe('TabsComponent', () => {
         expect(listItem1).toHaveAttribute('role', 'presentation');
       });
     });
-  })
-
+  });
 });

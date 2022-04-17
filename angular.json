@@ -19,7 +19,8 @@
           "configurations": {
             "production": {
               "project": "src/lib/ng-package.prod.json"
-            }
+            ,              "tsConfig": "src/lib/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -60,6 +61,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/app",
             "index": "src/app/src/index.html",
             "main": "src/app/src/main.ts",
@@ -71,6 +73,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/app/src/environments/environment.ts",

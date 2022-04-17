@@ -40,9 +40,7 @@ export class FasTabComponent {
 
   @HostBinding('attr.aria-hidden')
   public get ariaHidden(): 'true' | null {
-    return this.isActive
-      ? null
-      : 'true';
+    return this.isActive ? null : 'true';
   }
   @HostBinding('attr.aria-labelledby')
   public get ariaLabelledBy(): string {
@@ -51,9 +49,7 @@ export class FasTabComponent {
   @HostBinding('id')
   public readonly id: string;
 
-  public constructor(
-    @Attribute('id') idAttribute: string | null,
-  ) {
+  public constructor(@Attribute('id') idAttribute: string | null) {
     if (!idAttribute) {
       idAttribute = `fas-tab-${serialNumber}`;
       serialNumber += 1;

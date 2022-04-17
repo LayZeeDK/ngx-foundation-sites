@@ -7,9 +7,6 @@ import { FasTabsComponent } from './tabs.component';
 @NgModule({
   declarations: [FasTabsComponent],
   exports: [FasTabsComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, RouterModule],
 })
 export class TabsModule {}
