@@ -23,8 +23,10 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --non-interactive
 
-      - name: Build
+      - name: Build package
         run: yarn build
+      - name: Build example application
+        run: yarn build:app
 
   lint:
     name: Lint
