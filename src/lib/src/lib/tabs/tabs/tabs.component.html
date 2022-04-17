@@ -1,13 +1,24 @@
 <ul class="tabs">
-  <li *ngFor="let panel of panels"
-    fasTab
-    [fasTabIsActive]="panel.isActive"
-    [fasTabPanelId]="panel.id"
-    [fasTabTitle]="panel.title"
-    (fasTabActivate)="activate(panel)">
+  <li
+    *ngFor="let tab of tabs"
+    class="tabs-title"
+    [class.is-active]="tab.isActive"
+    role="presentation"
+  >
+    <a
+      id="{{ tab.id }}-label"
+      routerLink
+      [fragment]="tab.id"
+      [attr.aria-controls]="tab.id"
+      [attr.aria-selected]="tab.isActive"
+      role="tab"
+      (click)="activate(tab)"
+    >
+      {{ tab.title }}
+    </a>
   </li>
 </ul>
 
 <div class="tabs-content">
-  <ng-content select="fas-tab-panel"></ng-content>
+  <ng-content select="fas-tab"></ng-content>
 </div>

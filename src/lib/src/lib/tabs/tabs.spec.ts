@@ -1,63 +1,58 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  createHostFactory,
-  HostComponent,
-  SpectatorHost,
-} from '@ngneat/spectator';
+import { createHostComponentFactory, HostComponent, SpectatorWithHost } from '@ngneat/spectator';
 
-import { FasTabsModule } from './tabs.module';
-import { FasTabsComponent } from './tabs/tabs.component';
+import { TabModule } from './tab';
+import { FasTabsComponent } from './tabs';
 
 describe('TabsComponent', () => {
-  const createHost = createHostFactory({
+  const createHost = createHostComponentFactory({
     component: FasTabsComponent,
-    declareComponent: false,
     imports: [
       RouterTestingModule.withRoutes([
         { path: '', pathMatch: 'full', component: HostComponent },
       ]),
-      FasTabsModule,
+      TabModule,
     ],
   });
-  let host: SpectatorHost<FasTabsComponent>;
+  let host: SpectatorWithHost<FasTabsComponent>;
 
   beforeEach(() => {
     host = createHost(`
       <fas-tabs>
-        <fas-tab-panel id="panel1" title="Tab 1"
+        <fas-tab id="panel1" title="Tab 1"
           [isActive]="true">
           <p>one</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
-        </fas-tab-panel>
+        </fas-tab>
 
-        <fas-tab-panel id="panel2" title="Tab 2">
+        <fas-tab id="panel2" title="Tab 2">
           <p>two</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
-        </fas-tab-panel>
+        </fas-tab>
 
-        <fas-tab-panel id="panel3" title="Tab 3">
+        <fas-tab id="panel3" title="Tab 3">
           <p>three</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
-        </fas-tab-panel>
+        </fas-tab>
       </fas-tabs>
     `);
-  })
+  });
 
   describe('OnInit', () => {
     describe('sets ARIA attributes', () => {
+      beforeEach(() => {
+        panel1 = host.query('#panel1');
+        panel2 = host.query('#panel2');
+        link1 = host.query('[href="/#panel1');
+        link2 = host.query('[href="/#panel2');
+        listItem1 = link1.parentElement as HTMLLIElement;
+      });
+
       let panel1: HTMLElement;
       let panel2: HTMLElement;
       let link1: HTMLAnchorElement;
       let link2: HTMLAnchorElement;
       let listItem1: HTMLLIElement;
-
-      beforeEach(() => {
-        panel1 = host.query('#panel1') as HTMLElement;
-        panel2 = host.query('#panel2') as HTMLElement;
-        link1 = host.query('[href="/#panel1') as HTMLAnchorElement;
-        link2 = host.query('[href="/#panel2') as HTMLAnchorElement;
-        listItem1 = link1.parentElement as HTMLLIElement;
-      });
 
       it('Panels', () => {
         expect(panel1).toHaveAttribute('role', 'tabpanel');
@@ -77,6 +72,5 @@ describe('TabsComponent', () => {
         expect(listItem1).toHaveAttribute('role', 'presentation');
       });
     });
-  })
-
+  });
 });
