@@ -1,5 +1,14 @@
 {
   "private": true,
+  "engines": {
+    "node": "12.22.12",
+    "npm": "Use Yarn CLI instead of NPM CLI",
+    "yarn": "1.22.18"
+  },
+  "volta": {
+    "node": "12.22.12",
+    "yarn": "1.22.18"
+  },
   "scripts": {
     "assets": "run-p assets:*",
     "assets:readme": "copyfiles README.md dist/lib",
