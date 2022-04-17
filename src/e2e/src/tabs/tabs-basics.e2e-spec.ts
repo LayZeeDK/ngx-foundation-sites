@@ -20,7 +20,8 @@ describe('Tabs basics section', () => {
 
   it('the first tab is active', async () => {
     const firstTab = await harnessLoader.getHarness(
-      FasTabHarness.with({ title: 'Tab 1' }));
+      FasTabHarness.with({ title: 'Tab 1' }),
+    );
 
     expect(await firstTab.isActive()).toBe(true);
   });

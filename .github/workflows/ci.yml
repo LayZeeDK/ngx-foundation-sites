@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  NODE_OPTIONS: --max-old-space-size=6144
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Build package
+        run: yarn build
+      - name: Build example application
+        run: yarn build:app
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Lint
+        run: yarn lint
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Test
+        run: yarn test
+
+  e2e:
+    name: End-to-end test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: End-to-end test
+        run: yarn e2e

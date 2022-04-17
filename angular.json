@@ -18,9 +18,9 @@
           },
           "configurations": {
             "production": {
-              "project": "src/lib/ng-package.prod.json"
-            ,              "tsConfig": "src/lib/tsconfig.lib.prod.json"
-}
+              "project": "src/lib/ng-package.prod.json",
+              "tsConfig": "src/lib/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -112,18 +112,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app/src/test.ts",
-            "polyfills": "src/app/src/polyfills.ts",
-            "tsConfig": "src/app/tsconfig.spec.json",
-            "karmaConfig": "src/app/karma.conf.js",
-            "styles": ["src/app/src/styles.scss"],
-            "scripts": [],
-            "assets": ["src/app/src/favicon.ico", "src/app/src/assets"]
           }
         },
         "lint": {

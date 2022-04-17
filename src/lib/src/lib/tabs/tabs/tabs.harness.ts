@@ -13,17 +13,13 @@ export class FasTabsHarness extends ComponentHarness {
   async getPanel(
     filter: FasTabPanelHarnessFilters = {},
   ): Promise<FasTabPanelHarness> {
-    const getFilteredPanel = this.locatorFor(
-      FasTabPanelHarness.with(filter));
+    const getFilteredPanel = this.locatorFor(FasTabPanelHarness.with(filter));
 
     return getFilteredPanel();
   }
 
-  async getTab(
-    filter: FasTabHarnessFilters = {},
-  ): Promise<FasTabHarness> {
-    const getFilteredTab = await this.locatorFor(
-      FasTabHarness.with(filter));
+  getTab(filter: FasTabHarnessFilters = {}): Promise<FasTabHarness> {
+    const getFilteredTab = this.locatorFor(FasTabHarness.with(filter));
 
     return getFilteredTab();
   }

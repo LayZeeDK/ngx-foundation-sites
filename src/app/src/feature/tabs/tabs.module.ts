@@ -8,14 +8,7 @@ import { TabsPageComponent } from './tabs-page';
 import { tabsRoutes } from './tabs.routes';
 
 @NgModule({
-  declarations: [
-    TabsPageComponent,
-    BasicsComponent,
-  ],
-  imports: [
-    RouterModule.forChild(tabsRoutes),
-    CommonModule,
-    FasTabsModule,
-  ],
+  declarations: [TabsPageComponent, BasicsComponent],
+  imports: [RouterModule.forChild(tabsRoutes), CommonModule, FasTabsModule],
 })
-export class TabsModule { }
+export class TabsModule {}
