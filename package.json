@@ -18,6 +18,7 @@
     "clean": "rimraf dist",
     "e2e": "ng e2e",
     "e2e:watch": "npm run watch -- e2e",
+    "format": "npx prettier --config .prettierrc --write \"**/*.*\" \"!dist/**\" \"!coverage/**\" \"!yarn.lock\"",
     "lint": "run-s lint:lib lint:app lint:e2e",
     "lint:app": "ng lint app",
     "lint:e2e": "ng lint e2e",

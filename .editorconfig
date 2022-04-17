@@ -18,8 +18,14 @@ trim_trailing_whitespace = false
 insert_final_newline = false
 max_line_length = off
 
-[*.ts]
+[*.{yaml,yml}]
+max_line_length = off
+
+[*.{js, ts}]
 quote_type = single
 
-[*.js]
+[*.{css, scss}]
 quote_type = single
+
+[*.html]
+max_line_length = 120
