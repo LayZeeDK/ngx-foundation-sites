@@ -20,12 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: yarn
-          node-version-file: '.nvmrc'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: Build package
         run: yarn build
@@ -38,12 +34,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: yarn
-          node-version-file: '.nvmrc'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: Lint
         run: yarn lint
@@ -54,12 +46,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: yarn
-          node-version-file: '.nvmrc'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: Test
         run: yarn test
@@ -70,12 +58,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: yarn
-          node-version-file: '.nvmrc'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: End-to-end test
         run: yarn e2e
