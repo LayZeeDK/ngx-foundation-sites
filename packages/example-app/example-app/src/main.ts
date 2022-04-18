@@ -13,4 +13,4 @@ platformBrowser()
     ngZoneEventCoalescing: true,
     ngZoneRunCoalescing: true,
   })
-  .catch((err) => console.error(err));
+  .catch(err => console.error(err));

@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'tabs' },
   {
     loadChildren: () =>
-      import('../feature/tabs/tabs.module').then((m) => m.TabsModule),
+      import('../feature/tabs/tabs.module').then(m => m.TabsModule),
     path: 'tabs',
   },
 ];

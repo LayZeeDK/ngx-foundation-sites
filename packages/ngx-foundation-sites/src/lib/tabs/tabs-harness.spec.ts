@@ -2,7 +2,11 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FasTabHarness, FasTabPanelHarness, FasTabsHarness } from 'ngx-foundation-sites/testing';
+import {
+  FasTabHarness,
+  FasTabPanelHarness,
+  FasTabsHarness,
+} from 'ngx-foundation-sites/testing';
 
 import { FasTabsModule } from './tabs.module';
 
