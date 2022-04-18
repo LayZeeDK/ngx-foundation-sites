@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "ngx-foundation-sites",
   "version": "0.0.0",
   "license": "MIT",
@@ -25,7 +26,6 @@
     "start": "nx serve example-app",
     "test": "nx run-many --target=test --all"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "13.3.3",
     "@angular/cdk": "13.3.3",
