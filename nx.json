@@ -1,0 +1,38 @@
+{
+  "extends": "@nrwl/workspace/presets/core.json",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@schematics/angular:component": {
+      "style": "scss"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "npmScope": "ngx-foundation-sites",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "NTE4OTc0NTctZWM3NS00ZmQ5LTk0NjktNWM5OTUxNjE4YzJkfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "defaultProject": "ngx-foundation-sites"
+}
