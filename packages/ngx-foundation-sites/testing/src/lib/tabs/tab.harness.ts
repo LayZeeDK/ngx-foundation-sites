@@ -9,6 +9,9 @@ import { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
   static hostSelector = '.tabs-title';
+
+  protected getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
+
   static with(options: FasTabHarnessFilters): HarnessPredicate<FasTabHarness> {
     return new HarnessPredicate(FasTabHarness, options)
       .addOption('ID', options.id, (harness, id) =>
@@ -18,8 +21,6 @@ export class FasTabHarness extends ComponentHarness {
         HarnessPredicate.stringMatches(harness.getTitle(), title)
       );
   }
-
-  protected getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
 
   protected async getPanel(): Promise<TestElement> {
     const panelId = await this.getAriaControls();
