@@ -1,0 +1,17 @@
+{
+  "chromeWebSecurity": false,
+  "env": {
+    "tsConfig": "tsconfig.json"
+  },
+  "fileServerFolder": ".",
+  "fixturesFolder": "./src/fixtures",
+  "integrationFolder": "./src/integration",
+  "modifyObstructiveCode": false,
+  "pluginsFile": "./src/plugins/index.ts",
+  "screenshotsFolder": "../../../dist/cypress/packages/example-app/example-app-e2e/screenshots",
+  "supportFile": "./src/support/index.ts",
+  "video": true,
+  "videosFolder": "../../../dist/cypress/packages/example-app/example-app-e2e/videos",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920
+}

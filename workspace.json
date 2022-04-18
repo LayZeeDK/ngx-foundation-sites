@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "example-app": "packages/example-app/example-app",
+    "example-app-e2e": "packages/example-app/example-app-e2e",
+    "ngx-foundation-sites": "packages/ngx-foundation-sites"
+  }
+}

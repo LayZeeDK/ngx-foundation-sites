@@ -62,4 +62,4 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: End-to-end test
-        run: yarn e2e
+        run: yarn e2e:ci
