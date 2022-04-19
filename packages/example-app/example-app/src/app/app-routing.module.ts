@@ -5,7 +5,9 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'tabs' },
   {
     loadChildren: () =>
-      import('../feature/tabs/tabs.module').then(m => m.TabsModule),
+      import('@example-app/containers/feature-tabs').then(
+        esModule => esModule.ExampleAppContainersFeatureTabsModule
+      ),
     path: 'tabs',
   },
 ];
