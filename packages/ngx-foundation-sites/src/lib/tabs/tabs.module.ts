@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { TabModule } from './tab/tab.module';
-import { TabsModule } from './tabs/tabs.module';
+import { FasTabScam } from './tab.component';
+import { FasTabsScam } from './tabs.component';
 
 @NgModule({
-  exports: [TabModule, TabsModule],
+  exports: [FasTabsScam, FasTabScam],
 })
 export class FasTabsModule {}

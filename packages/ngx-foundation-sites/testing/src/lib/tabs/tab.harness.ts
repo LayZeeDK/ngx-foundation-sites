@@ -1,16 +1,11 @@
-import {
-  AsyncFactoryFn,
-  ComponentHarness,
-  HarnessPredicate,
-  TestElement,
-} from '@angular/cdk/testing';
+import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
 
 import { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
   static hostSelector = '.tabs-title';
 
-  protected getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
+  #getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
 
   static with(options: FasTabHarnessFilters): HarnessPredicate<FasTabHarness> {
     return new HarnessPredicate(FasTabHarness, options)
@@ -22,26 +17,26 @@ export class FasTabHarness extends ComponentHarness {
       );
   }
 
-  protected async getPanel(): Promise<TestElement> {
+  async #getPanel(): Promise<TestElement> {
     const panelId = await this.getAriaControls();
 
     return this.documentRootLocatorFactory().locatorFor(`#${panelId}`)();
   }
 
-  protected async isSelected(): Promise<boolean> {
+  async #isSelected(): Promise<boolean> {
     const ariaSelected = await this.getAriaSelected();
 
     return ariaSelected === 'true';
   }
 
   async activatePanel(): Promise<void> {
-    const label = await this.getLabel();
+    const label = await this.#getLabel();
 
     label.click();
   }
 
   async getAriaControls(): Promise<string> {
-    const label = await this.getLabel();
+    const label = await this.#getLabel();
     const maybePanelId = await label.getAttribute('aria-controls');
 
     if (!maybePanelId) {
@@ -58,7 +53,7 @@ export class FasTabHarness extends ComponentHarness {
   }
 
   async getAriaSelected(): Promise<'true' | 'false'> {
-    const label = await this.getLabel();
+    const label = await this.#getLabel();
     const maybeAriaSelected = await label.getAttribute('aria-selected');
 
     if (
@@ -72,13 +67,13 @@ export class FasTabHarness extends ComponentHarness {
   }
 
   async getId(): Promise<string> {
-    const label = await this.getLabel();
+    const label = await this.#getLabel();
 
     return label.getProperty('id');
   }
 
   async getLabelRole(): Promise<string | null> {
-    const label = await this.getLabel();
+    const label = await this.#getLabel();
 
     return label.getAttribute('role');
   }
@@ -90,7 +85,7 @@ export class FasTabHarness extends ComponentHarness {
   }
 
   async getTitle(): Promise<string> {
-    const label = await this.getLabel();
+    const label = await this.#getLabel();
     const text = await label.text();
 
     return text.trim();
@@ -100,7 +95,7 @@ export class FasTabHarness extends ComponentHarness {
     const host = await this.host();
     const [hasActiveClass, isSelected] = await Promise.all([
       host.hasClass('is-active'),
-      this.isSelected(),
+      this.#isSelected(),
     ]);
 
     return hasActiveClass && isSelected;

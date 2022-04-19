@@ -2,11 +2,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import {
-  FasTabHarness,
-  FasTabPanelHarness,
-  FasTabsHarness,
-} from 'ngx-foundation-sites/testing';
+import { FasTabHarness, FasTabPanelHarness, FasTabsHarness } from 'ngx-foundation-sites/testing';
 
 import { FasTabsModule } from './tabs.module';
 
@@ -32,19 +28,12 @@ import { FasTabsModule } from './tabs.module';
 })
 export class TabsTestHostComponent {}
 
-describe('Tabs (component harnesses)', () => {
-  let tabs: FasTabsHarness;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+describe('Tabs', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       declarations: [TabsTestHostComponent],
-      imports: [
-        RouterTestingModule.withRoutes([
-          { path: '', pathMatch: 'full', component: TabsTestHostComponent },
-        ]),
-        FasTabsModule,
-      ],
-    }).compileComponents();
+      imports: [FasTabsModule, RouterTestingModule],
+    });
   });
 
   beforeEach(async () => {
@@ -53,6 +42,8 @@ describe('Tabs (component harnesses)', () => {
     const harnessLoader = TestbedHarnessEnvironment.loader(hostFixture);
     tabs = await harnessLoader.getHarness(FasTabsHarness);
   });
+
+  let tabs: FasTabsHarness;
 
   describe('OnInit', () => {
     describe('sets ARIA attributes', () => {
