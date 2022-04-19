@@ -1,6 +1,10 @@
 // TABS
-export { FasTabComponent } from './lib/tabs/tab/tab.component';
-export { TabModule as _TabModule } from './lib/tabs/tab/tab.module';
-export { FasTabsComponent } from './lib/tabs/tabs/tabs.component';
-export { TabsModule as _TabsModule } from './lib/tabs/tabs/tabs.module';
+export {
+  FasTabComponent,
+  FasTabScam as _FasTabScam,
+} from './lib/tabs/tab.component';
+export {
+  FasTabsComponent,
+  FasTabsScam as _FasTabsScam,
+} from './lib/tabs/tabs.component';
 export { FasTabsModule } from './lib/tabs/tabs.module';

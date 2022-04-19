@@ -5,6 +5,7 @@ import {
   EventEmitter,
   HostBinding,
   Input,
+  NgModule,
   Output,
   ViewEncapsulation,
 } from '@angular/core';
@@ -15,8 +16,14 @@ let serialNumber = 1;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tab',
-  styleUrls: ['./tab.component.scss'],
-  templateUrl: './tab.component.html',
+  styles: [
+    `
+      fas-tab {
+        display: block;
+      }
+    `,
+  ],
+  template: `<ng-content></ng-content>`,
 })
 export class FasTabComponent {
   private _isActive = false;
@@ -63,3 +70,9 @@ export class FasTabComponent {
     this.id = idAttribute;
   }
 }
+
+@NgModule({
+  declarations: [FasTabComponent],
+  exports: [FasTabComponent],
+})
+export class FasTabScam {}

@@ -9,6 +9,7 @@ import { FasTabHarness } from './tab.harness';
 
 export class FasTabPanelHarness extends ComponentHarness {
   static hostSelector = '.tabs-panel';
+
   static with(
     options: FasTabPanelHarnessFilters
   ): HarnessPredicate<FasTabPanelHarness> {
@@ -21,20 +22,20 @@ export class FasTabPanelHarness extends ComponentHarness {
       );
   }
 
-  protected async getTabElement(): Promise<TestElement> {
+  async #getTabElement(): Promise<TestElement> {
     const tabId = await this.getAriaLabelledBy();
 
     return this.documentRootLocatorFactory().locatorFor(`#${tabId}`)();
   }
 
-  protected async isHidden(): Promise<boolean> {
+  async #isHidden(): Promise<boolean> {
     const ariaHidden = await this.getAriaHidden();
 
     return ariaHidden === 'true';
   }
 
   async activate(): Promise<void> {
-    const label = await this.getTabElement();
+    const label = await this.#getTabElement();
 
     label.click();
   }
@@ -90,7 +91,7 @@ export class FasTabPanelHarness extends ComponentHarness {
   }
 
   async getTitle(): Promise<string> {
-    const label = await this.getTabElement();
+    const label = await this.#getTabElement();
     const title = await label.text();
 
     return title.trim();
@@ -100,7 +101,7 @@ export class FasTabPanelHarness extends ComponentHarness {
     const host = await this.host();
     const [hasActiveClass, isHidden] = await Promise.all([
       host.hasClass('is-active'),
-      this.isHidden(),
+      this.#isHidden(),
     ]);
 
     return hasActiveClass && !isHidden;

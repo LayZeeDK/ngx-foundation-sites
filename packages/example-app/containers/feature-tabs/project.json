@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "packages/example-app/containers/feature-tabs",
+  "sourceRoot": "packages/example-app/containers/feature-tabs/src",
+  "prefix": "ex",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/example-app/containers/feature-tabs"],
+      "options": {
+        "jestConfig": "packages/example-app/containers/feature-tabs/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/example-app/containers/feature-tabs/src/**/*.ts",
+          "packages/example-app/containers/feature-tabs/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["package:example-app", "scope:containers", "type:feature"]
+}
