@@ -50,9 +50,9 @@ import { FasTabComponent } from './tab.component';
 })
 export class FasTabsComponent {
   @ContentChildren(FasTabComponent)
-  public tabs!: QueryList<FasTabComponent>;
+  tabs!: QueryList<FasTabComponent>;
 
-  public onActivate(tab: FasTabComponent): void {
+  onActivate(tab: FasTabComponent): void {
     this.tabs.forEach(t => (t.isActive = t === tab));
   }
 }
