@@ -1,4 +1,9 @@
-import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import {
+  AsyncFactoryFn,
+  ComponentHarness,
+  HarnessPredicate,
+  TestElement,
+} from '@angular/cdk/testing';
 
 import { FasTabHarnessFilters } from './tab-harness-filters';
 

@@ -1,4 +1,8 @@
-import { ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import {
+  ComponentHarness,
+  HarnessPredicate,
+  TestElement,
+} from '@angular/cdk/testing';
 
 import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 import { FasTabHarness } from './tab.harness';

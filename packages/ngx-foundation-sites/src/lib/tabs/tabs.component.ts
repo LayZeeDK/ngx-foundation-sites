@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChildren, NgModule, QueryList, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  NgModule,
+  QueryList,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { FasTabComponent } from './tab.component';
