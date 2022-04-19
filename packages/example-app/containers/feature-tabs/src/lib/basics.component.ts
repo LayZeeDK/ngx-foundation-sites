@@ -25,7 +25,7 @@ import { FasTabsModule } from 'ngx-foundation-sites';
     <p>Put it all together, and we get this:</p>
 
     <fas-tabs data-testid="basics-full-example">
-      <fas-tab id="panel1" title="Tab 1" [isActive]="true">
+      <fas-tab id="panel1" title="Basic tab 1" [isActive]="true">
         <p>one</p>
         <p>Check me out! I'm a super cool Tab panel with text content!</p>
         <p>
@@ -33,28 +33,28 @@ import { FasTabsModule } from 'ngx-foundation-sites';
         </p>
       </fas-tab>
 
-      <fas-tab id="panel2" title="Tab 2">
+      <fas-tab id="panel2" title="Basic tab 2">
         <p>two</p>
         <textarea></textarea>
         <button class="button">I do nothing!</button>
       </fas-tab>
 
-      <fas-tab id="panel3" title="Tab 3">
+      <fas-tab id="panel3" title="Basic tab 3">
         <p>three</p>
         <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </fas-tab>
 
-      <fas-tab id="panel4" title="Tab 4">
+      <fas-tab id="panel4" title="Basic tab 4">
         <p>four</p>
         <img class="thumbnail" src="/assets/img/generic/rectangle-2.jpg" />
       </fas-tab>
 
-      <fas-tab id="panel5" title="Tab 5">
+      <fas-tab id="panel5" title="Basic tab 5">
         <p>five</p>
         <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </fas-tab>
 
-      <fas-tab id="panel6" title="Tab 6">
+      <fas-tab id="panel6" title="Basic tab 6">
         <p>six</p>
         <img class="thumbnail" src="/assets/img/generic/rectangle-8.jpg" />
       </fas-tab>
