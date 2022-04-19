@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  Input,
   NgModule,
   QueryList,
   ViewEncapsulation,
@@ -23,7 +24,7 @@ import { FasTabComponent } from './tab.component';
     `,
   ],
   template: `
-    <ul class="tabs">
+    <ul class="tabs" [class.vertical]="vertical">
       <li
         *ngFor="let tab of tabs"
         class="tabs-title"
@@ -43,12 +44,15 @@ import { FasTabComponent } from './tab.component';
       </li>
     </ul>
 
-    <div class="tabs-content">
+    <div class="tabs-content" [class.vertical]="vertical">
       <ng-content select="fas-tab"></ng-content>
     </div>
   `,
 })
 export class FasTabsComponent {
+  @Input()
+  vertical = false;
+
   @ContentChildren(FasTabComponent)
   tabs!: QueryList<FasTabComponent>;
 
