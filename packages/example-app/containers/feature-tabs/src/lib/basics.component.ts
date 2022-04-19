@@ -5,7 +5,13 @@ import { FasTabsModule } from 'ngx-foundation-sites';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ex-tabs-basics',
-  styles: [``],
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
   template: `
     <h2>Basics</h2>
 
@@ -38,28 +44,28 @@ import { FasTabsModule } from 'ngx-foundation-sites';
         <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </fas-tab>
 
-      <fas-tab id="panel3" title="Tab 4">
+      <fas-tab id="panel4" title="Tab 4">
         <p>four</p>
         <img class="thumbnail" src="/assets/img/generic/rectangle-2.jpg" />
       </fas-tab>
 
-      <fas-tab id="panel3" title="Tab 5">
+      <fas-tab id="panel5" title="Tab 5">
         <p>five</p>
         <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </fas-tab>
 
-      <fas-tab id="panel3" title="Tab 6">
+      <fas-tab id="panel6" title="Tab 6">
         <p>six</p>
         <img class="thumbnail" src="/assets/img/generic/rectangle-8.jpg" />
       </fas-tab>
     </fas-tabs>
   `,
 })
-export class TabsBasicsComponent {}
+export class BasicsComponent {}
 
 @NgModule({
-  declarations: [TabsBasicsComponent],
-  exports: [TabsBasicsComponent],
+  declarations: [BasicsComponent],
+  exports: [BasicsComponent],
   imports: [RouterModule, FasTabsModule],
 })
-export class TabsBasicsScam {}
+export class BasicsScam {}
