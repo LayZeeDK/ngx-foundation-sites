@@ -26,48 +26,51 @@ let serialNumber = 1;
   template: `<ng-content></ng-content>`,
 })
 export class FasTabComponent {
-  private _isActive = false;
+  #id = '';
+  #isActive = false;
 
   @Input()
   @HostBinding('class.is-active')
-  public get isActive(): boolean {
-    return this._isActive;
+  get isActive(): boolean {
+    return this.#isActive;
   }
-  public set isActive(value: boolean) {
-    this._isActive = value;
+  set isActive(value: boolean) {
+    this.#isActive = value;
     this.isActiveChange.emit(value);
   }
   @Input()
-  public title = '';
+  title = '';
   @Output()
-  public readonly isActiveChange: EventEmitter<boolean> = new EventEmitter();
+  isActiveChange = new EventEmitter<boolean>();
 
   @HostBinding('attr.aria-hidden')
-  public get ariaHidden(): 'true' | null {
+  get ariaHidden(): 'true' | null {
     return this.isActive ? null : 'true';
   }
   @HostBinding('attr.aria-labelledby')
-  public get ariaLabelledBy(): string {
+  get ariaLabelledBy(): string {
     return `${this.id}-label`;
   }
   @HostBinding('className')
-  public get className(): string {
+  get className(): string {
     return 'tabs-panel';
   }
   @HostBinding('id')
-  public readonly id: string;
+  get id(): string {
+    return this.#id;
+  }
   @HostBinding('attr.role')
-  public get role(): string {
+  get role(): string {
     return 'tabpanel';
   }
 
-  public constructor(@Attribute('id') idAttribute: string | null) {
+  constructor(@Attribute('id') idAttribute: string | null) {
     if (!idAttribute) {
       idAttribute = `fas-tab-${serialNumber}`;
       serialNumber += 1;
     }
 
-    this.id = idAttribute;
+    this.#id = idAttribute;
   }
 }
 

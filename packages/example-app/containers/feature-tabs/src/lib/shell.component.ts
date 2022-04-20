@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
-import { TabsBasicsScam } from './basics.component';
+import { BasicsScam } from './basics.component';
+import { VerticalTabsScam } from './vertical-tabs.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,12 +23,14 @@ import { TabsBasicsScam } from './basics.component';
     </p>
 
     <ex-tabs-basics></ex-tabs-basics>
+
+    <ex-tabs-vertical-tabs></ex-tabs-vertical-tabs>
   `,
 })
 export class TabsShellComponent {}
 
 @NgModule({
   declarations: [TabsShellComponent],
-  imports: [TabsBasicsScam],
+  imports: [BasicsScam, VerticalTabsScam],
 })
 export class TabsShellScam {}
