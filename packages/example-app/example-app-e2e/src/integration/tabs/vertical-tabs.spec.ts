@@ -1,7 +1,7 @@
 import * as Tabs from '../../support/tabs/tabs.po';
 import * as VerticalTabs from '../../support/tabs/vertical-tabs.po';
 
-describe('Basic tabs', () => {
+describe('Vertical tabs', () => {
   beforeEach(() => {
     Tabs.navigateTo();
   });
@@ -14,7 +14,7 @@ describe('Basic tabs', () => {
     VerticalTabs.getFirstTab().isActive().should('be.true');
   });
 
-  it('the tabstrip is laid out verticallly', () => {
+  it('the tabstrip is laid out vertically', () => {
     VerticalTabs.getTabstrip().hasVerticalLayout().should('be.true');
   });
 });
