@@ -24,7 +24,7 @@ import { FasTabsModule } from 'ngx-foundation-sites';
       vertically.
     </p>
 
-    <fas-tabs [vertical]="true">
+    <fas-tabs id="vertical-tabs" [vertical]="true">
       <fas-tab id="panel1v" title="Vertical tab 1" [isActive]="true">
         <p>One</p>
         <p>Check me out! I'm a super cool Tab panel with text content!</p>

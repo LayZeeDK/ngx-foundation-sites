@@ -1,12 +1,25 @@
-import { ComponentHarness } from '@angular/cdk/testing';
+import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
 
 import { FasTabHarnessFilters } from './tab-harness-filters';
 import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 import { FasTabPanelHarness } from './tab-panel.harness';
 import { FasTabHarness } from './tab.harness';
+import { FasTabsHarnessFilters } from './tabs-harness-filters';
 
 export class FasTabsHarness extends ComponentHarness {
   static hostSelector = 'fas-tabs';
+
+  #getTabs: AsyncFactoryFn<TestElement> = this.locatorFor('.tabs');
+
+  static with(
+    options: FasTabsHarnessFilters
+  ): HarnessPredicate<FasTabsHarness> {
+    return new HarnessPredicate(FasTabsHarness, options).addOption(
+      'ID',
+      options.id,
+      (harness, id) => HarnessPredicate.stringMatches(harness.getId(), id)
+    );
+  }
 
   async getPanel(
     filter: FasTabPanelHarnessFilters = {}
@@ -16,9 +29,33 @@ export class FasTabsHarness extends ComponentHarness {
     return getFilteredPanel();
   }
 
-  getTab(filter: FasTabHarnessFilters = {}): Promise<FasTabHarness> {
+  async getId(): Promise<string> {
+    const host = await this.host();
+
+    return host.getProperty('id');
+  }
+
+  getTab(filter: FasTabHarnessFilters): Promise<FasTabHarness> {
     const getFilteredTab = this.locatorFor(FasTabHarness.with(filter));
 
     return getFilteredTab();
+  }
+
+  getTabs(
+    filter: FasTabHarnessFilters = {}
+  ): Promise<readonly FasTabHarness[]> {
+    const getFilteredTabs = this.locatorForAll(FasTabHarness.with(filter));
+
+    return getFilteredTabs();
+  }
+
+  /**
+   * Determine whether or not the tabstrip is laid out vertically. By default,
+   * it is laid out horizontally.
+   */
+  async hasVerticalLayout(): Promise<boolean> {
+    const tabs = await this.#getTabs();
+
+    return tabs.hasClass('vertical');
   }
 }

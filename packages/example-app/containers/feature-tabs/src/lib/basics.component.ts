@@ -24,7 +24,7 @@ import { FasTabsModule } from 'ngx-foundation-sites';
 
     <p>Put it all together, and we get this:</p>
 
-    <fas-tabs data-testid="basics-full-example">
+    <fas-tabs id="basic-tabs">
       <fas-tab id="panel1" title="Basic tab 1" [isActive]="true">
         <p>one</p>
         <p>Check me out! I'm a super cool Tab panel with text content!</p>

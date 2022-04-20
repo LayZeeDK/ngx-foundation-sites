@@ -13,4 +13,8 @@ describe('Basic tabs', () => {
   it('the first tab is active', () => {
     VerticalTabs.getFirstTab().isActive().should('be.true');
   });
+
+  it('the tabstrip is laid out verticallly', () => {
+    VerticalTabs.getTabstrip().hasVerticalLayout().should('be.true');
+  });
 });

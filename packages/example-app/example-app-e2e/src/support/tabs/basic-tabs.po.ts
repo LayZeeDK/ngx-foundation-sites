@@ -1,7 +1,9 @@
 import * as loader from '@jscutlery/cypress-harness';
-import { FasTabHarness } from 'ngx-foundation-sites/testing';
+import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 
 export const getAllTabs = () =>
-  loader.getAllHarnesses(FasTabHarness.with({ title: /^basic tab \d/i }));
+  getTabstrip().getTabs({ title: /^basic tab \d+/i });
 export const getFirstTab = () =>
-  loader.getHarness(FasTabHarness.with({ title: /^basic tab 1/i }));
+  getTabstrip().getTab({ title: /^basic tab 1$/i });
+export const getTabstrip = () =>
+  loader.getHarness(FasTabsHarness.with({ id: 'basic-tabs' }));
