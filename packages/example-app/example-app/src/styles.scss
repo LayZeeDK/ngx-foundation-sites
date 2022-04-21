@@ -1,5 +1,15 @@
 @import 'styles/foundation-sites';
 
+@include foundation-example-app;
+
+// Foundation for Angular Sites global styles overrides
+:root:root /* Increase specificity to override component styles */ {
+  --fas-primary-color: #{map-get($foundation-palette, primary)};
+}
+
+// Foundation for Angular Sites component styles overrides
 :root /* Increase specificity to override component styles */ {
-  @include foundation-example-app;
+  fas-tabs {
+    --fas-tab-item-font-size: #{rem-calc(14px)};
+  }
 }

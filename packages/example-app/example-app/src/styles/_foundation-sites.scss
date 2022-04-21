@@ -77,6 +77,9 @@
 @import '~foundation-sites/scss/components/visibility';
 @import '~foundation-sites/scss/prototype/prototype';
 
+/**
+ * 1. Use component styles instead of global styles.
+ */
 @mixin foundation-example-app(
   $flex: true,
   $prototype: false,
@@ -129,7 +132,7 @@
   @include foundation-media-object;
   @include foundation-orbit;
   @include foundation-responsive-embed;
-  @include foundation-tabs;
+  // @include foundation-tabs; /* [1] */
   @include foundation-thumbnail;
   // Menu-based containers
   @include foundation-menu;
