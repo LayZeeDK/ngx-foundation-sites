@@ -16,13 +16,7 @@ import { FasTabComponent } from './tab.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tabs',
-  styles: [
-    `
-      fas-tabs {
-        display: block;
-      }
-    `,
-  ],
+  styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
   template: `
     <ul class="tabs" [class.vertical]="vertical">
       <li

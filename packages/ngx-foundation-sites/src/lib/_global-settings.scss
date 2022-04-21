@@ -1,0 +1,10 @@
+// Foundation for Angular Sites default global settings
+// Must be included with every component
+:root {
+  --fas-white: #fefefe;
+  --fas-primary-color: #1779ba;
+  --fas-primary-color-dark: #1468a0;
+  --fas-light-gray: #e6e6e6;
+  --fas-black: #0a0a0a;
+  --fas-body-font-color: var(--fas-black);
+}

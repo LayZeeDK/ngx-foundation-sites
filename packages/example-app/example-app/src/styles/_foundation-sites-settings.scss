@@ -1,0 +1,15 @@
+$foundation-palette-default: (
+  primary: #1779ba,
+  secondary: #767676,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+$foundation-palette-deep-purple-amber: (
+  primary: #673ab7 /* Material Deep Purple 500 */,
+  secondary: #ffd740 /* Material Amber A200 */,
+  success: #4caf50 /* Material Green 500 */,
+  warning: #ff9800 /* Material Orange 500 */,
+  alert: #f44336 /* Material Red 500 */,
+);
+$foundation-palette: $foundation-palette-deep-purple-amber;

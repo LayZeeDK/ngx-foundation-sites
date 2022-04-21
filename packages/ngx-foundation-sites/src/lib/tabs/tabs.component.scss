@@ -1,0 +1,81 @@
+// Foundation for Sites global tools
+@import '~foundation-sites/scss/global';
+
+// Foundation for Sites Tabs settings
+$tab-margin: var(--fas-tab-margin);
+$tab-background: var(--fas-tab-background);
+$tab-color: var(--fas-tab-color);
+$tab-color-hover: var(--fas-tab-color-hover);
+$tab-background-active: var(--fas-tab-background-active);
+$tab-active-color: var(--fas-tab-active-color);
+$tab-item-font-size: var(--fas-tab-item-font-size);
+$tab-item-background-hover: var(--fas-tab-item-background-hover);
+$tab-item-padding: var(--fas-tab-item-padding);
+$tab-content-background: var(--fas-tab-content-background);
+$tab-content-border: var(--fas-tab-content-border);
+$tab-content-color: var(--fas-tab-content-color);
+$tab-content-padding: var(--fas-tab-content-padding);
+
+// Foundation for Sites Tabs tools
+@import '~foundation-sites/scss/components/tabs';
+
+// Foundation for Sites Tabs tools overrides
+
+//
+// 1. Replace usage of scale-color to support CSS Custom Properties.
+//
+@mixin tabs-title(
+  $padding: $tab-item-padding,
+  $font-size: $tab-item-font-size,
+  $color: $tab-color,
+  // [1]
+  $color-hover: $tab-color-hover,
+  $color-active: $tab-active-color,
+  $background-hover: $tab-item-background-hover,
+  $background-active: $tab-background-active
+) {
+  float: #{$global-left};
+
+  > a {
+    @include disable-mouse-outline;
+    display: block;
+    padding: $padding;
+    font-size: $font-size;
+    line-height: 1;
+    color: $color;
+
+    &:hover {
+      background: $background-hover;
+      color: $color-hover; // [1]
+    }
+
+    &:focus,
+    &[aria-selected='true'] {
+      background: $background-active;
+      color: $color-active;
+    }
+  }
+}
+
+fas-tabs {
+  // Foundation for Angular Sites Tabs settings
+  --fas-tab-margin: 0;
+  --fas-tab-background: var(--fas-white);
+  --fas-tab-color: var(--fas-primary-color);
+  --fas-tab-color-hover: var(--fas-primary-color-dark);
+  --fas-tab-background-active: var(--fas-light-gray);
+  --fas-tab-active-color: var(--fas-primary-color);
+  --fas-tab-item-font-size: #{rem-calc(12)};
+  --fas-tab-item-background-hover: var(--fas-white);
+  --fas-tab-item-padding: 1.25rem 1.5rem;
+  --fas-tab-content-background: var(--fas-white);
+  --fas-tab-content-border: var(--fas-light-gray);
+  --fas-tab-content-color: var(--fas-body-font-color);
+  --fas-tab-content-padding: 1rem;
+
+  // Foundation for Sites Tabs styles
+  @include foundation-tabs;
+
+  // Foundation for Angular Sites Tabs styles
+  display: block;
+}
