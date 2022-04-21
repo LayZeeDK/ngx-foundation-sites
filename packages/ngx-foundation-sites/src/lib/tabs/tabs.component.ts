@@ -38,7 +38,7 @@ import { FasTabComponent } from './tab.component';
           [attr.aria-controls]="tab.id"
           [attr.aria-selected]="tab.isActive"
           role="tab"
-          (click)="onActivate(tab)"
+          (click)="selectTab(tab)"
           >{{ tab.title }}</a
         >
       </li>
@@ -51,13 +51,21 @@ import { FasTabComponent } from './tab.component';
 })
 export class FasTabsComponent {
   @Input()
+  collapsing = false;
+  @Input()
   vertical = false;
 
   @ContentChildren(FasTabComponent)
   tabs!: QueryList<FasTabComponent>;
 
-  onActivate(tab: FasTabComponent): void {
-    this.tabs.forEach(t => (t.isActive = t === tab));
+  selectTab(selectedTab: FasTabComponent): void {
+    const activeTab = this.tabs.find(t => t.isActive);
+
+    if (this.collapsing && activeTab === selectedTab) {
+      this.tabs.forEach(tab => (tab.isActive = false));
+    } else {
+      this.tabs.forEach(tab => (tab.isActive = tab === selectedTab));
+    }
   }
 }
 

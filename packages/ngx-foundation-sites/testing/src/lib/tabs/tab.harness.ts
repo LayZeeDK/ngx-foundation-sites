@@ -1,4 +1,9 @@
-import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import {
+  AsyncFactoryFn,
+  ComponentHarness,
+  HarnessPredicate,
+  TestElement,
+} from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import { FasTabHarnessFilters } from './tab-harness-filters';
@@ -22,12 +27,6 @@ export class FasTabHarness extends ComponentHarness {
     const panelId = await this.getAriaControls();
 
     return this.documentRootLocatorFactory().locatorFor(`#${panelId}`)();
-  }
-
-  async activatePanel(): Promise<void> {
-    const label = await this.#getLabel();
-
-    label.click();
   }
 
   async getAriaControls(): Promise<string> {
@@ -87,5 +86,11 @@ export class FasTabHarness extends ComponentHarness {
     ]);
 
     return hasActiveClass && isSelected;
+  }
+
+  async selectTab(): Promise<void> {
+    const label = await this.#getLabel();
+
+    label.click();
   }
 }

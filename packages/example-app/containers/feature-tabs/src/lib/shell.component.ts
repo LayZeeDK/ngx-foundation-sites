@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
 import { BasicsScam } from './basics.component';
+import { CollapsingTabsScam } from './collapsing-tabs.component';
 import { VerticalTabsScam } from './vertical-tabs.component';
 
 @Component({
@@ -25,12 +26,14 @@ import { VerticalTabsScam } from './vertical-tabs.component';
     <ex-tabs-basics></ex-tabs-basics>
 
     <ex-tabs-vertical-tabs></ex-tabs-vertical-tabs>
+
+    <ex-tabs-collapsing-tabs></ex-tabs-collapsing-tabs>
   `,
 })
 export class TabsShellComponent {}
 
 @NgModule({
   declarations: [TabsShellComponent],
-  imports: [BasicsScam, VerticalTabsScam],
+  imports: [BasicsScam, CollapsingTabsScam, VerticalTabsScam],
 })
 export class TabsShellScam {}
