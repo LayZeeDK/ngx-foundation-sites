@@ -1,10 +1,6 @@
-import {
-  AsyncFactoryFn,
-  ComponentHarness,
-  HarnessPredicate,
-  TestElement,
-} from '@angular/cdk/testing';
+import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
 
+import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
@@ -26,12 +22,6 @@ export class FasTabHarness extends ComponentHarness {
     const panelId = await this.getAriaControls();
 
     return this.documentRootLocatorFactory().locatorFor(`#${panelId}`)();
-  }
-
-  async #isSelected(): Promise<boolean> {
-    const ariaSelected = await this.getAriaSelected();
-
-    return ariaSelected === 'true';
   }
 
   async activatePanel(): Promise<void> {
@@ -57,18 +47,11 @@ export class FasTabHarness extends ComponentHarness {
     return maybePanelId;
   }
 
-  async getAriaSelected(): Promise<'true' | 'false'> {
+  async getAriaSelected(): Promise<boolean> {
     const label = await this.#getLabel();
-    const maybeAriaSelected = await label.getAttribute('aria-selected');
+    const ariaSelectedAttribute = await label.getAttribute('aria-selected');
 
-    if (
-      maybeAriaSelected === null ||
-      (maybeAriaSelected !== 'true' && maybeAriaSelected !== 'false')
-    ) {
-      throw new Error('No aria-selected attribute');
-    }
-
-    return maybeAriaSelected;
+    return coerceBooleanProperty(ariaSelectedAttribute);
   }
 
   async getId(): Promise<string> {
@@ -100,7 +83,7 @@ export class FasTabHarness extends ComponentHarness {
     const host = await this.host();
     const [hasActiveClass, isSelected] = await Promise.all([
       host.hasClass('is-active'),
-      this.#isSelected(),
+      this.getAriaSelected(),
     ]);
 
     return hasActiveClass && isSelected;

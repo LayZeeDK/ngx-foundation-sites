@@ -1,9 +1,6 @@
-import {
-  ComponentHarness,
-  HarnessPredicate,
-  TestElement,
-} from '@angular/cdk/testing';
+import { ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
 
+import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 import { FasTabHarness } from './tab.harness';
 
@@ -28,12 +25,6 @@ export class FasTabPanelHarness extends ComponentHarness {
     return this.documentRootLocatorFactory().locatorFor(`#${tabId}`)();
   }
 
-  async #isHidden(): Promise<boolean> {
-    const ariaHidden = await this.getAriaHidden();
-
-    return ariaHidden === 'true';
-  }
-
   async activate(): Promise<void> {
     const label = await this.#getTabElement();
 
@@ -51,10 +42,11 @@ export class FasTabPanelHarness extends ComponentHarness {
     return maybeLabelId;
   }
 
-  async getAriaHidden(): Promise<string | null> {
+  async getAriaHidden(): Promise<boolean> {
     const host = await this.host();
+    const ariaHiddenAttribute = await host.getAttribute('aria-hidden');
 
-    return host.getAttribute('aria-hidden');
+    return coerceBooleanProperty(ariaHiddenAttribute);
   }
 
   async getId(): Promise<string> {
@@ -67,7 +59,7 @@ export class FasTabPanelHarness extends ComponentHarness {
     const host = await this.host();
     const maybeRole = await host.getAttribute('role');
 
-    if (!maybeRole) {
+    if (maybeRole === null) {
       throw new Error('No role attribute');
     }
 
@@ -101,7 +93,7 @@ export class FasTabPanelHarness extends ComponentHarness {
     const host = await this.host();
     const [hasActiveClass, isHidden] = await Promise.all([
       host.hasClass('is-active'),
-      this.#isHidden(),
+      this.getAriaHidden(),
     ]);
 
     return hasActiveClass && !isHidden;

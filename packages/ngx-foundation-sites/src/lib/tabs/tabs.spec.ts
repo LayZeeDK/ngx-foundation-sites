@@ -46,8 +46,8 @@ describe('Tabs', () => {
 
         expect(await panel1.getRole()).toBe('tabpanel');
         expect(await panel1.getAriaLabelledBy()).toBe(await tab1.getId());
-        expect(await panel1.getAriaHidden()).toBeNull();
-        expect(await panel2.getAriaHidden()).toBe('true');
+        expect(await panel1.getAriaHidden()).toBe(false);
+        expect(await panel2.getAriaHidden()).toBe(true);
       });
 
       it('Links', async () => {
@@ -55,8 +55,8 @@ describe('Tabs', () => {
 
         expect(await tab1.getLabelRole()).toBe('tab');
         expect(await tab1.getAriaControls()).toBe(await panel1.getId());
-        expect(await tab1.getAriaSelected()).toBe('true');
-        expect(await tab2.getAriaSelected()).toBe('false');
+        expect(await tab1.getAriaSelected()).toBe(true);
+        expect(await tab2.getAriaSelected()).toBe(false);
       });
 
       it('Tab list items', async () => {
