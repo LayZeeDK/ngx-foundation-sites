@@ -18,7 +18,12 @@ import { FasTabComponent } from './tab.component';
   selector: 'fas-tabs',
   styles: [
     `
+      @import '~foundation-sites/scss/global';
+      @import '~foundation-sites/scss/components/tabs';
+
       fas-tabs {
+        @include foundation-tabs;
+
         display: block;
       }
     `,
