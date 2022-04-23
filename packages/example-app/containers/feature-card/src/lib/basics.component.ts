@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { FasCardModule } from 'ngx-foundation-sites';
 
+import { CardDividerScam } from './card-divider.component';
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ex-card-basics',
@@ -36,6 +38,8 @@ import { FasCardModule } from 'ngx-foundation-sites';
         </p>
       </fas-card-section>
     </fas-card>
+
+    <ex-card-divider></ex-card-divider>
   `,
 })
 export class BasicsComponent {}
@@ -43,6 +47,6 @@ export class BasicsComponent {}
 @NgModule({
   declarations: [BasicsComponent],
   exports: [BasicsComponent],
-  imports: [FasCardModule],
+  imports: [FasCardModule, CardDividerScam],
 })
 export class BasicsScam {}
