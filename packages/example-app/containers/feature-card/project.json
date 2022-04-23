@@ -1,0 +1,18 @@
+{
+  "projectType": "library",
+  "root": "packages/example-app/containers/feature-card",
+  "sourceRoot": "packages/example-app/containers/feature-card/src",
+  "prefix": "ex-card",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/example-app/containers/feature-card/src/**/*.ts",
+          "packages/example-app/containers/feature-card/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["package:example-app", "scope:containers", "type:feature"]
+}

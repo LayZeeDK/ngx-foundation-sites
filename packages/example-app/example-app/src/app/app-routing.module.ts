@@ -2,13 +2,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'tabs' },
+  { path: '', pathMatch: 'full', redirectTo: 'containers/card' },
   {
-    loadChildren: () =>
-      import('@example-app/containers/feature-tabs').then(
-        esModule => esModule.ExampleAppContainersFeatureTabsModule
-      ),
-    path: 'tabs',
+    path: 'containers',
+    children: [
+      {
+        loadChildren: () =>
+          import('@example-app/containers/feature-card').then(
+            esModule => esModule.ExampleAppContainersFeatureCardModule
+          ),
+        path: 'card',
+      },
+      {
+        loadChildren: () =>
+          import('@example-app/containers/feature-tabs').then(
+            esModule => esModule.ExampleAppContainersFeatureTabsModule
+          ),
+        path: 'tabs',
+      },
+    ],
   },
 ];
 

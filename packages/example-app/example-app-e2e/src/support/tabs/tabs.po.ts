@@ -1,1 +1,1 @@
-export const navigateTo = () => cy.visit('/tabs');
+export const navigateTo = () => cy.visit('/containers/tabs');

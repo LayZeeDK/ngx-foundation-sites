@@ -2,16 +2,8 @@
   "projectType": "library",
   "root": "packages/example-app/containers/feature-tabs",
   "sourceRoot": "packages/example-app/containers/feature-tabs/src",
-  "prefix": "ex",
+  "prefix": "ex-tabs",
   "targets": {
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/example-app/containers/feature-tabs"],
-      "options": {
-        "jestConfig": "packages/example-app/containers/feature-tabs/jest.config.js",
-        "passWithNoTests": true
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
