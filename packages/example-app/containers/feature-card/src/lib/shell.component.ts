@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
 import { BasicsScam } from './basics.component';
+import { SizingScam } from './sizing.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,12 +19,14 @@ import { BasicsScam } from './basics.component';
     <p>Cards are a popular and flexible UI component.</p>
 
     <ex-card-basics></ex-card-basics>
+
+    <ex-card-sizing></ex-card-sizing>
   `,
 })
 export class CardShellComponent {}
 
 @NgModule({
   declarations: [CardShellComponent],
-  imports: [BasicsScam],
+  imports: [BasicsScam, SizingScam],
 })
 export class CardShellScam {}

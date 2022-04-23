@@ -25,7 +25,10 @@ import { FasCardModule } from 'ngx-foundation-sites';
       </fas-card-divider>
       <img src="/assets/img/generic/rectangle-1.jpg" />
       <fas-card-section>
-        <p>This card makes use of the fas-card-divider component.</p>
+        <p>
+          This card makes use of the
+          <code>&lt;fas-card-divider&gt;</code> component.
+        </p>
       </fas-card-section>
     </fas-card>
   `,
