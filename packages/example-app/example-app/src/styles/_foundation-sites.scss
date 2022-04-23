@@ -122,7 +122,7 @@
   @include foundation-badge;
   @include foundation-breadcrumbs;
   @include foundation-callout;
-  @include foundation-card;
+  // @include foundation-card; /* [1] */
   @include foundation-dropdown;
   @include foundation-pagination;
   @include foundation-tooltip;
