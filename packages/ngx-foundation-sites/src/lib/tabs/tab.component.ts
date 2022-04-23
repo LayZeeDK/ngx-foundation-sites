@@ -16,13 +16,6 @@ let serialNumber = 1;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tab',
-  styles: [
-    `
-      fas-tab {
-        display: block;
-      }
-    `,
-  ],
   template: `<ng-content></ng-content>`,
 })
 export class FasTabComponent {
