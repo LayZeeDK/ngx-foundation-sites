@@ -27,9 +27,8 @@ fas-card {
   --fas-card-padding: var(--fas-global-padding);
   --fas-card-margin-bottom: var(--fas-global-margin);
 
-  // Foundation for Sites Card styles
-  @include foundation-card;
-
   // Foundation for Angular Sites Card styles
-  display: block;
 }
+
+// Foundation for Sites Card styles
+@include foundation-card;

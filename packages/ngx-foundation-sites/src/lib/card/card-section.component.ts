@@ -1,16 +1,16 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  NgModule,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, NgModule, ViewEncapsulation } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card-section',
-  styleUrls: ['../_global-settings.scss', './card-divider.component.scss'],
+  styles: [
+    `
+      fas-card-section {
+        display: block;
+      }
+    `,
+  ],
   template: `<ng-content></ng-content>`,
 })
 export class FasCardSectionComponent {
