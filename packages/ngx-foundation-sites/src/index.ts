@@ -1,3 +1,18 @@
+// CARD
+export {
+  FasCardDividerComponent,
+  FasCardDividerScam as _FasCardDividerScam,
+} from './lib/card/card-divider.component';
+export {
+  FasCardSectionComponent,
+  FasCardSectionScam as _FasCardSectionScam,
+} from './lib/card/card-section.component';
+export {
+  FasCardComponent,
+  FasCardScam as _FasCardScam,
+} from './lib/card/card.component';
+export { FasCardModule } from './lib/card/card.module';
+
 // TABS
 export {
   FasTabComponent,

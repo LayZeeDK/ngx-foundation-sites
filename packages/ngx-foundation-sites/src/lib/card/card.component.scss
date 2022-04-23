@@ -1,0 +1,35 @@
+// Foundation for Sites global tools
+@import '~foundation-sites/scss/global';
+
+// Foundation for Sites Card settings
+$card-background: var(--fas-card-background);
+$card-font-color: var(--fas-card-font-color);
+$card-divider-background: var(--fas-card-divider-background);
+$card-border: var(--fas-card-border);
+$card-shadow: var(--fas-card-shadow);
+$card-border-radius: var(--fas-card-border-radius);
+$card-padding: var(--fas-card-padding);
+$card-margin-bottom: var(--fas-card-margin-bottom);
+
+// Foundation for Sites Card tools
+@import '~foundation-sites/scss/components/card';
+
+// Foundation for Sites Card tools overrides
+
+fas-card {
+  // Foundation for Angular Sites Card settings
+  --fas-card-background: var(--fas-white);
+  --fas-card-font-color: var(--fas-body-font-color);
+  --fas-card-divider-background: var(--fas-light-gray);
+  --fas-card-border: 1px solid var(--fas-light-gray);
+  --fas-card-shadow: none;
+  --fas-card-border-radius: var(--fas-global-radius);
+  --fas-card-padding: var(--fas-global-padding);
+  --fas-card-margin-bottom: var(--fas-global-margin);
+
+  // Foundation for Sites Card styles
+  @include foundation-card;
+
+  // Foundation for Angular Sites Card styles
+  display: block;
+}
