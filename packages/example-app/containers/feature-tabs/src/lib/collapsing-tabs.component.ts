@@ -20,7 +20,7 @@ import { FasTabsModule } from 'ngx-foundation-sites';
     </p>
 
     <fas-tabs id="collapsing-tabs" [collapsing]="true">
-      <fas-tab id="panel1c" title="Collapsing tab 1" [isActive]="true">
+      <fas-tab id="panel1c" title="Collapsing tab 1" [active]="true">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.

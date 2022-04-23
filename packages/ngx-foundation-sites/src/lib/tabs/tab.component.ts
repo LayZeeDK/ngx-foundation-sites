@@ -31,21 +31,25 @@ export class FasTabComponent {
 
   @Input()
   @HostBinding('class.is-active')
-  get isActive(): boolean {
+  get active(): boolean {
     return this.#isActive;
   }
-  set isActive(value: boolean) {
+  set active(value: boolean) {
+    if (value === this.#isActive) {
+      return;
+    }
+
     this.#isActive = value;
-    this.isActiveChange.emit(value);
+    this.activeChange.emit(value);
   }
   @Input()
   title = '';
   @Output()
-  isActiveChange = new EventEmitter<boolean>();
+  activeChange = new EventEmitter<boolean>();
 
   @HostBinding('attr.aria-hidden')
   get ariaHidden(): 'true' | null {
-    return this.isActive ? null : 'true';
+    return this.active ? null : 'true';
   }
   @HostBinding('attr.aria-labelledby')
   get ariaLabelledBy(): string {
