@@ -22,7 +22,7 @@ import { FasTabComponent } from './tab.component';
       <li
         *ngFor="let tab of tabs"
         class="tabs-title"
-        [class.is-active]="tab.isActive"
+        [class.is-active]="tab.active"
         role="presentation"
       >
         <a
@@ -30,7 +30,7 @@ import { FasTabComponent } from './tab.component';
           routerLink="./"
           [fragment]="tab.id"
           [attr.aria-controls]="tab.id"
-          [attr.aria-selected]="tab.isActive"
+          [attr.aria-selected]="tab.active"
           role="tab"
           (click)="selectTab(tab)"
           >{{ tab.title }}</a
@@ -53,12 +53,12 @@ export class FasTabsComponent {
   tabs!: QueryList<FasTabComponent>;
 
   selectTab(selectedTab: FasTabComponent): void {
-    const activeTab = this.tabs.find(t => t.isActive);
+    const activeTab = this.tabs.find(t => t.active);
 
     if (this.collapsing && activeTab === selectedTab) {
-      this.tabs.forEach(tab => (tab.isActive = false));
+      this.tabs.forEach(tab => (tab.active = false));
     } else {
-      this.tabs.forEach(tab => (tab.isActive = tab === selectedTab));
+      this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
   }
 }

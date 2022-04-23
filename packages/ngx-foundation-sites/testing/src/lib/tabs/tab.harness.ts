@@ -1,9 +1,4 @@
-import {
-  AsyncFactoryFn,
-  ComponentHarness,
-  HarnessPredicate,
-  TestElement,
-} from '@angular/cdk/testing';
+import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import { FasTabHarnessFilters } from './tab-harness-filters';
@@ -91,6 +86,6 @@ export class FasTabHarness extends ComponentHarness {
   async selectTab(): Promise<void> {
     const label = await this.#getLabel();
 
-    label.click();
+    return label.click();
   }
 }

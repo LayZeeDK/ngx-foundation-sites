@@ -9,7 +9,7 @@ describe('Collapsing tabs', () => {
     const { fixture } = await render(
       `
       <fas-tabs [collapsing]="collapsing">
-        <fas-tab id="panel1" title="Tab 1" [isActive]="true">
+        <fas-tab id="panel1" title="Tab 1" [active]="true">
           <p>one</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
         </fas-tab>
