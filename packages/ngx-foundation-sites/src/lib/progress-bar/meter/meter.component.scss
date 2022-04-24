@@ -1,0 +1,31 @@
+// Foundation for Sites global tools
+@import '~foundation-sites/scss/global';
+
+// Foundation for Sites Progress settings
+$meter-height: var(--fas-progress-height);
+$meter-radius: var(--fas-meter-radius);
+$meter-background: var(--fas-meter-background);
+$meter-fill-good: var(--fas-meter-fill-good);
+$meter-fill-medium: var(--fas-meter-fill-medium);
+$meter-fill-bad: var(--fas-meter-fill-bad);
+
+// Foundation for Sites Progress tools
+@import '~foundation-sites/scss/forms/meter';
+
+// Foundation for Sites Progress tools overrides
+
+fas-meter {
+  // Foundation for Angular Sites Progress settings
+  --fas-meter-height: 1rem;
+  --fas-meter-radius: var(--fas-global-radius);
+  --fas-meter-background: var(--fas-medium-gray);
+  --fas-meter-fill-good: var(--fas-success-color);
+  --fas-meter-fill-medium: var(--fas-warning-color);
+  --fas-meter-fill-bad: var(--fas-alert-color);
+
+  // Foundation for Sites Progress styles
+  @include foundation-meter-element;
+
+  // Foundation for Angular Sites Progress styles
+  display: inline-block;
+}

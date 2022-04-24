@@ -1,0 +1,116 @@
+// Foundation for Sites global tools
+@import '~foundation-sites/scss/global';
+
+// Foundation for Sites Progress settings
+$progress-height: var(--fas-progress-height);
+$progress-background: var(--fas-progress-background);
+$progress-margin-bottom: var(--fas-progress-margin-bottom);
+$progress-meter-background: var(--fas-progress-meter-background);
+$progress-radius: var(--fas-progress-radius);
+
+// Foundation for Sites Progress tools
+@import '~foundation-sites/scss/forms/progress';
+
+// Foundation for Sites Progress tools overrides
+
+@mixin _fas-progress-color($color) {
+  &::-webkit-progress-value {
+    background: $color;
+  }
+
+  &::-moz-progress-bar {
+    background: $color;
+  }
+}
+
+//
+// 1. Replace for loop generating themes from the palette with static classes
+//    referring to CSS Custom Properties.
+//
+@mixin foundation-progress-element {
+  progress {
+    display: block;
+    width: 100%;
+    height: $progress-height;
+    margin-bottom: $progress-margin-bottom;
+
+    appearance: none;
+
+    @if has-value($progress-radius) {
+      border-radius: $progress-radius;
+    }
+
+    // For Firefox
+    border: 0;
+    background: $progress-background;
+
+    &::-webkit-progress-bar {
+      background: $progress-background;
+
+      @if has-value($progress-radius) {
+        border-radius: $progress-radius;
+      }
+    }
+
+    &::-webkit-progress-value {
+      background: $progress-meter-background;
+
+      @if has-value($progress-radius) {
+        border-radius: $progress-radius;
+      }
+    }
+
+    &::-moz-progress-bar {
+      background: $progress-meter-background;
+
+      @if has-value($progress-radius) {
+        border-radius: $progress-radius;
+      }
+    }
+
+    &.primary /* [1] */ {
+      @include _fas-progress-color(var(--fas-primary-color));
+    }
+
+    &.secondary /* [1] */ {
+      @include _fas-progress-color(var(--fas-primary-color));
+    }
+
+    &.success /* [1] */ {
+      @include _fas-progress-color(var(--fas-primary-color));
+    }
+
+    &.warning /* [1] */ {
+      @include _fas-progress-color(var(--fas-primary-color));
+    }
+
+    &.alert /* [1] */ {
+      @include _fas-progress-color(var(--fas-primary-color));
+    }
+
+    // For IE and Edge
+    &::-ms-fill {
+      // sass-lint:disable-line no-vendor-prefixes
+      @if has-value($progress-radius) {
+        border-radius: $progress-radius;
+      }
+
+      border: 0;
+    }
+  }
+}
+
+fas-progress {
+  // Foundation for Angular Sites Progress settings
+  --fas-progress-height: 1rem;
+  --fas-progress-background: var(--fas-medium-gray);
+  --fas-progress-margin-bottom: var(--fas-global-margin);
+  --fas-progress-meter-background: var(--fas-primary-color);
+  --fas-progress-radius: var(--fas-global-radius);
+
+  // Foundation for Sites Progress styles
+  @include foundation-progress-element;
+
+  // Foundation for Angular Sites Progress styles
+  display: inline-block;
+}

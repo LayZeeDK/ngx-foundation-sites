@@ -1,3 +1,6 @@
+// SHARED
+export { FasColor } from './lib/color';
+
 // CARD
 export {
   FasCardDividerComponent,
@@ -12,6 +15,27 @@ export {
   FasCardScam as _FasCardScam,
 } from './lib/card/card.component';
 export { FasCardModule } from './lib/card/card.module';
+
+// PROGRESS BAR
+export {
+  FasMeterComponent,
+  FasMeterScam as _FasMeterScam,
+} from './lib/progress-bar/meter/meter.component';
+export { FasMeterModule } from './lib/progress-bar/meter/meter.module';
+export {
+  FasProgressComponent,
+  FasProgressScam as _FasProgressScam,
+} from './lib/progress-bar/progress/progress.component';
+export { FasProgressModule } from './lib/progress-bar/progress/progress.module';
+export {
+  FasProgressBarTextComponent,
+  FasProgressBarTextScam as _FasProgressBarTextScam,
+} from './lib/progress-bar/progress-bar/progress-bar-text.component';
+export {
+  FasProgressBarComponent,
+  FasProgressBarScam as _FasProgressBarScam,
+} from './lib/progress-bar/progress-bar/progress-bar.component';
+export { FasProgressBarModule } from './lib/progress-bar/progress-bar/progress-bar.module';
 
 // TABS
 export {
