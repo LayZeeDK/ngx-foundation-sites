@@ -12,7 +12,7 @@ import { FasColor } from '../../color';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress',
-  styleUrls: ['../_global-settings.scss', './progress.component.scss'],
+  styleUrls: ['../../_global-settings.scss', './progress.component.scss'],
   template: `
     <progress [attr.max]="max" [attr.value]="value" [class]="colorClassName">
       <ng-content></ng-content>

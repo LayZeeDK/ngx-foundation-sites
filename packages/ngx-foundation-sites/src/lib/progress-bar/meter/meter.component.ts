@@ -10,7 +10,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-meter',
-  styleUrls: ['../_global-settings.scss', './meter.component.scss'],
+  styleUrls: ['../../_global-settings.scss', './meter.component.scss'],
   template: `
     <meter
       [attr.high]="high"

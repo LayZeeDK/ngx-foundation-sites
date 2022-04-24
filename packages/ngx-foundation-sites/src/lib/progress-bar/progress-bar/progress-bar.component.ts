@@ -13,9 +13,9 @@ import { FasColor } from '../../color';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-bar',
-  styleUrls: ['../_global-settings.scss', './progress-bar.component.scss'],
+  styleUrls: ['../../_global-settings.scss', './progress-bar.component.scss'],
   template: `
-    <div class="progress-meter" [style.width.%]="widtPercentage">
+    <div class="progress-meter" [style.width.%]="widthPercentage">
       <ng-content select="fas-progress-bar-text"></ng-content>
     </div>
   `,
@@ -50,8 +50,9 @@ export class FasProgressBarComponent {
 
   get widthPercentage(): number {
     const percentage = (this.value / (this.max - this.min)) * 100;
+    console.log('widthPercentage', percentage);
 
-    return Number.isNaN(percentage) ? percentage : 0;
+    return Number.isNaN(percentage) ? 0 : percentage;
   }
 }
 
