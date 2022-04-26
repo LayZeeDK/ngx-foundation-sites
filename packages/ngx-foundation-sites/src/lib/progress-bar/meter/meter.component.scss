@@ -1,7 +1,7 @@
 // Foundation for Sites global tools
 @import '~foundation-sites/scss/global';
 
-// Foundation for Sites Progress settings
+// Foundation for Sites Meter settings
 $meter-height: var(--fas-meter-height);
 $meter-radius: var(--fas-meter-radius);
 $meter-background: var(--fas-meter-background);
@@ -9,13 +9,13 @@ $meter-fill-good: var(--fas-meter-fill-good);
 $meter-fill-medium: var(--fas-meter-fill-medium);
 $meter-fill-bad: var(--fas-meter-fill-bad);
 
-// Foundation for Sites Progress tools
+// Foundation for Sites Meter tools
 @import '~foundation-sites/scss/forms/meter';
 
-// Foundation for Sites Progress tools overrides
+// Foundation for Sites Meter tools overrides
 
 [fas-meter] {
-  // Foundation for Angular Sites Progress settings
+  // Foundation for Angular Sites Meter settings
   --fas-meter-height: 1rem;
   --fas-meter-radius: var(--fas-global-radius);
   --fas-meter-background: var(--fas-medium-gray);
@@ -23,9 +23,22 @@ $meter-fill-bad: var(--fas-meter-fill-bad);
   --fas-meter-fill-medium: var(--fas-warning-color);
   --fas-meter-fill-bad: var(--fas-alert-color);
 
-  // Foundation for Angular Sites Progress styles
+  // Foundation for Sites Meter overrides
+
+  //
+  // 1. Fix appearance in Chrome/Safari/Edge.
+  //
+
+  /*! autoprefixer: off */
+  -webkit-appearance: auto; // [1]
+
+  &::-webkit-meter-bar {
+    height: $meter-height; // [1]
+  }
+
+  // Foundation for Angular Sites Meter styles
   display: block;
 }
 
-// Foundation for Sites Progress styles
+// Foundation for Sites Meter styles
 @include foundation-meter-element;
