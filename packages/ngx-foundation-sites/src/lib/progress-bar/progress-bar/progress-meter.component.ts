@@ -7,7 +7,7 @@ import { ProgressMeterPresenter, progressMeterPresenterProviders } from './progr
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-meter',
-  template: `<ng-content select="fas-progress-bar-text"></ng-content>`,
+  template: `<ng-content select="fas-progress-meter-text"></ng-content>`,
   viewProviders: [progressMeterPresenterProviders],
 })
 export class FasProgressMeterComponent {
