@@ -1,58 +1,37 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  Input,
-  NgModule,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, NgModule, ViewEncapsulation } from '@angular/core';
 
 import { FasColor } from '../../color';
+import { ProgressBarPresenter, progressBarPresenterProviders } from './progress-bar.presenter';
+import { ProgressBarStore } from './progress-bar.store';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  providers: [ProgressBarStore],
   selector: 'fas-progress-bar',
   styleUrls: ['../../_global-settings.scss', './progress-bar.component.scss'],
-  template: `
-    <div class="progress-meter" [style.width.%]="widthPercentage">
-      <ng-content select="fas-progress-bar-text"></ng-content>
-    </div>
-  `,
+  template: `<ng-content select="fas-progress-meter"></ng-content>`,
+  viewProviders: [progressBarPresenterProviders],
 })
 export class FasProgressBarComponent {
-  get #colorClassName(): string | null {
-    return this.color === 'primary' ? null : this.color;
-  }
+  #presenter: ProgressBarPresenter;
 
   @Input()
-  color: FasColor = 'primary';
-  @Input()
-  @HostBinding('aria-valuemax')
-  max = 100;
-  @Input()
-  @HostBinding('aria-valuemin')
-  min = 0;
-  @Input()
-  @HostBinding('aria-valuenow')
-  value = 0;
+  set color(color: FasColor) {
+    this.#presenter.updateColor(color);
+  }
 
   @HostBinding('className')
   get className(): string {
-    return ['progress', this.#colorClassName]
-      .filter(cssClass => cssClass !== null)
-      .join(' ');
+    return 'progress';
   }
   @HostBinding('role')
   get roleAttribute(): string {
     return 'progressbar';
   }
 
-  get widthPercentage(): number {
-    const percentage = (this.value / (this.max - this.min)) * 100;
-    console.log('widthPercentage', percentage);
-
-    return Number.isNaN(percentage) ? 0 : percentage;
+  constructor(presenter: ProgressBarPresenter) {
+    this.#presenter = presenter;
   }
 }
 

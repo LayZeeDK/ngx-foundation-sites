@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import { FasProgressBarTextScam } from './progress-bar-text.component';
 import { FasProgressBarScam } from './progress-bar.component';
+import { FasProgressMeterTextScam } from './progress-meter-text.component';
+import { FasProgressMeterScam } from './progress-meter.component';
 
 @NgModule({
-  exports: [FasProgressBarScam, FasProgressBarTextScam],
+  exports: [FasProgressBarScam, FasProgressMeterScam, FasProgressMeterTextScam],
 })
 export class FasProgressBarModule {}

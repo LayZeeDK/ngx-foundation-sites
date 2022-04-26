@@ -28,9 +28,9 @@ export {
 } from './lib/progress-bar/progress/progress.component';
 export { FasProgressModule } from './lib/progress-bar/progress/progress.module';
 export {
-  FasProgressBarTextComponent,
-  FasProgressBarTextScam as _FasProgressBarTextScam,
-} from './lib/progress-bar/progress-bar/progress-bar-text.component';
+  FasProgressMeterTextComponent as FasProgressBarTextComponent,
+  FasProgressMeterTextScam as _FasProgressBarTextScam,
+} from './lib/progress-bar/progress-bar/progress-meter-text.component';
 export {
   FasProgressBarComponent,
   FasProgressBarScam as _FasProgressBarScam,

@@ -2,6 +2,7 @@
   "name": "ngx-foundation-sites",
   "version": "0.0.1",
   "dependencies": {
+    "@ngrx/component-store": "^13.1.0",
     "tslib": "^2.3.0"
   },
   "peerDependencies": {

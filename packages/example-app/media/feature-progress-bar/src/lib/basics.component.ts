@@ -35,7 +35,13 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
       of the bar's value.
     </p>
 
-    <fas-progress-bar [max]="100" [min]="0" [value]="0"></fas-progress-bar>
+    <fas-progress-bar>
+      <fas-progress-meter
+        [max]="100"
+        [min]="0"
+        [value]="0"
+      ></fas-progress-meter>
+    </fas-progress-bar>
 
     <p>
       <!-- TODO(LayZeeDK): Extract progress meter component -->
@@ -43,12 +49,13 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
       component to fill the progress bar.
     </p>
 
-    <fas-progress-bar
-      [max]="100"
-      [min]="0"
-      [value]="50"
-      aria-valuetext="50 percent"
-    ></fas-progress-bar>
+    <fas-progress-bar aria-valuetext="50 percent">
+      <fas-progress-meter
+        [max]="100"
+        [min]="0"
+        [value]="50"
+      ></fas-progress-meter>
+    </fas-progress-bar>
   `,
 })
 export class BasicsComponent {}
