@@ -30,9 +30,9 @@ export class FasProgressMeterTextComponent implements AfterContentChecked {
     return this.#host.nativeElement.textContent;
   }
 
-  @HostBinding('className')
-  get className(): string {
-    return 'progress-meter-text';
+  @HostBinding('class.progress-meter-text')
+  get componentClassEnabled(): boolean {
+    return true;
   }
 
   constructor(progressBar: ProgressBarStore, host: ElementRef) {

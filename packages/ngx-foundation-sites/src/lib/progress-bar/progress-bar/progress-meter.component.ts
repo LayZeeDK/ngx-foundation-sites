@@ -26,9 +26,9 @@ export class FasProgressMeterComponent {
     this.#progressBar.updateValue(value);
   }
 
-  @HostBinding('className')
-  get className(): string {
-    return 'progress-meter';
+  @HostBinding('class.progress-meter')
+  get componentClassEnabled(): true {
+    return true;
   }
 
   constructor(
