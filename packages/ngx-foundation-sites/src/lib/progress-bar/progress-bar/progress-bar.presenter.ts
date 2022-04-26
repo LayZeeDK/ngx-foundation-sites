@@ -25,11 +25,11 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
     this.#aria = aria;
     this.#style = style;
 
-    this.#updateColorClasses(this.select(state => state.color));
     this.#renderAriaValuemaxAttribute(progressBarState.max$);
     this.#renderAriaValueminAttribute(progressBarState.min$);
     this.#renderAriaValuenowAttribute(progressBarState.value$);
     this.#renderAriaValuetextAttribute(progressBarState.text$);
+    this.#updateColorClasses(this.select(state => state.color));
   }
 
   updateColor = this.updater<FasColor>(
