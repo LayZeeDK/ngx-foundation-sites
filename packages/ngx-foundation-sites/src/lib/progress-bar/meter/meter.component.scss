@@ -14,17 +14,7 @@ $meter-fill-bad: var(--fas-meter-fill-bad);
 
 // Foundation for Sites Meter tools overrides
 
-[fas-meter] {
-  // Foundation for Angular Sites Meter settings
-  --fas-meter-height: 1rem;
-  --fas-meter-radius: var(--fas-global-radius);
-  --fas-meter-background: var(--fas-medium-gray);
-  --fas-meter-fill-good: var(--fas-success-color);
-  --fas-meter-fill-medium: var(--fas-warning-color);
-  --fas-meter-fill-bad: var(--fas-alert-color);
-
-  // Foundation for Sites Meter overrides
-
+@mixin _fas-meter-appearance($height) {
   //
   // 1. Fix appearance in Chrome/Safari/Edge.
   //
@@ -35,6 +25,19 @@ $meter-fill-bad: var(--fas-meter-fill-bad);
   &::-webkit-meter-bar {
     height: $meter-height; // [1]
   }
+}
+
+[fas-meter] {
+  // Foundation for Angular Sites Meter settings
+  --fas-meter-height: 1rem;
+  --fas-meter-radius: var(--fas-global-radius);
+  --fas-meter-background: var(--fas-medium-gray);
+  --fas-meter-fill-good: var(--fas-success-color);
+  --fas-meter-fill-medium: var(--fas-warning-color);
+  --fas-meter-fill-bad: var(--fas-alert-color);
+
+  // Foundation for Sites Meter overrides
+  @include _fas-meter-appearance($meter-height);
 
   // Foundation for Angular Sites Meter styles
   display: block;
