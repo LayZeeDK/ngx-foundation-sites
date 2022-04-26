@@ -1,7 +1,17 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, NgModule, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  NgModule,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { ProgressBarStore } from './progress-bar.store';
-import { ProgressMeterPresenter, progressMeterPresenterProviders } from './progress-meter.presenter';
+import {
+  ProgressMeterPresenter,
+  progressMeterPresenterProviders,
+} from './progress-meter.presenter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

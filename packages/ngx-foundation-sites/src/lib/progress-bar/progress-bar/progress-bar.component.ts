@@ -1,7 +1,17 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, NgModule, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  NgModule,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { FasColor } from '../../color';
-import { ProgressBarPresenter, progressBarPresenterProviders } from './progress-bar.presenter';
+import {
+  ProgressBarPresenter,
+  progressBarPresenterProviders,
+} from './progress-bar.presenter';
 import { ProgressBarStore } from './progress-bar.store';
 
 @Component({

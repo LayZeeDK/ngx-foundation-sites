@@ -1,4 +1,9 @@
-import { ElementRef, Injectable, Renderer2, RendererStyleFlags2 } from '@angular/core';
+import {
+  ElementRef,
+  Injectable,
+  Renderer2,
+  RendererStyleFlags2,
+} from '@angular/core';
 
 @Injectable()
 export class StyleRenderer {
