@@ -15,11 +15,11 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
     <h2>Basics</h2>
 
     <p>
-      A progress bar has a single component: the container
-      <code>&lt;fas-progress-bar&gt;</code> which contains the
-      <code>.progress-meter</code> meter element. <code>role</code> and
-      <code>aria-</code> attributes are provided to clarify the status of the
-      bar:
+      A progress bar has two single components: the container
+      <code>&lt;fas-progress-bar&gt;</code>, and the meter
+      <code>&lt;fas-progress-meter&gt;</code>. The <code>role</code> and
+      <code>aria-</code> attributes are automatically set to clarify the status
+      of the bar:
     </p>
 
     <ul>
@@ -37,22 +37,22 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
 
     <fas-progress-bar>
       <fas-progress-meter
-        [max]="100"
         [min]="0"
+        [max]="100"
         [value]="0"
       ></fas-progress-meter>
     </fas-progress-bar>
 
     <p>
-      <!-- TODO(LayZeeDK): Extract progress meter component -->
-      Increase the <code>value</code> input property of the progress meter
+      Increase the <code>value</code> input property of the
+      <code>&lt;fas-progress-meter&gt;</code>
       component to fill the progress bar.
     </p>
 
     <fas-progress-bar aria-valuetext="50 percent">
       <fas-progress-meter
-        [max]="100"
         [min]="0"
+        [max]="100"
         [value]="50"
       ></fas-progress-meter>
     </fas-progress-bar>
