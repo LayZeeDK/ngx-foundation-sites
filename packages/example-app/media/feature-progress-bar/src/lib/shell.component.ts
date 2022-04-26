@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
 import { BasicsScam } from './basics.component';
 import { ColorsScam } from './colors.component';
+import { WithTextScam } from './with-text.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,12 +25,14 @@ import { ColorsScam } from './colors.component';
     <ex-progress-bar-basics></ex-progress-bar-basics>
 
     <ex-progress-bar-colors></ex-progress-bar-colors>
+
+    <ex-progress-bar-with-text></ex-progress-bar-with-text>
   `,
 })
 export class ProgressBarShellComponent {}
 
 @NgModule({
   declarations: [ProgressBarShellComponent],
-  imports: [BasicsScam, ColorsScam],
+  imports: [BasicsScam, ColorsScam, WithTextScam],
 })
 export class ProgressBarShellScam {}
