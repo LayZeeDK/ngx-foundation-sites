@@ -17,16 +17,23 @@ export {
 export { FasCardModule } from './lib/card/card.module';
 
 // PROGRESS BAR
+// -> METER
 export {
   FasMeterComponent,
   FasMeterScam as _FasMeterScam,
 } from './lib/progress-bar/meter/meter.component';
 export { FasMeterModule } from './lib/progress-bar/meter/meter.module';
+// -> PROGRESS
 export {
   FasProgressComponent,
   FasProgressScam as _FasProgressScam,
 } from './lib/progress-bar/progress/progress.component';
 export { FasProgressModule } from './lib/progress-bar/progress/progress.module';
+// -> PROGRESS BAR
+export {
+  FasProgressMeterComponent,
+  FasProgressMeterScam as _FasProgressMeterScam,
+} from './lib/progress-bar/progress-bar/progress-meter.component';
 export {
   FasProgressMeterTextComponent as FasProgressBarTextComponent,
   FasProgressMeterTextScam as _FasProgressBarTextScam,
