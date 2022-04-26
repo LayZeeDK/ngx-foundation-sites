@@ -5,6 +5,10 @@
 // Foundation for Angular Sites global styles overrides
 :root:root /* Increase specificity to override component styles */ {
   --fas-primary-color: #{map-get($foundation-palette, primary)};
+  --fas-secondary-color: #{map-get($foundation-palette, secondary)};
+  --fas-success-color: #{map-get($foundation-palette, success)};
+  --fas-warning-color: #{map-get($foundation-palette, warning)};
+  --fas-alert-color: #{map-get($foundation-palette, alert)};
 }
 
 // Foundation for Angular Sites component styles overrides
