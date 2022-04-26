@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, NgModule, ViewEncapsulation } from '@angular/core';
 
 import { FasColor } from '../../color';
 
@@ -20,12 +14,40 @@ import { FasColor } from '../../color';
   `,
 })
 export class FasProgressComponent {
+  #maxDefault = 1;
+  #max = this.#maxDefault;
+  #value: number | null = null;
+
   @Input()
   color: FasColor = 'primary';
   @Input()
-  max = 1;
+  set max(max: number | null) {
+    max ??= this.#maxDefault;
+
+    if (max <= 0) {
+      return;
+    }
+
+    this.#max = max;
+  }
+  get max(): number {
+    return this.#max;
+  }
   @Input()
-  value = 0;
+  set value(value: number | null) {
+    if (value !== null && value <= 0) {
+      return;
+    }
+
+    if (value !== null && value > this.#max) {
+      return;
+    }
+
+    this.#value = value;
+  }
+  get value(): number | null {
+    return this.#value;
+  }
 
   get colorClassName(): string | null {
     return this.color === 'primary' ? null : this.color;
