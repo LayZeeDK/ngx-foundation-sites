@@ -73,19 +73,19 @@ $progress-radius: var(--fas-progress-radius);
     }
 
     &.secondary /* [1] */ {
-      @include _fas-progress-color(var(--fas-primary-color));
+      @include _fas-progress-color(var(--fas-secondary-color));
     }
 
     &.success /* [1] */ {
-      @include _fas-progress-color(var(--fas-primary-color));
+      @include _fas-progress-color(var(--fas-success-color));
     }
 
     &.warning /* [1] */ {
-      @include _fas-progress-color(var(--fas-primary-color));
+      @include _fas-progress-color(var(--fas-warning-color));
     }
 
     &.alert /* [1] */ {
-      @include _fas-progress-color(var(--fas-primary-color));
+      @include _fas-progress-color(var(--fas-alert-color));
     }
 
     // For IE and Edge
