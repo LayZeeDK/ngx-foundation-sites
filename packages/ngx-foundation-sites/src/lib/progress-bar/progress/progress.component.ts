@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, NgModule, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { FasColor } from '../../color';
 
