@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   Input,
   NgModule,
   ViewEncapsulation,
@@ -9,33 +10,30 @@ import {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  selector: 'fas-meter',
+  // Intentionally extending the native `<meter>` element
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'meter[fas-meter]',
   styleUrls: ['../../_global-settings.scss', './meter.component.scss'],
-  template: `
-    <meter
-      [attr.high]="high"
-      [attr.low]="low"
-      [attr.max]="max"
-      [attr.min]="min"
-      [attr.optimum]="optimum"
-      [attr.value]="value"
-    >
-      <ng-content></ng-content>
-    </meter>
-  `,
+  template: `<ng-content></ng-content>`,
 })
 export class FasMeterComponent {
   @Input()
+  @HostBinding('attr.high')
   high: number | null = null;
   @Input()
+  @HostBinding('attr.low')
   low: number | null = null;
   @Input()
+  @HostBinding('attr.max')
   max: number | null = null;
   @Input()
+  @HostBinding('attr.min')
   min: number | null = null;
   @Input()
+  @HostBinding('attr.optimum')
   optimum: number | null = null;
   @Input()
+  @HostBinding('attr.value')
   value: number | null = null;
 }
 

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
 import { BasicsScam } from './basics.component';
 import { ColorsScam } from './colors.component';
+import { NativeMeterScam } from './native-meter.component';
 import { NativeProgressScam } from './native-progress.component';
 import { WithTextScam } from './with-text.component';
 
@@ -30,12 +31,20 @@ import { WithTextScam } from './with-text.component';
     <ex-progress-bar-with-text></ex-progress-bar-with-text>
 
     <ex-progress-bar-native-progress></ex-progress-bar-native-progress>
+
+    <ex-progress-bar-native-meter></ex-progress-bar-native-meter>
   `,
 })
 export class ProgressBarShellComponent {}
 
 @NgModule({
   declarations: [ProgressBarShellComponent],
-  imports: [BasicsScam, ColorsScam, NativeProgressScam, WithTextScam],
+  imports: [
+    BasicsScam,
+    ColorsScam,
+    NativeMeterScam,
+    NativeProgressScam,
+    WithTextScam,
+  ],
 })
 export class ProgressBarShellScam {}
