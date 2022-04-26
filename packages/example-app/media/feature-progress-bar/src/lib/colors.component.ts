@@ -15,8 +15,9 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
     <h2>Colors</h2>
 
     <p>
-      A progress bar can be styled with the &lt;.secondary&gt;,
-      &lt;.success&gt;, &lt;.warning&gt;, and &lt;.alert&gt; colors.
+      A progress bar can be styled with the <code>secondary</code>,
+      <code>success</code>, <code>warning</code>, and <code>alert</code>
+      <code>color</code> values.
     </p>
 
     <fas-progress-bar color="secondary" aria-valuetext="25 percent">
