@@ -29,7 +29,7 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
     this.#renderAriaValueminAttribute(progressBarState.min$);
     this.#renderAriaValuenowAttribute(progressBarState.value$);
     this.#renderAriaValuetextAttribute(progressBarState.text$);
-    this.#updateColorClasses(this.select(state => state.color));
+    this.#renderColorClasses(this.select(state => state.color));
   }
 
   updateColor = this.updater<FasColor>(
@@ -67,7 +67,7 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
     pipe(tap(meterText => this.#aria.setAriaAttribute('valuetext', meterText)))
   );
 
-  #updateColorClasses = this.effect<FasColor>(
+  #renderColorClasses = this.effect<FasColor>(
     pipe(
       map(
         (activeColor): Readonly<Record<FasColor, boolean>> => ({
