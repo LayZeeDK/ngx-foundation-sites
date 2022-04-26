@@ -16,23 +16,28 @@ import { FasProgressModule } from 'ngx-foundation-sites';
 
     <p>
       As an alternative to our custom progress bar style, you can also opt to
-      use the <code>&lt;fas-progress&gt;</code> component which wraps the native
-      <code>&lt;progress&gt;</code> element. It provides a more succinct way to
-      create progress bars.
+      use the <code>&lt;progress fas-progress&gt;</code> component which extends
+      the native <code>&lt;progress&gt;</code> element. It provides a more
+      succinct way to create progress bars.
     </p>
 
-    <fas-progress [max]="100" [value]="75"></fas-progress>
+    <progress fas-progress [max]="100" [value]="75"></progress>
 
     <p>
-      The <code>&lt;progress&gt;</code> component can be styled with the same
-      <code>color</code> values: <code>secondary</code>, <code>success</code>,
-      <code>warning</code>, and <code>alert</code>.
+      The <code>&lt;progress fas-progress&gt;</code> component can be styled
+      with the same <code>color</code> values: <code>secondary</code>,
+      <code>success</code>, <code>warning</code>, and <code>alert</code>.
     </p>
 
-    <fas-progress [max]="100" [value]="75" color="secondary"></fas-progress>
-    <fas-progress [max]="100" [value]="75" color="success"></fas-progress>
-    <fas-progress [max]="100" [value]="75" color="warning"></fas-progress>
-    <fas-progress [max]="100" [value]="75" color="alert"></fas-progress>
+    <progress
+      fas-progress
+      [max]="100"
+      [value]="75"
+      color="secondary"
+    ></progress>
+    <progress fas-progress [max]="100" [value]="75" color="success"></progress>
+    <progress fas-progress [max]="100" [value]="75" color="warning"></progress>
+    <progress fas-progress [max]="100" [value]="75" color="alert"></progress>
   `,
 })
 export class NativeProgressComponent {}

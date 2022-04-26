@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   Input,
   NgModule,
   ViewEncapsulation,
@@ -11,13 +12,11 @@ import { FasColor } from '../../color';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  selector: 'fas-progress',
+  // Intentionally extending the native `<progress>` element
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'progress[fas-progress]',
   styleUrls: ['../../_global-settings.scss', './progress.component.scss'],
-  template: `
-    <progress [attr.max]="max" [attr.value]="value" [class]="colorClassName">
-      <ng-content></ng-content>
-    </progress>
-  `,
+  template: `<ng-content></ng-content>`,
 })
 export class FasProgressComponent {
   #maxDefault = 1;
@@ -25,8 +24,10 @@ export class FasProgressComponent {
   #value: number | null = null;
 
   @Input()
+  @HostBinding('className')
   color: FasColor = 'primary';
   @Input()
+  @HostBinding('attr.max')
   set max(max: number | null) {
     max ??= this.#maxDefault;
 
@@ -40,6 +41,7 @@ export class FasProgressComponent {
     return this.#max;
   }
   @Input()
+  @HostBinding('attr.value')
   set value(value: number | null) {
     if (value !== null && value <= 0) {
       return;
@@ -53,10 +55,6 @@ export class FasProgressComponent {
   }
   get value(): number | null {
     return this.#value;
-  }
-
-  get colorClassName(): string | null {
-    return this.color === 'primary' ? null : this.color;
   }
 }
 

@@ -100,7 +100,7 @@ $progress-radius: var(--fas-progress-radius);
   }
 }
 
-fas-progress {
+[fas-progress] {
   // Foundation for Angular Sites Progress settings
   --fas-progress-height: 1rem;
   --fas-progress-background: var(--fas-medium-gray);
@@ -108,8 +108,9 @@ fas-progress {
   --fas-progress-meter-background: var(--fas-primary-color);
   --fas-progress-radius: var(--fas-global-radius);
 
-  // Foundation for Sites Progress styles
-  @include foundation-progress-element;
-
   // Foundation for Angular Sites Progress styles
+  display: block;
 }
+
+// Foundation for Sites Progress styles
+@include foundation-progress-element;
