@@ -123,7 +123,7 @@ export class MyModule {}
 ```html
 <!-- my.component.html -->
 <fas-tabs id="basic-tabs">
-  <fas-tab id="panel1" title="Basic tab 1" [active]="true">
+  <fas-tab id="panel1" title="Basic tab 1" active>
     <p>one</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
     <p>

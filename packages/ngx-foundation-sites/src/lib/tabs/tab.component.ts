@@ -1,73 +1,50 @@
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   Attribute,
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   HostBinding,
   Input,
   NgModule,
-  Output,
   ViewEncapsulation,
 } from '@angular/core';
+import { Observable } from 'rxjs';
 
-let serialNumber = 1;
+import { TabPresenter, tabPresenterProviders } from './tab.presenter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tab',
   template: `<ng-content></ng-content>`,
+  viewProviders: [tabPresenterProviders],
 })
 export class FasTabComponent {
-  #id = '';
-  #isActive = false;
-
-  @Input()
-  @HostBinding('class.is-active')
-  get active(): boolean {
-    return this.#isActive;
-  }
-  set active(value: boolean) {
-    if (value === this.#isActive) {
-      return;
-    }
-
-    this.#isActive = value;
-    this.activeChange.emit(value);
-  }
   @Input()
   title = '';
-  @Output()
-  activeChange = new EventEmitter<boolean>();
 
-  @HostBinding('attr.aria-hidden')
-  get ariaHidden(): 'true' | null {
-    return this.active ? null : 'true';
-  }
-  @HostBinding('attr.aria-labelledby')
-  get ariaLabelledBy(): string {
-    return `${this.id}-label`;
-  }
-  @HostBinding('className')
-  get className(): string {
-    return 'tabs-panel';
-  }
-  @HostBinding('id')
-  get id(): string {
-    return this.#id;
+  @HostBinding('class.tabs-panel')
+  get componentClassEnabled(): boolean {
+    return true;
   }
   @HostBinding('attr.role')
   get role(): string {
     return 'tabpanel';
   }
 
-  constructor(@Attribute('id') idAttribute: string | null) {
-    if (!idAttribute) {
-      idAttribute = `fas-tab-${serialNumber}`;
-      serialNumber += 1;
-    }
+  active$: Observable<boolean>;
+  id$: Observable<string>;
 
-    this.#id = idAttribute;
+  constructor(
+    @Attribute('id') idAttribute: string | null,
+    @Attribute('active') activeAttribute: BooleanInput | null,
+    presenter: TabPresenter
+  ) {
+    ({ active$: this.active$, id$: this.id$ } = presenter);
+    activeAttribute = coerceBooleanProperty(activeAttribute);
+    idAttribute ??= null;
+
+    presenter.initialize({ active: activeAttribute, id: idAttribute });
   }
 }
 

@@ -9,7 +9,7 @@ describe('Vertical tabs', () => {
     const { fixture } = await render(
       `
       <fas-tabs [vertical]="vertical">
-        <fas-tab id="panel1" title="Tab 1" [active]="true">
+        <fas-tab id="panel1" title="Tab 1" active>
           <p>one</p>
           <p>Check me out! I'm a super cool Tab panel with text content!</p>
         </fas-tab>

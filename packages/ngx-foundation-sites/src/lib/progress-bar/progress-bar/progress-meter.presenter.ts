@@ -2,8 +2,8 @@ import { Injectable, TypeProvider } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
+import { StyleRenderer } from '../../ui-dom/style-renderer';
 import { ProgressBarStore } from './progress-bar.store';
-import { StyleRenderer } from './style-renderer';
 
 // No local UI state yet
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
