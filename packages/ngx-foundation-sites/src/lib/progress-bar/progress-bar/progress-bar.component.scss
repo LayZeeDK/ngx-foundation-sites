@@ -1,0 +1,80 @@
+// Foundation for Sites global tools
+@import '~foundation-sites/scss/global';
+
+// Foundation for Sites Progress Bar settings
+$progress-height: var(--fas-progress-height);
+$progress-background: var(--fas-progress-background);
+$progress-margin-bottom: var(--fas-progress-margin-bottom);
+$progress-meter-background: var(--fas-progress-meter-background);
+$progress-radius: var(--fas-progress-radius);
+
+// Foundation for Sites Progress Bar tools
+@import '~foundation-sites/scss/components/progress-bar';
+
+// Foundation for Sites Progress Bar tools overrides
+
+//
+// 1. Replace for loop generating themes from the palette with static classes
+//    referring to CSS Custom Properties.
+//
+@mixin foundation-progress-bar {
+  // Progress bar
+  .progress {
+    @include progress-container;
+
+    &.primary /* [1] */ {
+      .progress-meter {
+        background-color: var(--fas-primary-color);
+      }
+    }
+
+    &.secondary /* [1] */ {
+      .progress-meter {
+        background-color: var(--fas-secondary-color);
+      }
+    }
+
+    &.success /* [1] */ {
+      .progress-meter {
+        background-color: var(--fas-success-color);
+      }
+    }
+
+    &.warning /* [1] */ {
+      .progress-meter {
+        background-color: var(--fas-warning-color);
+      }
+    }
+
+    &.alert /* [1] */ {
+      .progress-meter {
+        background-color: var(--fas-alert-color);
+      }
+    }
+  }
+
+  // Inner meter
+  .progress-meter {
+    @include progress-meter;
+  }
+
+  // Inner meter text
+  .progress-meter-text {
+    @include progress-meter-text;
+  }
+}
+
+fas-progress-bar {
+  // Foundation for Angular Sites Progress Bar settings
+  --fas-progress-height: 1rem;
+  --fas-progress-background: var(--fas-medium-gray);
+  --fas-progress-margin-bottom: var(--fas-global-margin);
+  --fas-progress-meter-background: var(--fas-primary-color);
+  --fas-progress-radius: var(--fas-global-radius);
+
+  // Foundation for Angular Sites Progress Bar styles
+  display: block;
+}
+
+// Foundation for Sites Progress Bar styles
+@include foundation-progress-bar;

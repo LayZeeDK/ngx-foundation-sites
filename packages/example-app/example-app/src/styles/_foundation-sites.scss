@@ -114,7 +114,7 @@
   @include foundation-button-group;
   @include foundation-close-button;
   @include foundation-label;
-  @include foundation-progress-bar;
+  // @include foundation-progress-bar; /* [1] */
   @include foundation-slider;
   @include foundation-switch;
   @include foundation-table;

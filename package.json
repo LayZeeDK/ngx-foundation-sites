@@ -36,6 +36,7 @@
     "@angular/platform-browser": "13.3.3",
     "@angular/platform-browser-dynamic": "13.3.3",
     "@angular/router": "13.3.3",
+    "@ngrx/component-store": "13.1.0",
     "foundation-sites": "6.7.4",
     "rxjs": "7.5.5",
     "tslib": "2.3.1",
