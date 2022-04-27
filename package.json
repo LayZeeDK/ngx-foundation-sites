@@ -1,8 +1,5 @@
 {
   "private": true,
-  "name": "ngx-foundation-sites",
-  "version": "0.0.0",
-  "license": "MIT",
   "engines": {
     "node": "16.14.2",
     "npm": "Use Yarn CLI instead of NPM CLI",
