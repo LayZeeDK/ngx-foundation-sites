@@ -3,6 +3,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { Observable } from 'rxjs';
 
 interface ProgessBarState {
+  readonly accessibleText: string | null;
   readonly max: number;
   readonly min: number;
   readonly text: string | null;
@@ -11,6 +12,9 @@ interface ProgessBarState {
 
 @Injectable()
 export class ProgressBarStore extends ComponentStore<ProgessBarState> {
+  accessibleText$: Observable<string | null> = this.select(
+    state => state.accessibleText
+  );
   max$: Observable<number> = this.select(state => state.max);
   min$: Observable<number> = this.select(state => state.min);
   text$: Observable<string | null> = this.select(state => state.text);
@@ -19,6 +23,10 @@ export class ProgressBarStore extends ComponentStore<ProgessBarState> {
   constructor() {
     super(initalState);
   }
+
+  updateAccessibleText = this.updater<string | null>(
+    (state, accessibleText): ProgessBarState => ({ ...state, accessibleText })
+  );
 
   updateMax = this.updater<number>(
     (state, max): ProgessBarState => ({ ...state, max })
@@ -41,6 +49,7 @@ export class ProgressBarStore extends ComponentStore<ProgessBarState> {
 }
 
 const initalState: ProgessBarState = {
+  accessibleText: null,
   max: 100,
   min: 0,
   text: null,

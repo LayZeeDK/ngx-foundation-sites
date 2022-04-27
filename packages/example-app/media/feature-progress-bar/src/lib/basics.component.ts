@@ -29,19 +29,12 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
     </ul>
 
     <p>
-      <!-- TODO(LayZeeDK): Manage inside of the component -->
-      If the value of the progress bar is not numeric, also add the attribute
-      <code>aria-valuetext</code>, which should include a human-readable version
-      of the bar's value.
+      If the value of the progress bar is not numeric, also add the
+      <code>&lt;fas-progress-meter-text&gt;</code> component with an
+      <code>acccessibleText</code> value which should include a human-readable
+      version of the bar's value. This is added to the
+      <code>aria-valuetext</code> attribute of the progress bar.
     </p>
-
-    <fas-progress-bar>
-      <fas-progress-meter
-        [min]="0"
-        [max]="100"
-        [value]="0"
-      ></fas-progress-meter>
-    </fas-progress-bar>
 
     <p>
       Increase the <code>value</code> input property of the
@@ -49,12 +42,12 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
       component to fill the progress bar.
     </p>
 
-    <fas-progress-bar aria-valuetext="50 percent">
-      <fas-progress-meter
-        [min]="0"
-        [max]="100"
-        [value]="50"
-      ></fas-progress-meter>
+    <fas-progress-bar>
+      <fas-progress-meter [min]="0" [max]="100" [value]="50">
+        <fas-progress-meter-text
+          accessibleText="50 percent"
+        ></fas-progress-meter-text>
+      </fas-progress-meter>
     </fas-progress-bar>
   `,
 })

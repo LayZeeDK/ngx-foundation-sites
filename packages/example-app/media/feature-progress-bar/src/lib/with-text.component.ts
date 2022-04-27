@@ -21,9 +21,35 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
       <code>aria-valuetext</code> attribute.
     </p>
 
-    <fas-progress-bar aria-valuetext="25 percent">
+    <fas-progress-bar>
       <fas-progress-meter [min]="0" [max]="100" [value]="25">
         <fas-progress-meter-text>25%</fas-progress-meter-text>
+      </fas-progress-meter>
+    </fas-progress-bar>
+
+    <p>
+      To specify a different <code>aria-valuetext</code> attribute, use the
+      <code>accessibleText</code> value.
+    </p>
+
+    <fas-progress-bar>
+      <fas-progress-meter [min]="0" [max]="100" [value]="25">
+        <fas-progress-meter-text accessibleText="25 percent"
+          >25%</fas-progress-meter-text
+        >
+      </fas-progress-meter>
+    </fas-progress-bar>
+
+    <p>
+      To only use the <code>aria-valuetext</code> attribute, use the
+      <code>accessibleText</code> value and leave out the meter text content.
+    </p>
+
+    <fas-progress-bar>
+      <fas-progress-meter [min]="0" [max]="100" [value]="25">
+        <fas-progress-meter-text
+          accessibleText="25 percent"
+        ></fas-progress-meter-text>
       </fas-progress-meter>
     </fas-progress-bar>
   `,

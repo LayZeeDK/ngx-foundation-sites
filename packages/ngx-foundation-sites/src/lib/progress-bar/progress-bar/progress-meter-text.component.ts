@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   HostBinding,
+  Input,
   NgModule,
   ViewEncapsulation,
 } from '@angular/core';
@@ -28,6 +29,11 @@ export class FasProgressMeterTextComponent implements AfterContentChecked {
   #progressBar: ProgressBarStore;
   get #textContent(): string | null {
     return this.#host.nativeElement.textContent;
+  }
+
+  @Input()
+  set accessibleText(accessibleText: string | null) {
+    this.#progressBar.updateAccessibleText(accessibleText);
   }
 
   @HostBinding('class.progress-meter-text')
