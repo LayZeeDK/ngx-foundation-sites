@@ -88,7 +88,7 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
           warning: activeColor === 'warning',
         })
       ),
-      tap(colorClasses => this.#style.updateClasses(colorClasses))
+      tap(colorClasses => this.#style.toggleClasses(colorClasses))
     )
   );
 }
