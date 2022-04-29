@@ -23,16 +23,18 @@ export class StyleRenderer {
     this.#renderer.removeClass(this.#host.nativeElement, name);
   }
 
-  updateClasses<TClass extends string = string>(
-    classes: Readonly<Record<TClass, boolean>>
-  ): void {
-    Object.entries(classes).forEach(([className, shouldAdd]) => {
-      if (shouldAdd) {
-        this.addClass(className);
-      } else {
-        this.removeClass(className);
-      }
-    });
+  toggleClass(name: string, shouldAdd: boolean): void {
+    if (shouldAdd) {
+      this.addClass(name);
+    } else {
+      this.removeClass(name);
+    }
+  }
+
+  toggleClasses(classes: Readonly<Record<string, boolean>>): void {
+    Object.entries(classes).forEach(([className, shouldAdd]) =>
+      this.toggleClass(className, shouldAdd)
+    );
   }
 
   setStyle(
