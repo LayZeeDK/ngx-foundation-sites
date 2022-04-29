@@ -3,9 +3,9 @@ import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
 import { FasColor } from '../../color';
-import { AriaRenderer } from './aria-renderer';
+import { AriaRenderer } from '../../ui-dom/aria-renderer';
+import { StyleRenderer } from '../../ui-dom/style-renderer';
 import { ProgressBarStore } from './progress-bar.store';
-import { StyleRenderer } from './style-renderer';
 
 interface ProgessBarState {
   readonly color: FasColor;
