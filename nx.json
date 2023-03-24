@@ -34,5 +34,6 @@
       }
     }
   },
-  "defaultProject": "ngx-foundation-sites"
+  "defaultProject": "ngx-foundation-sites",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

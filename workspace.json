@@ -7,5 +7,6 @@
     "example-app-e2e": "packages/example-app/example-app-e2e",
     "example-app-media-feature-progress-bar": "packages/example-app/media/feature-progress-bar",
     "ngx-foundation-sites": "packages/ngx-foundation-sites"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
