@@ -47,7 +47,7 @@
     "@angular/cli": "~15.0.0",
     "@angular/compiler-cli": "15.0.4",
     "@angular/language-service": "15.0.4",
-    "@jscutlery/cypress-harness": "0.3.11",
+    "@jscutlery/cypress-harness": "0.4.2",
     "@nrwl/angular": "15.4.8",
     "@nrwl/cli": "15.4.8",
     "@nrwl/cypress": "15.4.8",
