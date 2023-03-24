@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/example-app/containers/feature-tabs",
   "sourceRoot": "packages/example-app/containers/feature-tabs/src",
   "prefix": "ex-tabs",
   "targets": {

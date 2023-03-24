@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/ngx-foundation-sites",
   "sourceRoot": "packages/ngx-foundation-sites/src",
   "prefix": "fas",
   "targets": {

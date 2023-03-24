@@ -1,5 +1,4 @@
 {
-  "root": "packages/example-app/example-app-e2e",
   "sourceRoot": "packages/example-app/example-app-e2e/src",
   "projectType": "application",
   "targets": {

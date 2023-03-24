@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/example-app/media/feature-progress-bar",
   "sourceRoot": "packages/example-app/media/feature-progress-bar/src",
   "prefix": "ex-progress-bar",
   "targets": {
