@@ -63,7 +63,7 @@
     "@typescript-eslint/eslint-plugin": "5.36.1",
     "@typescript-eslint/parser": "5.36.1",
     "copyfiles": "^2.4.1",
-    "cypress": "9.1.1",
+    "cypress": "^11.2.0",
     "cypress-pipe": "2.0.0",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.1.0",
