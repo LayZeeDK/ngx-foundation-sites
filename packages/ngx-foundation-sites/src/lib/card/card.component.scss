@@ -1,5 +1,5 @@
 // Foundation for Sites global tools
-@import '~foundation-sites/scss/global';
+@import 'foundation-sites/scss/global';
 
 // Foundation for Sites Card settings
 $card-background: var(--fas-card-background);
@@ -12,7 +12,7 @@ $card-padding: var(--fas-card-padding);
 $card-margin-bottom: var(--fas-card-margin-bottom);
 
 // Foundation for Sites Card tools
-@import '~foundation-sites/scss/components/card';
+@import 'foundation-sites/scss/components/card';
 
 // Foundation for Sites Card tools overrides
 
