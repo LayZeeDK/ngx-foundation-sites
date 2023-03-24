@@ -92,7 +92,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/example-app/example-app"],
       "options": {
-        "jestConfig": "packages/example-app/example-app/jest.config.js",
+        "jestConfig": "packages/example-app/example-app/jest.config.ts",
         "passWithNoTests": true
       }
     }

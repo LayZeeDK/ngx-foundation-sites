@@ -23,7 +23,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/ngx-foundation-sites"],
       "options": {
-        "jestConfig": "packages/ngx-foundation-sites/jest.config.js",
+        "jestConfig": "packages/ngx-foundation-sites/jest.config.ts",
         "passWithNoTests": true
       }
     },

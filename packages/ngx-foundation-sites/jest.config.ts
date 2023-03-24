@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   displayName: 'ngx-foundation-sites',
   preset: '../../jest.preset.js',
