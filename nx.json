@@ -1,4 +1,13 @@
 {
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "NTE4OTc0NTctZWM3NS00ZmQ5LTk0NjktNWM5OTUxNjE4YzJkfHJlYWQtd3JpdGU="
+      }
+    }
+  },
   "extends": "nx/presets/core.json",
   "affected": {
     "defaultBase": "main"
@@ -25,20 +34,21 @@
     }
   },
   "npmScope": "ngx-foundation-sites",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "NTE4OTc0NTctZWM3NS00ZmQ5LTk0NjktNWM5OTUxNjE4YzJkfHJlYWQtd3JpdGU="
-      }
-    }
-  },
   "defaultProject": "ngx-foundation-sites",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "pluginsConfig": {
     "@nrwl/js": {
       "analyzeSourceFiles": true
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": ["production", "^production"]
     }
   }
 }
