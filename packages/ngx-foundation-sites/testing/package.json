@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "peerDependencies": {
-    "@angular/cdk": "^13.3.0"
-  }
-}
