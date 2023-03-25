@@ -39,6 +39,41 @@
           "packages/ngx-foundation-sites/testing/**/*.html"
         ]
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "packages/ngx-foundation-sites/.storybook",
+        "browserTarget": "ngx-foundation-sites:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/ngx-foundation-sites",
+        "configDir": "packages/ngx-foundation-sites/.storybook",
+        "browserTarget": "ngx-foundation-sites:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c packages/ngx-foundation-sites/.storybook --url=http://localhost:4400"
+      }
     }
   },
   "tags": []
