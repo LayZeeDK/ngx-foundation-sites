@@ -1,5 +1,5 @@
 // Foundation for Sites global tools
-@import '~foundation-sites/scss/global';
+@import 'foundation-sites/scss/global';
 
 // Foundation for Sites Meter settings
 $meter-height: var(--fas-meter-height);
@@ -10,7 +10,7 @@ $meter-fill-medium: var(--fas-meter-fill-medium);
 $meter-fill-bad: var(--fas-meter-fill-bad);
 
 // Foundation for Sites Meter tools
-@import '~foundation-sites/scss/forms/meter';
+@import 'foundation-sites/scss/forms/meter';
 
 // Foundation for Sites Meter tools overrides
 

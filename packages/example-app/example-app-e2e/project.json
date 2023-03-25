@@ -1,22 +1,24 @@
 {
-  "root": "packages/example-app/example-app-e2e",
+  "name": "example-app-e2e",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/example-app/example-app-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "packages/example-app/example-app-e2e/cypress.json",
-        "headed": true
+        "cypressConfig": "packages/example-app/example-app-e2e/cypress.config.ts",
+        "headed": true,
+        "testingType": "e2e"
       },
       "configurations": {
         "ci-development": {
-          "cypressConfig": "packages/example-app/example-app-e2e/cypress.ci.json",
+          "cypressConfig": "packages/example-app/example-app-e2e/cypress.ci.config.ts",
           "devServerTarget": "example-app:serve:e2e-development",
           "headed": false
         },
         "ci-production": {
-          "cypressConfig": "packages/example-app/example-app-e2e/cypress.ci.json",
+          "cypressConfig": "packages/example-app/example-app-e2e/cypress.ci.config.ts",
           "devServerTarget": "example-app:serve:e2e-production",
           "headed": false
         },
@@ -44,9 +46,10 @@
     "watch": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "packages/example-app/example-app-e2e/cypress.json",
+        "cypressConfig": "packages/example-app/example-app-e2e/cypress.config.ts",
         "headed": true,
-        "watch": true
+        "watch": true,
+        "testingType": "e2e"
       },
       "configurations": {
         "development": {

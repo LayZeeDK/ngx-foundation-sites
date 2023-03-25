@@ -1,6 +1,7 @@
 {
+  "name": "example-app-containers-feature-tabs",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "packages/example-app/containers/feature-tabs",
   "sourceRoot": "packages/example-app/containers/feature-tabs/src",
   "prefix": "ex-tabs",
   "targets": {

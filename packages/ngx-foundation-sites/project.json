@@ -1,12 +1,13 @@
 {
+  "name": "ngx-foundation-sites",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "packages/ngx-foundation-sites",
   "sourceRoot": "packages/ngx-foundation-sites/src",
   "prefix": "fas",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/packages/ngx-foundation-sites"],
+      "outputs": ["{workspaceRoot}/dist/packages/ngx-foundation-sites"],
       "options": {
         "project": "packages/ngx-foundation-sites/ng-package.json"
       },
@@ -22,9 +23,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/ngx-foundation-sites"],
+      "outputs": ["{workspaceRoot}/coverage/packages/ngx-foundation-sites"],
       "options": {
-        "jestConfig": "packages/ngx-foundation-sites/jest.config.js",
+        "jestConfig": "packages/ngx-foundation-sites/jest.config.ts",
         "passWithNoTests": true
       }
     },

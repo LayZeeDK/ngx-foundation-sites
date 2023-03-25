@@ -1,5 +1,5 @@
 // Foundation for Sites global tools
-@import '~foundation-sites/scss/global';
+@import 'foundation-sites/scss/global';
 
 // Foundation for Sites Progress settings
 $progress-height: var(--fas-progress-height);
@@ -9,7 +9,7 @@ $progress-meter-background: var(--fas-progress-meter-background);
 $progress-radius: var(--fas-progress-radius);
 
 // Foundation for Sites Progress tools
-@import '~foundation-sites/scss/forms/progress';
+@import 'foundation-sites/scss/forms/progress';
 
 // Foundation for Sites Progress tools overrides
 

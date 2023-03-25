@@ -1,6 +1,7 @@
 {
+  "name": "example-app-media-feature-progress-bar",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "packages/example-app/media/feature-progress-bar",
   "sourceRoot": "packages/example-app/media/feature-progress-bar/src",
   "prefix": "ex-progress-bar",
   "targets": {

@@ -3,11 +3,17 @@
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.4.1"
   },
   "peerDependencies": {
-    "@angular/common": "^13.3.0",
-    "@angular/core": "^13.3.0",
-    "@ngrx/component-store": "^13.1.0"
+    "@angular/cdk": "^15.0.0",
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@ngrx/component-store": "^15.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@angular/cdk": {
+      "optional": true
+    }
   }
 }

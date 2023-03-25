@@ -1,6 +1,7 @@
 {
+  "name": "example-app-containers-feature-card",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "packages/example-app/containers/feature-card",
   "sourceRoot": "packages/example-app/containers/feature-card/src",
   "prefix": "ex-card",
   "targets": {
