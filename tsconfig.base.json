@@ -24,6 +24,9 @@
       "@example-app/media/feature-progress-bar": [
         "packages/example-app/media/feature-progress-bar/src/index.ts"
       ],
+      "@workspace-storybook/ui-markdown": [
+        "packages/storybook/ui-markdown/src/index.ts"
+      ],
       "@workspace-storybook/ui-security": [
         "packages/storybook/ui-security/src/index.ts"
       ],
