@@ -24,6 +24,9 @@
       "@example-app/media/feature-progress-bar": [
         "packages/example-app/media/feature-progress-bar/src/index.ts"
       ],
+      "@workspace-storybook/ui-security": [
+        "packages/storybook/ui-security/src/index.ts"
+      ],
       "ngx-foundation-sites": ["packages/ngx-foundation-sites/src/index.ts"],
       "ngx-foundation-sites/testing": [
         "packages/ngx-foundation-sites/testing/src/index.ts"
