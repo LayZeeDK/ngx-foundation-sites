@@ -5,5 +5,8 @@ addParameters({
   docs: {
     iframeHeight: 400,
     page: DocsPage,
+    source: {
+      state: 'open',
+    },
   },
 });
