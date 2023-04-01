@@ -25,6 +25,8 @@ addParameters({
             'Sizing',
             ['X-Y Block Grid', 'Flex Box Grid'],
           ],
+          'Tabs',
+          ['Basics', 'Vertical Tabs', 'Collapsting Tabs', 'Tabs and URLs'],
         ],
       ],
     },
