@@ -3,7 +3,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { FasProgressBarModule } from './progress-bar.module';
 
 const meta: Meta = {
-  title: 'Media/Progress Bar/Colors',
+  title: 'Media/Progress Bar',
   decorators: [
     moduleMetadata({
       imports: [FasProgressBarModule],

@@ -50,6 +50,8 @@
       },
       "configurations": {
         "ci": {
+          "browserTarget": "ngx-foundation-sites:build-storybook",
+          "ci": true,
           "quiet": true
         }
       }
@@ -66,14 +68,9 @@
       },
       "configurations": {
         "ci": {
+          "browserTarget": "ngx-foundation-sites:build-storybook",
           "quiet": true
         }
-      }
-    },
-    "test-storybook": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "test-storybook -c packages/ngx-foundation-sites/.storybook --url=http://localhost:4400"
       }
     }
   },

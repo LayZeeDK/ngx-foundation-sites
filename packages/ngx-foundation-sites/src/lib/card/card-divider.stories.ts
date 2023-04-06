@@ -4,7 +4,7 @@ import { SanitizeUrlPipe } from '@workspace-storybook/ui-security';
 import { FasCardModule } from './card.module';
 
 const meta: Meta = {
-  title: 'Containers/Card/Card Divider',
+  title: 'Containers/Card',
   decorators: [
     moduleMetadata({
       imports: [FasCardModule, MarkdownToHtmlPipe, SanitizeUrlPipe],

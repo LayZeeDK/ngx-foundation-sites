@@ -4,7 +4,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { FasTabsModule } from './tabs.module';
 
 const meta: Meta = {
-  title: 'Containers/Tabs/Vertical Tabs',
+  title: 'Containers/Tabs',
   decorators: [
     moduleMetadata({
       imports: [FasTabsModule],
