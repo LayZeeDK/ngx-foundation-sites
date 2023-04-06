@@ -2,7 +2,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { FasMeterModule } from './meter.module';
 
 const meta: Meta = {
-  title: 'Media/Progress Bar/Native Meter',
+  title: 'Media/Progress Bar',
   decorators: [
     moduleMetadata({
       imports: [FasMeterModule],
