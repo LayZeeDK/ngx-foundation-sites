@@ -69,12 +69,6 @@
           "quiet": true
         }
       }
-    },
-    "test-storybook": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "test-storybook -c packages/ngx-foundation-sites/.storybook --url=http://localhost:4400"
-      }
     }
   },
   "tags": []

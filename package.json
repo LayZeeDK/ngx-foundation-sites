@@ -69,7 +69,6 @@
     "@storybook/core-common": "^6.5.15",
     "@storybook/core-server": "^6.5.15",
     "@storybook/manager-webpack5": "^6.5.15",
-    "@storybook/test-runner": "^0.7.2",
     "@testing-library/angular": "13.4.0",
     "@testing-library/cypress": "8.0.7",
     "@types/jest": "29.4.4",
