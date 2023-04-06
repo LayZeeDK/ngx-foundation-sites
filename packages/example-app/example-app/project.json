@@ -19,7 +19,7 @@
           "packages/example-app/example-app/src/favicon.ico",
           "packages/example-app/example-app/src/assets"
         ],
-        "styles": ["packages/example-app/example-app/src/styles.scss"],
+        "styles": ["packages/ngx-foundation-sites/src/storybook/styles.scss"],
         "scripts": []
       },
       "configurations": {
