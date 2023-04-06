@@ -61,7 +61,8 @@
         "outputDir": "dist/storybook/ngx-foundation-sites",
         "configDir": "packages/ngx-foundation-sites/.storybook",
         "browserTarget": "ngx-foundation-sites:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": ["packages/example-app/example-app/src/styles.scss"]
       },
       "configurations": {
         "ci": {
