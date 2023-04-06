@@ -16,8 +16,8 @@ import { FasProgressBarModule } from 'ngx-foundation-sites';
 
     <p>
       You can add text inside the
-      <code>&lt;progress-meter-text&gt;</code> component. The text you use in
-      the meter is automatically used in the
+      <code>&lt;fas-progress-meter-text&gt;</code> component. The text you use
+      in the meter is automatically used in the
       <code>aria-valuetext</code> attribute.
     </p>
 

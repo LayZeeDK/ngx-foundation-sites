@@ -1,25 +1,32 @@
-import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
-import { FasTabsModule } from 'ngx-foundation-sites';
+import { provideLocationMocks } from '@angular/common/testing';
+import { provideRouter } from '@angular/router';
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { FasTabsModule } from './tabs.module';
 
-@Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'ex-tabs-collapsing-tabs',
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
+const meta: Meta = {
+  title: 'Containers/Tabs/Collapsing Tabs',
+  decorators: [
+    moduleMetadata({
+      imports: [FasTabsModule],
+      providers: [provideRouter([]), provideLocationMocks()],
+    }),
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Set the \`collapsing\` input property of a tabstrip to collapse active tabs.`,
+      },
+    },
+  },
+};
+
+export default meta;
+
+export const CollapsingTabs: Story = args => ({
+  props: args,
   template: `
-    <h2>Collapsing Tabs</h2>
-
-    <p>
-      Set the <code>collapsing</code> input property of a tabstrip to collapse
-      active tabs.
-    </p>
-
-    <fas-tabs id="collapsing-tabs" [collapsing]="true">
+    <fas-tabs id="collapsing-tabs" [collapsing]="collapsing">
       <fas-tab id="panel1c" title="Collapsing tab 1" [active]="true">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -48,12 +55,7 @@ import { FasTabsModule } from 'ngx-foundation-sites';
       </fas-tab>
     </fas-tabs>
   `,
-})
-export class CollapsingTabsComponent {}
-
-@NgModule({
-  declarations: [CollapsingTabsComponent],
-  exports: [CollapsingTabsComponent],
-  imports: [FasTabsModule],
-})
-export class CollapsingTabsScam {}
+});
+CollapsingTabs.args = {
+  collapsing: true,
+};

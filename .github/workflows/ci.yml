@@ -27,6 +27,8 @@ jobs:
         run: yarn build
       - name: Build example application
         run: yarn build:app
+      - name: Build Storybook
+        run: yarn build:storybook --configuration=ci
 
   lint:
     name: Lint

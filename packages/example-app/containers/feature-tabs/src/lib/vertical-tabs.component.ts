@@ -20,7 +20,7 @@ import { FasTabsModule } from 'ngx-foundation-sites';
     <h2>Vertical Tabs</h2>
 
     <p>
-      Set the <code>vertical</code> input property to a tabstrip to stack tabs
+      Set the <code>vertical</code> input property of a tabstrip to stack tabs
       vertically.
     </p>
 
