@@ -15,12 +15,14 @@
     "build": "nx build ngx-foundation-sites",
     "postbuild": "yarn assets",
     "build:app": "nx build example-app",
+    "build:storybook": "nx run ngx-foundation-sites:build-storybook",
     "e2e": "nx run example-app-e2e:e2e",
     "e2e:ci": "nx run example-app-e2e:e2e:ci-development",
     "e2e:watch": "nx run example-app-e2e:watch",
     "format": "nx format:write",
     "lint": "nx run-many --target=lint --all",
     "start": "nx serve example-app",
+    "storybook": "nx run ngx-foundation-sites:storybook",
     "test": "nx run-many --target=test --all"
   },
   "dependencies": {
