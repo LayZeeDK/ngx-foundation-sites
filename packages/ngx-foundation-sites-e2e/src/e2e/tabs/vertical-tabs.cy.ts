@@ -1,9 +1,8 @@
-import * as Tabs from '../../support/tabs/tabs.po';
 import * as VerticalTabs from '../../support/tabs/vertical-tabs.po';
 
 describe('Vertical tabs', () => {
   beforeEach(() => {
-    Tabs.navigateTo();
+    VerticalTabs.navigateTo();
   });
 
   it('displays six basic tabs', () => {

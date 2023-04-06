@@ -1,9 +1,8 @@
 import * as BasicTabs from '../../support/tabs/basic-tabs.po';
-import * as Tabs from '../../support/tabs/tabs.po';
 
 describe('Basic tabs', () => {
   beforeEach(() => {
-    Tabs.navigateTo();
+    BasicTabs.navigateTo();
   });
 
   it('displays six basic tabs', () => {

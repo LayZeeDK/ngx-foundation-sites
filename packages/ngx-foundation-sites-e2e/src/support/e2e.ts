@@ -14,4 +14,5 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands';
+import '@jscutlery/cypress-harness/support';
+import '@testing-library/cypress/add-commands';

@@ -9,11 +9,17 @@
       "options": {
         "cypressConfig": "packages/ngx-foundation-sites-e2e/cypress.config.ts",
         "devServerTarget": "ngx-foundation-sites:storybook",
+        "headed": true,
         "testingType": "e2e"
       },
       "configurations": {
         "ci": {
-          "devServerTarget": "ngx-foundation-sites:storybook:ci"
+          "cypressConfig": "packages/ngx-foundation-sites-e2e/cypress.ci.config.ts",
+          "devServerTarget": "ngx-foundation-sites:storybook:ci",
+          "headed": false
+        },
+        "watch": {
+          "watch": true
         }
       }
     },

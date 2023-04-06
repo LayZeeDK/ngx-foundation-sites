@@ -1,9 +1,8 @@
 import * as CollapsingTabs from '../../support/tabs/collapsing-tabs.po';
-import * as Tabs from '../../support/tabs/tabs.po';
 
 describe('Collapsing tabs', () => {
   beforeEach(() => {
-    Tabs.navigateTo();
+    CollapsingTabs.navigateTo();
   });
 
   it('displays 4 collapsing tabs', () => {
