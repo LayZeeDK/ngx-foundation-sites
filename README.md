@@ -50,15 +50,15 @@ Documentation is currently only available locally:
    yarn install
    ```
 
-3. Start the example application server:
+3. Start the Storybook server:
    ```pwsh
    yarn start
    ```
 
 ## Theming
 
-See the `example-app` application project in this repository for an example of
-how to set up a theme. We support CSS Custom Properties.
+See the `styles.scss` file in this repository for an example of how to set up a
+theme. We support CSS Custom Properties.
 
 ## Features
 
