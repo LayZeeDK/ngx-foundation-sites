@@ -1,9 +1,16 @@
-import { ChangeDetectionStrategy, Component, HostBinding, NgModule, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card-divider',
+  imports: [],
   template: `<ng-content></ng-content>`,
 })
 export class FasCardDividerComponent {
@@ -12,9 +19,3 @@ export class FasCardDividerComponent {
     return 'card-divider';
   }
 }
-
-@NgModule({
-  declarations: [FasCardDividerComponent],
-  exports: [FasCardDividerComponent],
-})
-export class FasCardDividerScam {}

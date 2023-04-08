@@ -2,19 +2,10 @@
 export { FasColor } from './lib/color';
 
 // CARD
-export {
-  FasCardDividerComponent,
-  FasCardDividerScam as _FasCardDividerScam,
-} from './lib/card/card-divider.component';
-export {
-  FasCardSectionComponent,
-  FasCardSectionScam as _FasCardSectionScam,
-} from './lib/card/card-section.component';
-export {
-  FasCardComponent,
-  FasCardScam as _FasCardScam,
-} from './lib/card/card.component';
-export { FasCardModule } from './lib/card/card.module';
+export { fasCardDeclarables } from './lib/card/card-declarables';
+export { FasCardDividerComponent } from './lib/card/card-divider.component';
+export { FasCardSectionComponent } from './lib/card/card-section.component';
+export { FasCardComponent } from './lib/card/card.component';
 
 // PROGRESS BAR
 // -> METER

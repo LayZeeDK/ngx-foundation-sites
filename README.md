@@ -68,21 +68,16 @@ theme. We support CSS Custom Properties.
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasCardModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { fasCardDeclarables } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [fasCardDeclarables],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasCardModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html

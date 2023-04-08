@@ -1,11 +1,11 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { FasCardModule } from './card.module';
+import { fasCardDeclarables } from './card-declarables';
 
 const meta: Meta = {
   title: 'Containers/Card/Sizing',
   decorators: [
     moduleMetadata({
-      imports: [FasCardModule],
+      imports: [fasCardDeclarables],
     }),
   ],
   parameters: {
