@@ -11,6 +11,12 @@ import {
 
 let serialNumber = 1;
 
+export abstract class FasTabToken {
+  abstract active: boolean;
+  abstract get id(): string;
+  abstract title: string;
+}
+
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,8 +24,14 @@ let serialNumber = 1;
   selector: 'fas-tab',
   imports: [],
   template: `<ng-content></ng-content>`,
+  providers: [
+    {
+      provide: FasTabToken,
+      useExisting: FasTabComponent,
+    },
+  ],
 })
-export class FasTabComponent {
+export class FasTabComponent implements FasTabToken {
   #id = '';
   #isActive = false;
 

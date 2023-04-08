@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { FasTabComponent } from './tab.component';
+import { FasTabToken } from './tab.component';
 
 @Component({
   standalone: true,
@@ -50,10 +50,10 @@ export class FasTabsComponent {
   @Input()
   vertical = false;
 
-  @ContentChildren(FasTabComponent)
-  tabs!: QueryList<FasTabComponent>;
+  @ContentChildren(FasTabToken)
+  tabs!: QueryList<FasTabToken>;
 
-  selectTab(selectedTab: FasTabComponent): void {
+  selectTab(selectedTab: FasTabToken): void {
     const activeTab = this.tabs.find(t => t.active);
 
     if (this.collapsing && activeTab === selectedTab) {
