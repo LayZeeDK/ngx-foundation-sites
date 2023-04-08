@@ -9,7 +9,8 @@
     "@angular/cdk": "^15.0.0",
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
-    "@ngrx/component-store": "^15.0.0"
+    "@ngrx/component-store": "^15.0.0",
+    "foundation-sites": "^6.7.0"
   },
   "peerDependenciesMeta": {
     "@angular/cdk": {
