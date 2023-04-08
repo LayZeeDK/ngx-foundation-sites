@@ -1,4 +1,4 @@
-import { Injectable, TypeProvider } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
@@ -9,6 +9,10 @@ import { ProgressBarStore } from './progress-bar.store';
 
 interface ProgessBarState {
   readonly color: FasColor;
+}
+
+export function provideProgressBarPresenter(): Provider[] {
+  return [ProgressBarPresenter, AriaRenderer, StyleRenderer];
 }
 
 @Injectable()
@@ -96,9 +100,3 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
 const initalState: ProgessBarState = {
   color: 'primary',
 };
-
-export const progressBarPresenterProviders: TypeProvider[] = [
-  ProgressBarPresenter,
-  AriaRenderer,
-  StyleRenderer,
-];

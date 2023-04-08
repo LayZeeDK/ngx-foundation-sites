@@ -9,7 +9,7 @@ import {
 import { ProgressBarStore } from './progress-bar.store';
 import {
   ProgressMeterPresenter,
-  progressMeterPresenterProviders,
+  provideProgressMeterPresenter,
 } from './progress-meter.presenter';
 
 @Component({
@@ -19,7 +19,7 @@ import {
   selector: 'fas-progress-meter',
   imports: [],
   template: `<ng-content select="fas-progress-meter-text"></ng-content>`,
-  viewProviders: [progressMeterPresenterProviders],
+  viewProviders: [provideProgressMeterPresenter()],
 })
 export class FasProgressMeterComponent {
   #progressBar: ProgressBarStore;

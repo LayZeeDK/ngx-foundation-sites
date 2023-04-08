@@ -9,7 +9,7 @@ import {
 import { FasColor } from '../../color';
 import {
   ProgressBarPresenter,
-  progressBarPresenterProviders,
+  provideProgressBarPresenter,
 } from './progress-bar.presenter';
 import { ProgressBarStore } from './progress-bar.store';
 
@@ -22,7 +22,7 @@ import { ProgressBarStore } from './progress-bar.store';
   styleUrls: ['../../_global-settings.scss', './progress-bar.component.scss'],
   imports: [],
   template: `<ng-content select="fas-progress-meter"></ng-content>`,
-  viewProviders: [progressBarPresenterProviders],
+  viewProviders: [provideProgressBarPresenter()],
 })
 export class FasProgressBarComponent {
   #presenter: ProgressBarPresenter;
