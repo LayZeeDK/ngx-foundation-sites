@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { FasColor } from '../../color';
+import { FasColor } from '../../colors/color';
 import {
   ProgressBarPresenter,
   provideProgressBarPresenter,

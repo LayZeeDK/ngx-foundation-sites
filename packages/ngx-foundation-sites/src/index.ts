@@ -1,5 +1,5 @@
 // SHARED
-export { FasColor } from './lib/color';
+export { FasColor } from './lib/colors/color';
 
 // CARD
 export { fasCardDeclarables } from './lib/card/card-declarables';
