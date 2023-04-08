@@ -1,13 +1,13 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { MarkdownToHtmlPipe } from '@workspace-storybook/ui-markdown';
 import { SanitizeUrlPipe } from '@workspace-storybook/ui-security';
-import { FasCardModule } from './card.module';
+import { fasCardDeclarables } from './card-declarables';
 
 const meta: Meta = {
   title: 'Containers/Card',
   decorators: [
     moduleMetadata({
-      imports: [FasCardModule, MarkdownToHtmlPipe, SanitizeUrlPipe],
+      imports: [fasCardDeclarables, MarkdownToHtmlPipe, SanitizeUrlPipe],
     }),
   ],
   parameters: {

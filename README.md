@@ -68,21 +68,16 @@ theme. We support CSS Custom Properties.
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasCardModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { fasCardDeclarables } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [fasCardDeclarables],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasCardModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html
@@ -103,21 +98,16 @@ export class MyModule {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasTabsModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { fasTabsDeclarables } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [fasTabsDeclarables],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasTabsModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html
@@ -167,21 +157,16 @@ export class MyModule {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasProgressBarModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { fasProgressBarDeclarables } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [fasProgressBarDeclarables],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasProgressBarModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html
@@ -199,21 +184,16 @@ export class MyModule {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasProgressModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { FasProgressComponent } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [FasProgressComponent],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasProgressModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html
@@ -225,21 +205,16 @@ export class MyModule {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasMeterModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { FasMeterComponent } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [FasMeterComponent],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasMeterModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html

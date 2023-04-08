@@ -1,22 +1,23 @@
-import { CommonModule } from '@angular/common';
+import { NgFor } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   Input,
-  NgModule,
   QueryList,
   ViewEncapsulation,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { FasTabComponent } from './tab.component';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tabs',
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
+  imports: [NgFor, RouterLink],
   template: `
     <ul class="tabs" [class.vertical]="vertical">
       <li
@@ -62,10 +63,3 @@ export class FasTabsComponent {
     }
   }
 }
-
-@NgModule({
-  declarations: [FasTabsComponent],
-  exports: [FasTabsComponent],
-  imports: [CommonModule, RouterModule],
-})
-export class FasTabsScam {}

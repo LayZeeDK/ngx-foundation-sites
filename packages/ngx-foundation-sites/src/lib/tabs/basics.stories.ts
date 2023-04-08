@@ -1,13 +1,13 @@
 import { provideLocationMocks } from '@angular/common/testing';
 import { provideRouter } from '@angular/router';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { FasTabsModule } from './tabs.module';
+import { fasTabsDeclarables } from './tabs-declarables';
 
 const meta: Meta = {
   title: 'Containers/Tabs',
   decorators: [
     moduleMetadata({
-      imports: [FasTabsModule],
+      imports: [fasTabsDeclarables],
       providers: [provideRouter([]), provideLocationMocks()],
     }),
   ],

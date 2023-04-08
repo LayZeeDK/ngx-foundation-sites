@@ -1,10 +1,17 @@
-import { ChangeDetectionStrategy, Component, HostBinding, NgModule, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card',
   styleUrls: ['../_global-settings.scss', './card.component.scss'],
+  imports: [],
   template: ` <ng-content></ng-content> `,
 })
 export class FasCardComponent {
@@ -13,9 +20,3 @@ export class FasCardComponent {
     return 'card';
   }
 }
-
-@NgModule({
-  declarations: [FasCardComponent],
-  exports: [FasCardComponent],
-})
-export class FasCardScam {}

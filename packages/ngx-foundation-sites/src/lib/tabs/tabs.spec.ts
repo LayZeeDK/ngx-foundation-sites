@@ -1,9 +1,10 @@
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideLocationMocks } from '@angular/common/testing';
+import { provideRouter } from '@angular/router';
 import { render } from '@testing-library/angular';
 import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 
-import { FasTabsModule } from './tabs.module';
+import { fasTabsDeclarables } from './tabs-declarables';
 
 describe('Tabs', () => {
   async function setup() {
@@ -26,7 +27,10 @@ describe('Tabs', () => {
           </fas-tab>
         </fas-tabs>
       `,
-      { imports: [FasTabsModule, RouterTestingModule] }
+      {
+        imports: [fasTabsDeclarables],
+        providers: [provideRouter([]), provideLocationMocks()],
+      }
     );
 
     const loader = TestbedHarnessEnvironment.loader(fixture);

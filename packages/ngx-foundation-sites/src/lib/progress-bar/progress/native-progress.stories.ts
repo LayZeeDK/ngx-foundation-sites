@@ -1,11 +1,11 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { FasProgressModule } from './progress.module';
+import { FasProgressComponent } from './progress.component';
 
 const meta: Meta = {
   title: 'Media/Progress Bar/Native Progress',
   decorators: [
     moduleMetadata({
-      imports: [FasProgressModule],
+      imports: [FasProgressComponent],
     }),
   ],
   parameters: {

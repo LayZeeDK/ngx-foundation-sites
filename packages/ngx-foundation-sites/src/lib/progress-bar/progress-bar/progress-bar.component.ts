@@ -3,7 +3,6 @@ import {
   Component,
   HostBinding,
   Input,
-  NgModule,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -15,11 +14,13 @@ import {
 import { ProgressBarStore } from './progress-bar.store';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [ProgressBarStore],
   selector: 'fas-progress-bar',
   styleUrls: ['../../_global-settings.scss', './progress-bar.component.scss'],
+  imports: [],
   template: `<ng-content select="fas-progress-meter"></ng-content>`,
   viewProviders: [progressBarPresenterProviders],
 })
@@ -44,9 +45,3 @@ export class FasProgressBarComponent {
     this.#presenter = presenter;
   }
 }
-
-@NgModule({
-  declarations: [FasProgressBarComponent],
-  exports: [FasProgressBarComponent],
-})
-export class FasProgressBarScam {}
