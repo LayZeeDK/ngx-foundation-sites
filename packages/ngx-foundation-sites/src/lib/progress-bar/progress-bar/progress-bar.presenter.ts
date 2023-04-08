@@ -1,4 +1,4 @@
-import { Injectable, Provider } from '@angular/core';
+import { inject, Injectable, Provider } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
@@ -17,25 +17,20 @@ export function provideProgressBarPresenter(): Provider[] {
 
 @Injectable()
 export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
-  #aria: AriaRenderer;
-  #style: StyleRenderer;
+  #aria = inject(AriaRenderer);
+  #progressBarState = inject(ProgressBarStore);
+  #style = inject(StyleRenderer);
 
-  constructor(
-    progressBarState: ProgressBarStore,
-    aria: AriaRenderer,
-    style: StyleRenderer
-  ) {
+  constructor() {
     super(initalState);
-    this.#aria = aria;
-    this.#style = style;
 
-    this.#renderAriaValuemaxAttribute(progressBarState.max$);
-    this.#renderAriaValueminAttribute(progressBarState.min$);
-    this.#renderAriaValuenowAttribute(progressBarState.value$);
+    this.#renderAriaValuemaxAttribute(this.#progressBarState.max$);
+    this.#renderAriaValueminAttribute(this.#progressBarState.min$);
+    this.#renderAriaValuenowAttribute(this.#progressBarState.value$);
     this.#renderAriaValuetextAttribute(
       this.select(
-        progressBarState.accessibleText$,
-        progressBarState.text$,
+        this.#progressBarState.accessibleText$,
+        this.#progressBarState.text$,
         (accessibleText, text) => accessibleText ?? text
       )
     );

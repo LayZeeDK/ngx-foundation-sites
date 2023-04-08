@@ -1,5 +1,6 @@
 import {
   ElementRef,
+  inject,
   Injectable,
   Renderer2,
   RendererStyleFlags2,
@@ -7,13 +8,8 @@ import {
 
 @Injectable()
 export class StyleRenderer {
-  #host: ElementRef<HTMLElement>;
-  #renderer: Renderer2;
-
-  constructor(host: ElementRef, renderer: Renderer2) {
-    this.#host = host;
-    this.#renderer = renderer;
-  }
+  #host: ElementRef<HTMLElement> = inject(ElementRef);
+  #renderer = inject(Renderer2);
 
   addClass(name: string): void {
     this.#renderer.addClass(this.#host.nativeElement, name);

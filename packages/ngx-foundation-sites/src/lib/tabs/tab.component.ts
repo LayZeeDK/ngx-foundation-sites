@@ -4,6 +4,7 @@ import {
   ElementRef,
   EventEmitter,
   HostBinding,
+  inject,
   Input,
   Output,
   ViewEncapsulation,
@@ -32,6 +33,7 @@ export abstract class FasTabToken {
   ],
 })
 export class FasTabComponent implements FasTabToken {
+  #element: ElementRef<HTMLElement> = inject(ElementRef);
   #id = '';
   #isActive = false;
 
@@ -74,8 +76,8 @@ export class FasTabComponent implements FasTabToken {
     return 'tabpanel';
   }
 
-  constructor(element: ElementRef<HTMLElement>) {
-    let idAttribute = element.nativeElement.getAttribute('id');
+  constructor() {
+    let idAttribute = this.#element.nativeElement.getAttribute('id');
 
     if (!idAttribute) {
       idAttribute = `fas-tab-${serialNumber}`;
