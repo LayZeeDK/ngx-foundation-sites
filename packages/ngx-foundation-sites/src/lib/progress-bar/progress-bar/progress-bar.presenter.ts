@@ -38,10 +38,10 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
     this.#renderColorClasses(this.select(state => state.color));
   }
 
-  updateColor = this.updater<FasColor>(
+  updateColor = this.updater<FasColor | null>(
     (state, color): ProgessBarState => ({
       ...state,
-      color,
+      color: color ?? initalState.color,
     })
   );
 

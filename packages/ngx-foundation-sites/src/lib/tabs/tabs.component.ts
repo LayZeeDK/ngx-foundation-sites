@@ -46,10 +46,25 @@ import { FasTabToken } from './tab.component';
   `,
 })
 export class FasTabsComponent {
+  #collapsingDefault = false;
+  #collapsing = this.#collapsingDefault;
+  #verticalDefault = false;
+  #vertical = this.#verticalDefault;
+
   @Input()
-  collapsing = false;
+  get collapsing(): boolean {
+    return this.#collapsing;
+  }
+  set collapsing(value: boolean | null) {
+    this.#collapsing = value ?? this.#collapsingDefault;
+  }
   @Input()
-  vertical = false;
+  get vertical(): boolean {
+    return this.#vertical;
+  }
+  set vertical(value: boolean | null) {
+    this.#vertical = value ?? this.#verticalDefault;
+  }
 
   @ContentChildren(FasTabToken)
   tabs!: QueryList<FasTabToken>;

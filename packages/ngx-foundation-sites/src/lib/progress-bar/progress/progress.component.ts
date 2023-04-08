@@ -22,13 +22,19 @@ import { defaultColor } from '../../colors/default-color';
   template: `<ng-content></ng-content>`,
 })
 export class FasProgressComponent {
+  #color: FasColor = defaultColor;
   #maxDefault = 1;
   #max = this.#maxDefault;
   #value: number | null = null;
 
   @Input()
   @HostBinding('className')
-  color: FasColor = defaultColor;
+  get color(): FasColor {
+    return this.#color;
+  }
+  set color(color: FasColor | null) {
+    this.#color = color ?? defaultColor;
+  }
   @Input()
   @HostBinding('attr.max')
   set max(max: number | null) {

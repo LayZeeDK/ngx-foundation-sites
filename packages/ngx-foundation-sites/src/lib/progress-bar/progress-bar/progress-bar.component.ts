@@ -30,7 +30,7 @@ export class FasProgressBarComponent {
   #presenter = inject(ProgressBarPresenter);
 
   @Input()
-  set color(color: FasColor) {
+  set color(color: FasColor | null) {
     this.#presenter.updateColor(color);
   }
 

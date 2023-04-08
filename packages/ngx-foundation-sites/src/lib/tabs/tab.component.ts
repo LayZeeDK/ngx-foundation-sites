@@ -36,14 +36,19 @@ export abstract class FasTabToken {
 export class FasTabComponent implements FasTabToken {
   #element: ElementRef<HTMLElement> = inject(ElementRef);
   #id = '';
-  #isActive = false;
+  #isActiveDefault = false;
+  #isActive = this.#isActiveDefault;
+  #titleDefault = '';
+  #title = this.#titleDefault;
 
   @Input()
   @HostBinding('class.is-active')
   get active(): boolean {
     return this.#isActive;
   }
-  set active(value: boolean) {
+  set active(value: boolean | null) {
+    value ??= this.#isActiveDefault;
+
     if (value === this.#isActive) {
       return;
     }
@@ -52,7 +57,12 @@ export class FasTabComponent implements FasTabToken {
     this.activeChange.emit(value);
   }
   @Input()
-  title = '';
+  get title(): string {
+    return this.#title;
+  }
+  set title(title: string | null) {
+    this.#title = title ?? this.#titleDefault;
+  }
   @Output()
   activeChange = new EventEmitter<boolean>();
 

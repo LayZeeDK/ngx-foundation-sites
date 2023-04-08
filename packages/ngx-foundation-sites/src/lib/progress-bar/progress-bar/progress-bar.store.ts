@@ -28,12 +28,18 @@ export class ProgressBarStore extends ComponentStore<ProgessBarState> {
     (state, accessibleText): ProgessBarState => ({ ...state, accessibleText })
   );
 
-  updateMax = this.updater<number>(
-    (state, max): ProgessBarState => ({ ...state, max })
+  updateMax = this.updater<number | null>(
+    (state, max): ProgessBarState => ({
+      ...state,
+      max: max ?? initalState.max,
+    })
   );
 
-  updateMin = this.updater<number>(
-    (state, min): ProgessBarState => ({ ...state, min })
+  updateMin = this.updater<number | null>(
+    (state, min): ProgessBarState => ({
+      ...state,
+      min: min ?? initalState.min,
+    })
   );
 
   updateText = this.updater<string | null>(
@@ -43,8 +49,11 @@ export class ProgressBarStore extends ComponentStore<ProgessBarState> {
     })
   );
 
-  updateValue = this.updater<number>(
-    (state, value): ProgessBarState => ({ ...state, value })
+  updateValue = this.updater<number | null>(
+    (state, value): ProgessBarState => ({
+      ...state,
+      value: value ?? initalState.value,
+    })
   );
 }
 
