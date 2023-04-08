@@ -5,7 +5,6 @@ import {
   EventEmitter,
   HostBinding,
   Input,
-  NgModule,
   Output,
   ViewEncapsulation,
 } from '@angular/core';
@@ -13,9 +12,11 @@ import {
 let serialNumber = 1;
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tab',
+  imports: [],
   template: `<ng-content></ng-content>`,
 })
 export class FasTabComponent {
@@ -70,9 +71,3 @@ export class FasTabComponent {
     this.#id = idAttribute;
   }
 }
-
-@NgModule({
-  declarations: [FasTabComponent],
-  exports: [FasTabComponent],
-})
-export class FasTabScam {}

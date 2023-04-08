@@ -2,7 +2,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { render } from '@testing-library/angular';
 import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 
-import { FasTabsModule } from './tabs.module';
+import { fasTabsDeclarables } from './tabs-declarables';
 
 describe('Vertical tabs', () => {
   async function setup({ vertical }: { readonly vertical: boolean }) {
@@ -29,7 +29,7 @@ describe('Vertical tabs', () => {
         componentProperties: {
           vertical,
         },
-        imports: [FasTabsModule],
+        imports: [fasTabsDeclarables],
       }
     );
 

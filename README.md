@@ -103,21 +103,16 @@ export class MyModule {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasTabsModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { fasTabsDeclarables } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [fasTabsDeclarables],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasTabsModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html
