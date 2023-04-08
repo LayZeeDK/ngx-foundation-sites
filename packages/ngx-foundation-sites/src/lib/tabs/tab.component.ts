@@ -1,7 +1,7 @@
 import {
-  Attribute,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   HostBinding,
   Input,
@@ -74,7 +74,9 @@ export class FasTabComponent implements FasTabToken {
     return 'tabpanel';
   }
 
-  constructor(@Attribute('id') idAttribute: string | null) {
+  constructor(element: ElementRef<HTMLElement>) {
+    let idAttribute = element.nativeElement.getAttribute('id');
+
     if (!idAttribute) {
       idAttribute = `fas-tab-${serialNumber}`;
       serialNumber += 1;
