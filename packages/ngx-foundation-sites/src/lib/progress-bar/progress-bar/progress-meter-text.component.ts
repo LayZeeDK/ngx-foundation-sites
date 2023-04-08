@@ -5,13 +5,13 @@ import {
   ElementRef,
   HostBinding,
   Input,
-  NgModule,
   ViewEncapsulation,
 } from '@angular/core';
 
 import { ProgressBarStore } from './progress-bar.store';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-meter-text',
@@ -22,6 +22,7 @@ import { ProgressBarStore } from './progress-bar.store';
       }
     `,
   ],
+  imports: [],
   template: `<ng-content></ng-content>`,
 })
 export class FasProgressMeterTextComponent implements AfterContentChecked {
@@ -50,9 +51,3 @@ export class FasProgressMeterTextComponent implements AfterContentChecked {
     this.#progressBar.updateText(this.#textContent);
   }
 }
-
-@NgModule({
-  declarations: [FasProgressMeterTextComponent],
-  exports: [FasProgressMeterTextComponent],
-})
-export class FasProgressMeterTextScam {}

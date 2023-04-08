@@ -162,21 +162,16 @@ export class MyComponent {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasProgressBarModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { fasProgressBarDeclarables } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [fasProgressBarDeclarables],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasProgressBarModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html

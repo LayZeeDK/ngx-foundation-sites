@@ -3,7 +3,6 @@ import {
   Component,
   HostBinding,
   Input,
-  NgModule,
   ViewEncapsulation,
 } from '@angular/core';
 

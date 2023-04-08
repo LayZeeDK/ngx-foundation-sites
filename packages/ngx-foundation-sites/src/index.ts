@@ -30,19 +30,10 @@ export {
 } from './lib/progress-bar/progress/progress.component';
 export { FasProgressModule } from './lib/progress-bar/progress/progress.module';
 // -> PROGRESS BAR
-export {
-  FasProgressMeterComponent,
-  FasProgressMeterScam as _FasProgressMeterScam,
-} from './lib/progress-bar/progress-bar/progress-meter.component';
-export {
-  FasProgressMeterTextComponent as FasProgressBarTextComponent,
-  FasProgressMeterTextScam as _FasProgressBarTextScam,
-} from './lib/progress-bar/progress-bar/progress-meter-text.component';
-export {
-  FasProgressBarComponent,
-  FasProgressBarScam as _FasProgressBarScam,
-} from './lib/progress-bar/progress-bar/progress-bar.component';
-export { FasProgressBarModule } from './lib/progress-bar/progress-bar/progress-bar.module';
+export { fasProgressBarDeclarables } from './lib/progress-bar/progress-bar/progress-bar-declarables';
+export { FasProgressMeterComponent } from './lib/progress-bar/progress-bar/progress-meter.component';
+export { FasProgressMeterTextComponent } from './lib/progress-bar/progress-bar/progress-meter-text.component';
+export { FasProgressBarComponent } from './lib/progress-bar/progress-bar/progress-bar.component';
 
 // TABS
 export { FasTabComponent } from './lib/tabs/tab.component';
