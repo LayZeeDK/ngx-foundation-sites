@@ -1,4 +1,4 @@
-import { Injectable, Provider } from '@angular/core';
+import { inject, Injectable, Provider } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
@@ -15,17 +15,17 @@ export function provideProgressMeterPresenter(): Provider[] {
 
 @Injectable()
 export class ProgressMeterPresenter extends ComponentStore<ProgressMeterState> {
-  #style: StyleRenderer;
+  #progressBar = inject(ProgressBarStore);
+  #style = inject(StyleRenderer);
 
-  constructor(progressBar: ProgressBarStore, style: StyleRenderer) {
+  constructor() {
     super(initialState);
-    this.#style = style;
 
     this.#renderWidthStyle(
       this.select(
-        progressBar.min$,
-        progressBar.max$,
-        progressBar.value$,
+        this.#progressBar.min$,
+        this.#progressBar.max$,
+        this.#progressBar.value$,
         (min, max, value) => {
           const percentage = (value / (max - min)) * 100;
 

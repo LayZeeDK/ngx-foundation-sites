@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
+  inject,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -22,7 +23,10 @@ import {
   viewProviders: [provideProgressMeterPresenter()],
 })
 export class FasProgressMeterComponent {
-  #progressBar: ProgressBarStore;
+  #presenter = inject(
+    ProgressMeterPresenter
+  ); /* Eagerly instantiate to initialize effects */
+  #progressBar = inject(ProgressBarStore);
 
   @Input()
   set max(max: number) {
@@ -40,12 +44,5 @@ export class FasProgressMeterComponent {
   @HostBinding('class.progress-meter')
   get componentClassEnabled(): true {
     return true;
-  }
-
-  constructor(
-    presenter: ProgressMeterPresenter /* Eagerly instantiate to initialize effects */,
-    progressBar: ProgressBarStore
-  ) {
-    this.#progressBar = progressBar;
   }
 }

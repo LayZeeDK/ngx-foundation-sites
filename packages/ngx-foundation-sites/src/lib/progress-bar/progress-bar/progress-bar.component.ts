@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
+  inject,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -25,7 +26,7 @@ import { ProgressBarStore } from './progress-bar.store';
   viewProviders: [provideProgressBarPresenter()],
 })
 export class FasProgressBarComponent {
-  #presenter: ProgressBarPresenter;
+  #presenter = inject(ProgressBarPresenter);
 
   @Input()
   set color(color: FasColor) {
@@ -39,9 +40,5 @@ export class FasProgressBarComponent {
   @HostBinding('role')
   get roleAttribute(): string {
     return 'progressbar';
-  }
-
-  constructor(presenter: ProgressBarPresenter) {
-    this.#presenter = presenter;
   }
 }

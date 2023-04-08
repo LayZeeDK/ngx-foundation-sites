@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   HostBinding,
+  inject,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -26,8 +27,8 @@ import { ProgressBarStore } from './progress-bar.store';
   template: `<ng-content></ng-content>`,
 })
 export class FasProgressMeterTextComponent implements AfterContentChecked {
-  #host: ElementRef<HTMLElement>;
-  #progressBar: ProgressBarStore;
+  #host: ElementRef<HTMLElement> = inject(ElementRef);
+  #progressBar = inject(ProgressBarStore);
   get #textContent(): string | null {
     return this.#host.nativeElement.textContent;
   }
@@ -40,11 +41,6 @@ export class FasProgressMeterTextComponent implements AfterContentChecked {
   @HostBinding('class.progress-meter-text')
   get componentClassEnabled(): boolean {
     return true;
-  }
-
-  constructor(progressBar: ProgressBarStore, host: ElementRef) {
-    this.#host = host;
-    this.#progressBar = progressBar;
   }
 
   ngAfterContentChecked(): void {
