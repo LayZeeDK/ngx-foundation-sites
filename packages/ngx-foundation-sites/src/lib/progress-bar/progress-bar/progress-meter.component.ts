@@ -30,15 +30,15 @@ export class FasProgressMeterComponent {
   #progressBar = inject(ProgressBarStore);
 
   @Input()
-  set max(max: number) {
+  set max(max: number | null) {
     this.#progressBar.updateMax(max);
   }
   @Input()
-  set min(min: number) {
+  set min(min: number | null) {
     this.#progressBar.updateMin(min);
   }
   @Input()
-  set value(value: number) {
+  set value(value: number | null) {
     this.#progressBar.updateValue(value);
   }
 

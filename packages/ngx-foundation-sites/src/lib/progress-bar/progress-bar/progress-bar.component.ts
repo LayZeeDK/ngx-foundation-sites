@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { FasColor } from '../../color';
+import { FasColor } from '../../colors/color';
 import {
   ProgressBarPresenter,
   provideProgressBarPresenter,
@@ -30,7 +30,7 @@ export class FasProgressBarComponent {
   #presenter = inject(ProgressBarPresenter);
 
   @Input()
-  set color(color: FasColor) {
+  set color(color: FasColor | null) {
     this.#presenter.updateColor(color);
   }
 

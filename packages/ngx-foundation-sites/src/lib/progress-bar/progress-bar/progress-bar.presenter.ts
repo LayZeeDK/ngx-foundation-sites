@@ -2,7 +2,8 @@ import { inject, Injectable, Provider } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
-import { FasColor } from '../../color';
+import { FasColor } from '../../colors/color';
+import { defaultColor } from '../../colors/default-color';
 import { AriaRenderer } from '../../ui-dom/aria-renderer';
 import { StyleRenderer } from '../../ui-dom/style-renderer';
 import { ProgressBarStore } from './progress-bar.store';
@@ -37,10 +38,10 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
     this.#renderColorClasses(this.select(state => state.color));
   }
 
-  updateColor = this.updater<FasColor>(
+  updateColor = this.updater<FasColor | null>(
     (state, color): ProgessBarState => ({
       ...state,
-      color,
+      color: color ?? initalState.color,
     })
   );
 
@@ -93,5 +94,5 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
 }
 
 const initalState: ProgessBarState = {
-  color: 'primary',
+  color: defaultColor,
 };

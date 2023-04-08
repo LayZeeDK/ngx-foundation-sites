@@ -6,7 +6,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { FasColor } from '../../color';
+import { FasColor } from '../../colors/color';
+import { defaultColor } from '../../colors/default-color';
 
 @Component({
   standalone: true,
@@ -21,13 +22,19 @@ import { FasColor } from '../../color';
   template: `<ng-content></ng-content>`,
 })
 export class FasProgressComponent {
+  #color: FasColor = defaultColor;
   #maxDefault = 1;
   #max = this.#maxDefault;
   #value: number | null = null;
 
   @Input()
   @HostBinding('className')
-  color: FasColor = 'primary';
+  get color(): FasColor {
+    return this.#color;
+  }
+  set color(color: FasColor | null) {
+    this.#color = color ?? defaultColor;
+  }
   @Input()
   @HostBinding('attr.max')
   set max(max: number | null) {
