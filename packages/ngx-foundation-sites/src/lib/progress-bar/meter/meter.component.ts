@@ -20,21 +20,40 @@ import {
 })
 export class FasMeterComponent {
   @Input()
-  @HostBinding('attr.high')
   high: number | null = null;
   @Input()
-  @HostBinding('attr.low')
   low: number | null = null;
   @Input()
-  @HostBinding('attr.max')
   max: number | null = null;
   @Input()
-  @HostBinding('attr.min')
   min: number | null = null;
   @Input()
-  @HostBinding('attr.optimum')
   optimum: number | null = null;
   @Input()
-  @HostBinding('attr.value')
   value: number | null = null;
+
+  @HostBinding('attr.high')
+  get highAttribute(): string | null {
+    return this.high === null ? null : String(this.high);
+  }
+  @HostBinding('attr.low')
+  get lowAttribute(): string | null {
+    return this.low === null ? null : String(this.low);
+  }
+  @HostBinding('attr.max')
+  get maxAttribute(): string | null {
+    return this.max === null ? null : String(this.max);
+  }
+  @HostBinding('attr.min')
+  get minAttribute(): string | null {
+    return this.min === null ? null : String(this.min);
+  }
+  @HostBinding('attr.optimum')
+  get optimumAttribute(): string | null {
+    return this.optimum === null ? null : String(this.optimum);
+  }
+  @HostBinding('attr.value')
+  get valueAttribute(): string | null {
+    return this.value === null ? null : String(this.value);
+  }
 }

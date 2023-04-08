@@ -36,7 +36,6 @@ export class FasProgressComponent {
     this.#color = color ?? defaultColor;
   }
   @Input()
-  @HostBinding('attr.max')
   set max(max: number | null) {
     max ??= this.#maxDefault;
 
@@ -50,7 +49,6 @@ export class FasProgressComponent {
     return this.#max;
   }
   @Input()
-  @HostBinding('attr.value')
   set value(value: number | null) {
     if (value !== null && value <= 0) {
       return;
@@ -64,5 +62,14 @@ export class FasProgressComponent {
   }
   get value(): number | null {
     return this.#value;
+  }
+
+  @HostBinding('attr.max')
+  get maxAttribute(): string {
+    return String(this.#max);
+  }
+  @HostBinding('attr.value')
+  get valueAttribute(): string | null {
+    return this.#value === null ? null : String(this.#value);
   }
 }
