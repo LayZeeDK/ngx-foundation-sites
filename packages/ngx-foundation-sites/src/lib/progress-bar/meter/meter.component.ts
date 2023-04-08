@@ -13,6 +13,7 @@ import {
   // Intentionally extending the native `<meter>` element
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'meter[fas-meter]',
+  exportAs: 'fasMeter',
   styleUrls: ['../../_global-settings.scss', './meter.component.scss'],
   imports: [],
   template: `<ng-content></ng-content>`,

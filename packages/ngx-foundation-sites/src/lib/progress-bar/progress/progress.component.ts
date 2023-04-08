@@ -15,6 +15,7 @@ import { FasColor } from '../../color';
   // Intentionally extending the native `<progress>` element
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'progress[fas-progress]',
+  exportAs: 'fasProgress',
   styleUrls: ['../../_global-settings.scss', './progress.component.scss'],
   imports: [],
   template: `<ng-content></ng-content>`,

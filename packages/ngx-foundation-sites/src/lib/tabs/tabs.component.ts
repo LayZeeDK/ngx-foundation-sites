@@ -16,6 +16,7 @@ import { FasTabToken } from './tab.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tabs',
+  exportAs: 'fasTabs',
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
   imports: [NgFor, RouterLink],
   template: `

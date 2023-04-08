@@ -16,6 +16,7 @@ import { ProgressBarStore } from './progress-bar.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-meter-text',
+  exportAs: 'fasProgressMeterText',
   styles: [
     `
       fas-progress-meter-text {
