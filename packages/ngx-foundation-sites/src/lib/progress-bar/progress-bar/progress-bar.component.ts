@@ -20,6 +20,7 @@ import { ProgressBarStore } from './progress-bar.store';
   encapsulation: ViewEncapsulation.None,
   providers: [ProgressBarStore],
   selector: 'fas-progress-bar',
+  exportAs: 'fasProgressBar',
   styleUrls: ['../../_global-settings.scss', './progress-bar.component.scss'],
   imports: [],
   template: `<ng-content select="fas-progress-meter"></ng-content>`,

@@ -23,6 +23,7 @@ export abstract class FasTabToken {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tab',
+  exportAs: 'fasTab',
   imports: [],
   template: `<ng-content></ng-content>`,
   providers: [

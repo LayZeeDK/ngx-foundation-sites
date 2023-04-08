@@ -18,6 +18,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-meter',
+  exportAs: 'fasProgressMeter',
   imports: [],
   template: `<ng-content select="fas-progress-meter-text"></ng-content>`,
   viewProviders: [provideProgressMeterPresenter()],

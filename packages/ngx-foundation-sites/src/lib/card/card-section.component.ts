@@ -10,6 +10,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card-section',
+  exportAs: 'fasCardSection',
   styles: [
     `
       fas-card-section {

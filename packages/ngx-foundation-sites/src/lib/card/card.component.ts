@@ -10,6 +10,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card',
+  exportAs: 'fasCard',
   styleUrls: ['../_global-settings.scss', './card.component.scss'],
   imports: [],
   template: ` <ng-content></ng-content> `,

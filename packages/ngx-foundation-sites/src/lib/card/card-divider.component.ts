@@ -10,6 +10,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card-divider',
+  exportAs: 'fasCardDivider',
   imports: [],
   template: `<ng-content></ng-content>`,
 })
