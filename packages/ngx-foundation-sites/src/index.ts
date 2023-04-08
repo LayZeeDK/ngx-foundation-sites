@@ -18,11 +18,7 @@ export { FasCardModule } from './lib/card/card.module';
 
 // PROGRESS BAR
 // -> METER
-export {
-  FasMeterComponent,
-  FasMeterScam as _FasMeterScam,
-} from './lib/progress-bar/meter/meter.component';
-export { FasMeterModule } from './lib/progress-bar/meter/meter.module';
+export { FasMeterComponent } from './lib/progress-bar/meter/meter.component';
 // -> PROGRESS
 export { FasProgressComponent } from './lib/progress-bar/progress/progress.component';
 // -> PROGRESS BAR

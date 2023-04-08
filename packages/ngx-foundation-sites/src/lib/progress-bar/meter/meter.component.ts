@@ -3,17 +3,18 @@ import {
   Component,
   HostBinding,
   Input,
-  NgModule,
   ViewEncapsulation,
 } from '@angular/core';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   // Intentionally extending the native `<meter>` element
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'meter[fas-meter]',
   styleUrls: ['../../_global-settings.scss', './meter.component.scss'],
+  imports: [],
   template: `<ng-content></ng-content>`,
 })
 export class FasMeterComponent {
@@ -36,9 +37,3 @@ export class FasMeterComponent {
   @HostBinding('attr.value')
   value: number | null = null;
 }
-
-@NgModule({
-  declarations: [FasMeterComponent],
-  exports: [FasMeterComponent],
-})
-export class FasMeterScam {}
