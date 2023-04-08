@@ -24,11 +24,7 @@ export {
 } from './lib/progress-bar/meter/meter.component';
 export { FasMeterModule } from './lib/progress-bar/meter/meter.module';
 // -> PROGRESS
-export {
-  FasProgressComponent,
-  FasProgressScam as _FasProgressScam,
-} from './lib/progress-bar/progress/progress.component';
-export { FasProgressModule } from './lib/progress-bar/progress/progress.module';
+export { FasProgressComponent } from './lib/progress-bar/progress/progress.component';
 // -> PROGRESS BAR
 export { fasProgressBarDeclarables } from './lib/progress-bar/progress-bar/progress-bar-declarables';
 export { FasProgressMeterComponent } from './lib/progress-bar/progress-bar/progress-meter.component';

@@ -189,21 +189,16 @@ export class MyComponent {}
 
 ```ts
 // my.component.ts
-import { Component, NgModule } from '@angular/core';
-import { FasProgressModule } from 'ngx-foundation-sites';
+import { Component } from '@angular/core';
+import { FasProgressComponent } from 'ngx-foundation-sites';
 
 @Component({
+  standalone: true,
+  imports: [FasProgressComponent],
   templateUrl: './my.component.html',
   // (...)
 })
 export class MyComponent {}
-
-@NgModule({
-  declarations: [MyComponent],
-  imports: [FasProgressModule],
-  // (...)
-})
-export class MyModule {}
 ```
 
 ```html

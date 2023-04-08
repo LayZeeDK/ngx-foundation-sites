@@ -9,12 +9,14 @@ import {
 import { FasColor } from '../../color';
 
 @Component({
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   // Intentionally extending the native `<progress>` element
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'progress[fas-progress]',
   styleUrls: ['../../_global-settings.scss', './progress.component.scss'],
+  imports: [],
   template: `<ng-content></ng-content>`,
 })
 export class FasProgressComponent {
@@ -56,9 +58,3 @@ export class FasProgressComponent {
     return this.#value;
   }
 }
-
-@NgModule({
-  declarations: [FasProgressComponent],
-  exports: [FasProgressComponent],
-})
-export class FasProgressScam {}
