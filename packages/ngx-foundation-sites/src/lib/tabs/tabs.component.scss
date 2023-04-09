@@ -1,5 +1,7 @@
+@import '../global-foundation-sites-settings';
+
 // Foundation for Sites global tools
-@import 'foundation-sites/scss/global';
+@import 'foundation-sites/scss/util/mixins';
 
 // Foundation for Sites Tabs settings
 $tab-margin: var(--fas-tab-margin);
@@ -28,8 +30,7 @@ $tab-content-padding: var(--fas-tab-content-padding);
   $padding: $tab-item-padding,
   $font-size: $tab-item-font-size,
   $color: $tab-color,
-  // [1]
-  $color-hover: $tab-color-hover,
+  $color-hover: $tab-color-hover /* [1] */,
   $color-active: $tab-active-color,
   $background-hover: $tab-item-background-hover,
   $background-active: $tab-background-active

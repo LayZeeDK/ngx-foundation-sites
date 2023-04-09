@@ -1,5 +1,7 @@
+@import '../../global-foundation-sites-settings';
+
 // Foundation for Sites global tools
-@import 'foundation-sites/scss/global';
+@import 'foundation-sites/scss/util/mixins';
 
 // Foundation for Sites Progress Bar settings
 $progress-height: var(--fas-progress-height);
@@ -12,57 +14,6 @@ $progress-radius: var(--fas-progress-radius);
 @import 'foundation-sites/scss/components/progress-bar';
 
 // Foundation for Sites Progress Bar tools overrides
-
-//
-// 1. Replace for loop generating themes from the palette with static classes
-//    referring to CSS Custom Properties.
-//
-@mixin foundation-progress-bar {
-  // Progress bar
-  .progress {
-    @include progress-container;
-
-    &.primary /* [1] */ {
-      .progress-meter {
-        background-color: var(--fas-primary-color);
-      }
-    }
-
-    &.secondary /* [1] */ {
-      .progress-meter {
-        background-color: var(--fas-secondary-color);
-      }
-    }
-
-    &.success /* [1] */ {
-      .progress-meter {
-        background-color: var(--fas-success-color);
-      }
-    }
-
-    &.warning /* [1] */ {
-      .progress-meter {
-        background-color: var(--fas-warning-color);
-      }
-    }
-
-    &.alert /* [1] */ {
-      .progress-meter {
-        background-color: var(--fas-alert-color);
-      }
-    }
-  }
-
-  // Inner meter
-  .progress-meter {
-    @include progress-meter;
-  }
-
-  // Inner meter text
-  .progress-meter-text {
-    @include progress-meter-text;
-  }
-}
 
 fas-progress-bar {
   // Foundation for Angular Sites Progress Bar settings

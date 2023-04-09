@@ -1,18 +1,18 @@
-@import 'styles/foundation-sites';
+@use 'styles/foundation-sites' as app;
 
-@include foundation-example-app;
+@include app.foundation-example-app;
 
 // Foundation for Angular Sites global styles overrides
 :root:root /* Increase specificity to override component styles */ {
-  --fas-primary-color: #{map-get($foundation-palette, primary)};
+  --fas-primary-color: #{map-get(app.$foundation-palette, primary)};
   --fas-primary-color-dark: #{scale-color(
-      map-get($foundation-palette, primary),
+      map-get(app.$foundation-palette, primary),
       $lightness: -14%
     )};
-  --fas-secondary-color: #{map-get($foundation-palette, secondary)};
-  --fas-success-color: #{map-get($foundation-palette, success)};
-  --fas-warning-color: #{map-get($foundation-palette, warning)};
-  --fas-alert-color: #{map-get($foundation-palette, alert)};
+  --fas-secondary-color: #{map-get(app.$foundation-palette, secondary)};
+  --fas-success-color: #{map-get(app.$foundation-palette, success)};
+  --fas-warning-color: #{map-get(app.$foundation-palette, warning)};
+  --fas-alert-color: #{map-get(app.$foundation-palette, alert)};
 }
 
 // Foundation for Angular Sites component styles overrides
