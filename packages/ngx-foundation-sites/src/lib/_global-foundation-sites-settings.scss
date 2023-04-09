@@ -1,0 +1,16 @@
+// Foundation for Sites default global settings
+// Must be imported by every component stylesheet
+$global-text-direction: ltr;
+$global-left: if($global-text-direction == rtl, right, left);
+$global-flexbox: true;
+$global-radius: var(--fas-progress-radius);
+
+$white: var(--fas-white);
+$primary-color: var(--fas-primary-color);
+$foundation-palette: (
+  primary: var(--fas-primary-color),
+  secondary: var(--fas-secondary-color),
+  success: var(--fas-success-color),
+  warning: var(--fas-warning-color),
+  alert: var(--fas-alert-color),
+);

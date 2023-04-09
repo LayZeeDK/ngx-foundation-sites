@@ -1,5 +1,6 @@
+@import '../../global-foundation-sites-settings';
+
 // Foundation for Sites global tools
-@import 'foundation-sites/scss/global';
 
 // Foundation for Sites Progress settings
 $progress-height: var(--fas-progress-height);
@@ -12,93 +13,6 @@ $progress-radius: var(--fas-progress-radius);
 @import 'foundation-sites/scss/forms/progress';
 
 // Foundation for Sites Progress tools overrides
-
-@mixin _fas-progress-color($color) {
-  &::-webkit-progress-value {
-    background: $color;
-  }
-
-  &::-moz-progress-bar {
-    background: $color;
-  }
-}
-
-//
-// 1. Replace for loop generating themes from the palette with static classes
-//    referring to CSS Custom Properties.
-//
-@mixin foundation-progress-element {
-  progress {
-    display: block;
-    width: 100%;
-    height: $progress-height;
-    margin-bottom: $progress-margin-bottom;
-
-    appearance: none;
-
-    @if has-value($progress-radius) {
-      border-radius: $progress-radius;
-    }
-
-    // For Firefox
-    border: 0;
-    background: $progress-background;
-
-    &::-webkit-progress-bar {
-      background: $progress-background;
-
-      @if has-value($progress-radius) {
-        border-radius: $progress-radius;
-      }
-    }
-
-    &::-webkit-progress-value {
-      background: $progress-meter-background;
-
-      @if has-value($progress-radius) {
-        border-radius: $progress-radius;
-      }
-    }
-
-    &::-moz-progress-bar {
-      background: $progress-meter-background;
-
-      @if has-value($progress-radius) {
-        border-radius: $progress-radius;
-      }
-    }
-
-    &.primary /* [1] */ {
-      @include _fas-progress-color(var(--fas-primary-color));
-    }
-
-    &.secondary /* [1] */ {
-      @include _fas-progress-color(var(--fas-secondary-color));
-    }
-
-    &.success /* [1] */ {
-      @include _fas-progress-color(var(--fas-success-color));
-    }
-
-    &.warning /* [1] */ {
-      @include _fas-progress-color(var(--fas-warning-color));
-    }
-
-    &.alert /* [1] */ {
-      @include _fas-progress-color(var(--fas-alert-color));
-    }
-
-    // For IE and Edge
-    &::-ms-fill {
-      // sass-lint:disable-line no-vendor-prefixes
-      @if has-value($progress-radius) {
-        border-radius: $progress-radius;
-      }
-
-      border: 0;
-    }
-  }
-}
 
 [fas-progress] {
   // Foundation for Angular Sites Progress settings
