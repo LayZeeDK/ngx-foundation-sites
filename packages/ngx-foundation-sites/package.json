@@ -1,5 +1,6 @@
 {
   "name": "ngx-foundation-sites",
+  "description": "Foundation for Angular Sites. Foundation for Sites components with modern Angular and CSS Custom Properties support.",
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {
@@ -18,5 +19,23 @@
     "@angular/cdk": {
       "optional": true
     }
-  }
+  },
+  "author": {
+    "name": "Lars Gyrup Brink Nielsen",
+    "email": "larsbrinknielsen@gmail.com",
+    "url": "https://github.com/LayZeeDK"
+  },
+  "homepage": "https://github.com/LayZeeDK/ngx-foundation-sites",
+  "bugs": "https://github.com/LayZeeDK/ngx-foundation-sites/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LayZeeDK/ngx-foundation-sites.git"
+  },
+  "keywords": [
+    "angular",
+    "foundation",
+    "foundation-sites",
+    "angular-components",
+    "components"
+  ]
 }
