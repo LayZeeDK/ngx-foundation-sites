@@ -27,6 +27,8 @@ jobs:
         run: yarn build
       - name: Build Storybook
         run: yarn build:storybook --configuration=ci
+      - name: Verify license compliance
+        run: yarn verify-license-compliance
 
   lint:
     name: Lint
