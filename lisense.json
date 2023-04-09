@@ -1,0 +1,83 @@
+[
+  {
+    "license": "0BSD",
+    "modules": []
+  },
+  {
+    "license": "Apache-2.0",
+    "modules": []
+  },
+  {
+    "license": "BlueOak-1.0.0",
+    "modules": []
+  },
+  {
+    "license": "BSD",
+    "modules": []
+  },
+  {
+    "license": "BSD-2-Clause",
+    "modules": []
+  },
+  {
+    "license": "BSD-3-Clause",
+    "modules": []
+  },
+  {
+    "license": "CC0-1.0",
+    "modules": []
+  },
+  {
+    "license": "CC-BY-3.0",
+    "modules": []
+  },
+  {
+    "license": "CC-BY-4.0",
+    "modules": []
+  },
+  {
+    "license": "CC-BY-ND-3.0",
+    "modules": ["@nrwl/nx-cloud"]
+  },
+  {
+    "license": "ISC",
+    "modules": []
+  },
+  {
+    "license": "MIT",
+    "modules": []
+  },
+  {
+    "license": "MIT AND BSD-3-Clause",
+    "modules": []
+  },
+  {
+    "license": "MIT AND Zlib",
+    "modules": []
+  },
+  {
+    "license": "Python-2.0",
+    "modules": []
+  },
+  {
+    "license": "UNKNOWN",
+    "modules": [
+      "@workspace-storybook/ui-markdown",
+      "@workspace-storybook/ui-security",
+      "trim",
+      "union"
+    ]
+  },
+  {
+    "license": "Unlicense",
+    "modules": []
+  },
+  {
+    "license": "WTFPL",
+    "modules": []
+  },
+  {
+    "license": "Zlib",
+    "modules": []
+  }
+]
