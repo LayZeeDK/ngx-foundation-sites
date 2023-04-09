@@ -1,4 +1,4 @@
-@import 'foundation-sites/scss/util/util';
+@use 'foundation-sites/scss/foundation';
 
 // GLOBAL
 $foundation-palette-default: (
@@ -16,4 +16,5 @@ $foundation-palette-deep-purple-amber: (
   alert: #f44336 /* Material Red 500 */,
 );
 $foundation-palette: $foundation-palette-deep-purple-amber;
-@include add-foundation-colors;
+
+foundation.$foundation-palette: $foundation-palette;
