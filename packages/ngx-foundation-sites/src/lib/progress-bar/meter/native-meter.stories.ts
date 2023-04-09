@@ -20,12 +20,7 @@ difference?
 
 The meter automatically colors itself based on the current values, and the
 defined low, medium, and high ranges.
-<a
-  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter"
-  target="_blank"
-  rel="noopener"
-  >Learn more about the mechanics of \`<meter>\` values</a
->.`,
+[Learn more about the mechanics of \`<meter>\` values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter).`,
       },
     },
   },
