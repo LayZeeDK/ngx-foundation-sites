@@ -1,10 +1,13 @@
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { provideLocationMocks } from '@angular/common/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { render, screen } from '@testing-library/angular';
 import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 
+import { FasTabComponent } from './tab.component';
 import { fasTabsDeclarables } from './tabs-declarables';
+import { FasTabsComponent } from './tabs.component';
 
 describe('Tabs', () => {
   async function setup() {
@@ -33,6 +36,9 @@ describe('Tabs', () => {
       }
     );
 
+    const tabsComponent = fixture.debugElement.query(
+      By.directive(FasTabsComponent)
+    ).componentInstance as FasTabsComponent;
     const loader = TestbedHarnessEnvironment.loader(fixture);
     const tabs = await loader.getHarness(FasTabsHarness);
     const panel1 = await tabs.getPanel({ id: 'panel1' });
@@ -40,7 +46,7 @@ describe('Tabs', () => {
     const tab1 = await panel1.getTab();
     const tab2 = await panel2.getTab();
 
-    return { panel1, panel2, tab1, tab2 };
+    return { panel1, panel2, tab1, tab2, tabsComponent };
   }
 
   describe('OnInit', () => {
@@ -108,6 +114,29 @@ describe('Tabs', () => {
 
       expect(await panel1.getAriaHidden()).toBe(true);
       expect(await tab1.getAriaSelected()).toBe(false);
+    });
+
+    it('fires "tabActiveChange" event with tab component as data', async () => {
+      const { tab2, tabsComponent } = await setup();
+      const tabActiveChangeSpy = jest.fn();
+
+      const subscription =
+        tabsComponent.tabActiveChange.subscribe(tabActiveChangeSpy);
+
+      await tab2.selectTab();
+
+      expect(tabActiveChangeSpy).toHaveBeenLastCalledWith(
+        expect.any(FasTabComponent)
+      );
+      expect(tabActiveChangeSpy).toHaveBeenLastCalledWith(
+        expect.objectContaining({
+          active: true,
+          id: 'panel2',
+          title: 'Tab 2',
+        } as FasTabComponent)
+      );
+
+      subscription.unsubscribe();
     });
   });
 });
