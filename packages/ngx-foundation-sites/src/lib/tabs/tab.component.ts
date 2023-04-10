@@ -14,6 +14,7 @@ let serialNumber = 1;
 
 export abstract class FasTabToken {
   abstract active: boolean;
+  abstract activeChange: EventEmitter<boolean>;
   abstract get id(): string;
   abstract title: string;
 }
