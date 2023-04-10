@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostBinding,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -11,12 +10,8 @@ import {
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-card-divider',
   exportAs: 'fasCardDivider',
+  styleUrls: ['./card-divider.component.scss'],
   imports: [],
   template: `<ng-content></ng-content>`,
 })
-export class FasCardDividerComponent {
-  @HostBinding('className')
-  protected get className(): string {
-    return 'card-divider';
-  }
-}
+export class FasCardDividerComponent {}

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostBinding,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -15,9 +14,4 @@ import {
   imports: [],
   template: ` <ng-content></ng-content> `,
 })
-export class FasCardComponent {
-  @HostBinding('className')
-  protected get className(): string {
-    return 'card';
-  }
-}
+export class FasCardComponent {}

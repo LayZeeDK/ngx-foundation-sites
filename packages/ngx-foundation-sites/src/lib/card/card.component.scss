@@ -3,14 +3,7 @@
 // Foundation for Sites global tools
 
 // Foundation for Sites Card settings
-$card-background: var(--fas-card-background);
-$card-font-color: var(--fas-card-font-color);
-$card-divider-background: var(--fas-card-divider-background);
-$card-border: var(--fas-card-border);
-$card-shadow: var(--fas-card-shadow);
-$card-border-radius: var(--fas-card-border-radius);
-$card-padding: var(--fas-card-padding);
-$card-margin-bottom: var(--fas-card-margin-bottom);
+@import 'foundation-card-settings';
 
 // Foundation for Sites Card tools
 @import 'foundation-sites/scss/components/card';
@@ -28,8 +21,8 @@ fas-card {
   --fas-card-padding: var(--fas-global-padding);
   --fas-card-margin-bottom: var(--fas-global-margin);
 
+  // Foundation for Sites Card styles
+  @include card-container;
+
   // Foundation for Angular Sites Card styles
 }
-
-// Foundation for Sites Card styles
-@include foundation-card;
