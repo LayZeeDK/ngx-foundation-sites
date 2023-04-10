@@ -35,11 +35,11 @@ export class FasProgressBarComponent {
   }
 
   @HostBinding('class.progress')
-  get componentClassEnabled(): boolean {
+  protected get componentClassEnabled(): boolean {
     return true;
   }
   @HostBinding('role')
-  get roleAttribute(): string {
+  protected get roleAttribute(): string {
     return 'progressbar';
   }
 }

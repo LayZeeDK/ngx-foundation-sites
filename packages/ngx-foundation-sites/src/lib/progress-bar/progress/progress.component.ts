@@ -65,11 +65,11 @@ export class FasProgressComponent {
   }
 
   @HostBinding('attr.max')
-  get maxAttribute(): string {
+  protected get maxAttribute(): string {
     return String(this.#max);
   }
   @HostBinding('attr.value')
-  get valueAttribute(): string | null {
+  protected get valueAttribute(): string | null {
     return this.#value === null ? null : String(this.#value);
   }
 }
