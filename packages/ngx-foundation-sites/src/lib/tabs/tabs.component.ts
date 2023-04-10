@@ -1,12 +1,10 @@
 import { NgFor } from '@angular/common';
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
   Input,
-  OnDestroy,
   Output,
   QueryList,
   ViewEncapsulation,
@@ -57,7 +55,7 @@ import { FasTabComponent } from './tab.component';
     </div>
   `,
 })
-export class FasTabsComponent implements AfterContentInit, OnDestroy {
+export class FasTabsComponent {
   #collapsingDefault = false;
   #collapsing = this.#collapsingDefault;
   #untilDestroy = new Subscription();
@@ -82,17 +80,21 @@ export class FasTabsComponent implements AfterContentInit, OnDestroy {
   tabActiveChange = new EventEmitter<FasTabComponent>();
 
   @ContentChildren(FasTabComponent)
-  tabs!: QueryList<FasTabComponent>;
+  protected tabs!: QueryList<FasTabComponent>;
 
-  ngAfterContentInit(): void {
+  // Use protected lifecycle hooks to minimize the public API surface
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  protected ngAfterContentInit(): void {
     this.#initializeTabActiveChange();
   }
 
-  ngOnDestroy(): void {
+  // Use protected lifecycle hooks to minimize the public API surface
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  protected ngOnDestroy(): void {
     this.#untilDestroy.unsubscribe();
   }
 
-  selectTab(selectedTab: FasTabComponent): void {
+  protected selectTab(selectedTab: FasTabComponent): void {
     const activeTab = this.tabs.find(t => t.active);
 
     if (this.collapsing && activeTab === selectedTab) {
