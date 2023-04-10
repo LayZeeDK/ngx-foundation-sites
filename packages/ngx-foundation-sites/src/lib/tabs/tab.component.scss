@@ -1,0 +1,18 @@
+@import '../global-foundation-sites-settings';
+
+// Foundation for Sites global tools
+
+// Foundation for Sites Tabs settings
+@import 'foundation-tabs-settings';
+
+// Foundation for Sites Tabs tools
+@import 'foundation-sites/scss/components/tabs';
+
+// Foundation for Sites Tabs tools overrides
+
+fas-tab {
+  // Foundation for Sites Tabs styles
+  @include tabs-panel;
+
+  // Foundation for Angular Sites Tabs styles
+}

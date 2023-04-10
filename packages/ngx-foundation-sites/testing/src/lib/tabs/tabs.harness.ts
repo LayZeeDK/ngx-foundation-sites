@@ -1,4 +1,9 @@
-import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import {
+  AsyncFactoryFn,
+  ComponentHarness,
+  HarnessPredicate,
+  TestElement,
+} from '@angular/cdk/testing';
 
 import { FasTabHarnessFilters } from './tab-harness-filters';
 import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
@@ -9,7 +14,7 @@ import { FasTabsHarnessFilters } from './tabs-harness-filters';
 export class FasTabsHarness extends ComponentHarness {
   static hostSelector = 'fas-tabs';
 
-  #getTabs: AsyncFactoryFn<TestElement> = this.locatorFor('.tabs');
+  #getTabs: AsyncFactoryFn<TestElement> = this.locatorFor('.fas-tabs__tabs');
 
   static with(
     options: FasTabsHarnessFilters

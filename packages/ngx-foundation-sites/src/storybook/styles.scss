@@ -1,3 +1,5 @@
+@use 'foundation-sites/scss/global';
+@use 'foundation-sites/scss/util/util';
 @use 'styles/foundation-sites' as app;
 
 @include app.foundation-example-app;
@@ -5,6 +7,11 @@
 // Foundation for Angular Sites global styles overrides
 :root:root /* Increase specificity to override component styles */ {
   --fas-primary-color: #{map-get(app.$foundation-palette, primary)};
+  --fas-primary-color-contrast: #{util.color-pick-contrast(
+      map-get(app.$foundation-palette, primary),
+      (global.$white, global.$black),
+      global.$global-color-pick-contrast-tolerance // 0
+    )};
   --fas-primary-color-dark: #{scale-color(
       map-get(app.$foundation-palette, primary),
       $lightness: -14%
@@ -18,6 +25,6 @@
 // Foundation for Angular Sites component styles overrides
 :root /* Increase specificity to override component styles */ {
   fas-tabs {
-    --fas-tab-item-font-size: #{rem-calc(14px)};
+    --fas-tab-item-font-size: #{util.rem-calc(14)};
   }
 }

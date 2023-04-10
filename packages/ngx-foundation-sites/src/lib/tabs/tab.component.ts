@@ -18,6 +18,7 @@ let serialNumber = 1;
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-tab',
   exportAs: 'fasTab',
+  styleUrls: ['./tab.component.scss'],
   imports: [],
   template: `<ng-content></ng-content>`,
 })
@@ -61,10 +62,6 @@ export class FasTabComponent {
   @HostBinding('attr.aria-labelledby')
   protected get ariaLabelledBy(): string {
     return `${this.id}-label`;
-  }
-  @HostBinding('className')
-  protected get className(): string {
-    return 'tabs-panel';
   }
   @HostBinding('id')
   get id(): string {
