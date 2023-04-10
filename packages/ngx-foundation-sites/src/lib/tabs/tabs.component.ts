@@ -21,8 +21,7 @@ import {
   Subscription,
 } from 'rxjs';
 
-import type { FasTabComponent } from './tab.component';
-import { FasTabToken } from './tab.component';
+import { FasTabComponent } from './tab.component';
 
 @Component({
   standalone: true,
@@ -82,8 +81,8 @@ export class FasTabsComponent implements AfterContentInit, OnDestroy {
   @Output()
   tabActiveChange = new EventEmitter<FasTabComponent>();
 
-  @ContentChildren(FasTabToken)
-  tabs!: QueryList<FasTabToken>;
+  @ContentChildren(FasTabComponent)
+  tabs!: QueryList<FasTabComponent>;
 
   ngAfterContentInit(): void {
     this.#initializeTabActiveChange();
@@ -93,7 +92,7 @@ export class FasTabsComponent implements AfterContentInit, OnDestroy {
     this.#untilDestroy.unsubscribe();
   }
 
-  selectTab(selectedTab: FasTabToken): void {
+  selectTab(selectedTab: FasTabComponent): void {
     const activeTab = this.tabs.find(t => t.active);
 
     if (this.collapsing && activeTab === selectedTab) {
@@ -105,9 +104,9 @@ export class FasTabsComponent implements AfterContentInit, OnDestroy {
 
   #initializeTabActiveChange(): void {
     const tabActiveChange = from(this.tabs.toArray()).pipe(
-      concatWith(this.tabs.changes as Observable<FasTabToken>),
+      concatWith(this.tabs.changes as Observable<FasTabComponent>),
       mergeMap(tab => tab.activeChange.pipe(map(() => tab)))
-    ) as Observable<FasTabComponent>;
+    );
 
     this.#untilDestroy.add(
       tabActiveChange.subscribe(tab => this.tabActiveChange.emit(tab))
