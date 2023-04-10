@@ -1,6 +1,7 @@
 @import '../../global-foundation-sites-settings';
 
 // Foundation for Sites global tools
+@import 'foundation-sites/scss/util/util';
 
 // Foundation for Sites Progress settings
 $progress-height: var(--fas-progress-height);
@@ -14,6 +15,9 @@ $progress-radius: var(--fas-progress-radius);
 
 // Foundation for Sites Progress tools overrides
 
+// Foundation for Sites Progress styles
+@include foundation-progress-element;
+
 [fas-progress] {
   // Foundation for Angular Sites Progress settings
   --fas-progress-height: 1rem;
@@ -23,8 +27,4 @@ $progress-radius: var(--fas-progress-radius);
   --fas-progress-radius: var(--fas-global-radius);
 
   // Foundation for Angular Sites Progress styles
-  display: block;
 }
-
-// Foundation for Sites Progress styles
-@include foundation-progress-element;

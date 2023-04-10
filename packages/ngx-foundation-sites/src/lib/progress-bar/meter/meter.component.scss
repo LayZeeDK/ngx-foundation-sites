@@ -1,6 +1,7 @@
 @import '../../global-foundation-sites-settings';
 
 // Foundation for Sites global tools
+@import 'foundation-sites/scss/util/util';
 
 // Foundation for Sites Meter settings
 $meter-height: var(--fas-meter-height);
@@ -15,6 +16,7 @@ $meter-fill-bad: var(--fas-meter-fill-bad);
 
 // Foundation for Sites Meter tools overrides
 
+// Foundation for Angular Sites Meter tools
 @mixin _fas-meter-appearance($height) {
   //
   // 1. Fix appearance in Chrome/Safari/Edge.
@@ -27,6 +29,9 @@ $meter-fill-bad: var(--fas-meter-fill-bad);
     height: $meter-height; // [1]
   }
 }
+
+// Foundation for Sites Meter styles
+@include foundation-meter-element;
 
 [fas-meter] {
   // Foundation for Angular Sites Meter settings
@@ -43,6 +48,3 @@ $meter-fill-bad: var(--fas-meter-fill-bad);
   // Foundation for Angular Sites Meter styles
   display: block;
 }
-
-// Foundation for Sites Meter styles
-@include foundation-meter-element;
