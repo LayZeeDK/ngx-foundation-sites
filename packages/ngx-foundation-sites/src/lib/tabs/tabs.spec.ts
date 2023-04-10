@@ -1,7 +1,7 @@
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { provideLocationMocks } from '@angular/common/testing';
 import { provideRouter } from '@angular/router';
-import { render } from '@testing-library/angular';
+import { render, screen } from '@testing-library/angular';
 import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 
 import { fasTabsDeclarables } from './tabs-declarables';
@@ -68,6 +68,46 @@ describe('Tabs', () => {
 
         expect(await tab1.getRole()).toBe('presentation');
       });
+    });
+  });
+
+  describe('Tab change', () => {
+    it('opens the selected tab', async () => {
+      const { panel2, tab2 } = await setup();
+
+      await tab2.selectTab();
+
+      expect(
+        await screen.findByRole('tabpanel', { name: 'Tab 2' })
+      ).toBeVisible();
+      expect(await panel2.isActive()).toBe(true);
+    });
+
+    it('sets ARIA attributes for open tab', async () => {
+      const { panel2, tab2 } = await setup();
+
+      await tab2.selectTab();
+
+      expect(await panel2.getAriaHidden()).toBe(false);
+      expect(await tab2.getAriaSelected()).toBe(true);
+    });
+
+    it('hides the open tab', async () => {
+      const { panel1, tab2 } = await setup();
+
+      await tab2.selectTab();
+
+      expect(await panel1.getAriaHidden()).toBe(true);
+      expect(await panel1.isActive()).toBe(false);
+    });
+
+    it('sets ARIA attributes for closed tab', async () => {
+      const { panel1, tab1, tab2 } = await setup();
+
+      await tab2.selectTab();
+
+      expect(await panel1.getAriaHidden()).toBe(true);
+      expect(await tab1.getAriaSelected()).toBe(false);
     });
   });
 });
