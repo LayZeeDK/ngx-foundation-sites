@@ -33,27 +33,27 @@ export class FasMeterComponent {
   value: number | null = null;
 
   @HostBinding('attr.high')
-  get highAttribute(): string | null {
+  protected get highAttribute(): string | null {
     return this.high === null ? null : String(this.high);
   }
   @HostBinding('attr.low')
-  get lowAttribute(): string | null {
+  protected get lowAttribute(): string | null {
     return this.low === null ? null : String(this.low);
   }
   @HostBinding('attr.max')
-  get maxAttribute(): string | null {
+  protected get maxAttribute(): string | null {
     return this.max === null ? null : String(this.max);
   }
   @HostBinding('attr.min')
-  get minAttribute(): string | null {
+  protected get minAttribute(): string | null {
     return this.min === null ? null : String(this.min);
   }
   @HostBinding('attr.optimum')
-  get optimumAttribute(): string | null {
+  protected get optimumAttribute(): string | null {
     return this.optimum === null ? null : String(this.optimum);
   }
   @HostBinding('attr.value')
-  get valueAttribute(): string | null {
+  protected get valueAttribute(): string | null {
     return this.value === null ? null : String(this.value);
   }
 }

@@ -17,7 +17,7 @@ import {
 })
 export class FasCardComponent {
   @HostBinding('className')
-  get className(): string {
+  protected get className(): string {
     return 'card';
   }
 }

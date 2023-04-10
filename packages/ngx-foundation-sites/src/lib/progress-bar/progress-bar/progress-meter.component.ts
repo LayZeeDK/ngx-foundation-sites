@@ -43,7 +43,7 @@ export class FasProgressMeterComponent {
   }
 
   @HostBinding('class.progress-meter')
-  get componentClassEnabled(): true {
+  protected get componentClassEnabled(): true {
     return true;
   }
 }

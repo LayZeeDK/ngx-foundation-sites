@@ -55,15 +55,15 @@ export class FasTabComponent {
   activeChange = new EventEmitter<boolean>();
 
   @HostBinding('attr.aria-hidden')
-  get ariaHidden(): 'true' | null {
+  protected get ariaHidden(): 'true' | null {
     return this.active ? null : 'true';
   }
   @HostBinding('attr.aria-labelledby')
-  get ariaLabelledBy(): string {
+  protected get ariaLabelledBy(): string {
     return `${this.id}-label`;
   }
   @HostBinding('className')
-  get className(): string {
+  protected get className(): string {
     return 'tabs-panel';
   }
   @HostBinding('id')
@@ -71,11 +71,11 @@ export class FasTabComponent {
     return this.#id;
   }
   @HostBinding('attr.role')
-  get role(): string {
+  protected get role(): string {
     return 'tabpanel';
   }
 
-  constructor() {
+  protected constructor() {
     let idAttribute = this.#element.nativeElement.getAttribute('id');
 
     if (!idAttribute) {
