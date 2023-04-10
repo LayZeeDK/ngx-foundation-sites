@@ -71,6 +71,7 @@
     "@storybook/manager-webpack5": "^6.5.15",
     "@testing-library/angular": "13.4.0",
     "@testing-library/cypress": "8.0.7",
+    "@testing-library/jest-dom": "5.16.5",
     "@types/jest": "29.4.4",
     "@types/lodash-es": "4.17.7",
     "@types/marked": "4.0.8",

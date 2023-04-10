@@ -1,14 +1,27 @@
 import { NgFor } from '@angular/common';
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  EventEmitter,
   Input,
+  OnDestroy,
+  Output,
   QueryList,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {
+  concatWith,
+  from,
+  map,
+  mergeMap,
+  Observable,
+  Subscription,
+} from 'rxjs';
 
+import type { FasTabComponent } from './tab.component';
 import { FasTabToken } from './tab.component';
 
 @Component({
@@ -45,9 +58,10 @@ import { FasTabToken } from './tab.component';
     </div>
   `,
 })
-export class FasTabsComponent {
+export class FasTabsComponent implements AfterContentInit, OnDestroy {
   #collapsingDefault = false;
   #collapsing = this.#collapsingDefault;
+  #untilDestroy = new Subscription();
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
 
@@ -65,9 +79,19 @@ export class FasTabsComponent {
   set vertical(value: boolean | null) {
     this.#vertical = value ?? this.#verticalDefault;
   }
+  @Output()
+  tabActiveChange = new EventEmitter<FasTabComponent>();
 
   @ContentChildren(FasTabToken)
   tabs!: QueryList<FasTabToken>;
+
+  ngAfterContentInit(): void {
+    this.#initializeTabActiveChange();
+  }
+
+  ngOnDestroy(): void {
+    this.#untilDestroy.unsubscribe();
+  }
 
   selectTab(selectedTab: FasTabToken): void {
     const activeTab = this.tabs.find(t => t.active);
@@ -77,5 +101,16 @@ export class FasTabsComponent {
     } else {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
+  }
+
+  #initializeTabActiveChange(): void {
+    const tabActiveChange = from(this.tabs.toArray()).pipe(
+      concatWith(this.tabs.changes as Observable<FasTabToken>),
+      mergeMap(tab => tab.activeChange.pipe(map(() => tab)))
+    ) as Observable<FasTabComponent>;
+
+    this.#untilDestroy.add(
+      tabActiveChange.subscribe(tab => this.tabActiveChange.emit(tab))
+    );
   }
 }
