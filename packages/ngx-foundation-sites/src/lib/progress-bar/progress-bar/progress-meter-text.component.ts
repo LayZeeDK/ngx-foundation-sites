@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  HostBinding,
   inject,
   Input,
   ViewEncapsulation,
@@ -16,13 +15,7 @@ import { ProgressBarStore } from './progress-bar.store';
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-meter-text',
   exportAs: 'fasProgressMeterText',
-  styles: [
-    `
-      fas-progress-meter-text {
-        display: inline-block;
-      }
-    `,
-  ],
+  styleUrls: ['./progress-meter-text.component.scss'],
   imports: [],
   template: `<ng-content></ng-content>`,
 })
@@ -36,11 +29,6 @@ export class FasProgressMeterTextComponent {
   @Input()
   set accessibleText(accessibleText: string | null) {
     this.#progressBar.updateAccessibleText(accessibleText);
-  }
-
-  @HostBinding('class.progress-meter-text')
-  protected get componentClassEnabled(): boolean {
-    return true;
   }
 
   // Use protected lifecycle hooks to minimize the public API surface

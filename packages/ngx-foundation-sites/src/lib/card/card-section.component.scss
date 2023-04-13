@@ -1,0 +1,19 @@
+@import '../global-foundation-sites-settings';
+
+// Foundation for Sites global tools
+
+// Foundation for Sites Card settings
+@import 'foundation-card-settings';
+
+// Foundation for Sites Card tools
+@import 'foundation-sites/scss/components/card';
+
+// Foundation for Sites Card tools overrides
+
+fas-card-section {
+  // Foundation for Sites Card styles
+  @include card-section;
+
+  // Foundation for Angular Sites Card styles
+  display: block;
+}

@@ -1,11 +1,15 @@
-import { ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import {
+  ComponentHarness,
+  HarnessPredicate,
+  TestElement,
+} from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 import { FasTabHarness } from './tab.harness';
 
 export class FasTabPanelHarness extends ComponentHarness {
-  static hostSelector = '.tabs-panel';
+  static hostSelector = 'fas-tab';
 
   static with(
     options: FasTabPanelHarnessFilters

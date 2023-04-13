@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostBinding,
   inject,
   Input,
   ViewEncapsulation,
@@ -19,6 +18,7 @@ import {
   encapsulation: ViewEncapsulation.None,
   selector: 'fas-progress-meter',
   exportAs: 'fasProgressMeter',
+  styleUrls: ['./progress-meter.component.scss'],
   imports: [],
   template: `<ng-content select="fas-progress-meter-text"></ng-content>`,
   viewProviders: [provideProgressMeterPresenter()],
@@ -40,10 +40,5 @@ export class FasProgressMeterComponent {
   @Input()
   set value(value: number | null) {
     this.#progressBar.updateValue(value);
-  }
-
-  @HostBinding('class.progress-meter')
-  protected get componentClassEnabled(): true {
-    return true;
   }
 }

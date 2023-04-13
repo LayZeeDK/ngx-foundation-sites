@@ -34,10 +34,6 @@ export class FasProgressBarComponent {
     this.#presenter.updateColor(color);
   }
 
-  @HostBinding('class.progress')
-  protected get componentClassEnabled(): boolean {
-    return true;
-  }
   @HostBinding('role')
   protected get roleAttribute(): string {
     return 'progressbar';

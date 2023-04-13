@@ -30,10 +30,10 @@ import { FasTabComponent } from './tab.component';
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
   imports: [NgFor, RouterLink],
   template: `
-    <ul class="tabs" [class.vertical]="vertical">
+    <ul class="fas-tabs__tabs" [class.vertical]="vertical">
       <li
         *ngFor="let tab of tabs"
-        class="tabs-title"
+        class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
       >
@@ -50,7 +50,7 @@ import { FasTabComponent } from './tab.component';
       </li>
     </ul>
 
-    <div class="tabs-content" [class.vertical]="vertical">
+    <div class="fas-tabs__tabs-content" [class.vertical]="vertical">
       <ng-content select="fas-tab"></ng-content>
     </div>
   `,

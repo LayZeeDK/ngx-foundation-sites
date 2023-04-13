@@ -1,22 +1,10 @@
 @import '../global-foundation-sites-settings';
 
 // Foundation for Sites global tools
-@import 'foundation-sites/scss/util/mixins';
+@import 'foundation-sites/scss/util/util';
 
 // Foundation for Sites Tabs settings
-$tab-margin: var(--fas-tab-margin);
-$tab-background: var(--fas-tab-background);
-$tab-color: var(--fas-tab-color);
-$tab-color-hover: var(--fas-tab-color-hover);
-$tab-background-active: var(--fas-tab-background-active);
-$tab-active-color: var(--fas-tab-active-color);
-$tab-item-font-size: var(--fas-tab-item-font-size);
-$tab-item-background-hover: var(--fas-tab-item-background-hover);
-$tab-item-padding: var(--fas-tab-item-padding);
-$tab-content-background: var(--fas-tab-content-background);
-$tab-content-border: var(--fas-tab-content-border);
-$tab-content-color: var(--fas-tab-content-color);
-$tab-content-padding: var(--fas-tab-content-padding);
+@import 'foundation-tabs-settings';
 
 // Foundation for Sites Tabs tools
 @import 'foundation-sites/scss/components/tabs';
@@ -30,7 +18,6 @@ $tab-content-padding: var(--fas-tab-content-padding);
   $padding: $tab-item-padding,
   $font-size: $tab-item-font-size,
   $color: $tab-color,
-  $color-hover: $tab-color-hover /* [1] */,
   $color-active: $tab-active-color,
   $background-hover: $tab-item-background-hover,
   $background-active: $tab-background-active
@@ -47,7 +34,7 @@ $tab-content-padding: var(--fas-tab-content-padding);
 
     &:hover {
       background: $background-hover;
-      color: $color-hover; // [1]
+      color: var(--fas-primary-color-dark); // [1]
     }
 
     &:focus,
@@ -63,7 +50,6 @@ fas-tabs {
   --fas-tab-margin: 0;
   --fas-tab-background: var(--fas-white);
   --fas-tab-color: var(--fas-primary-color);
-  --fas-tab-color-hover: var(--fas-primary-color-dark);
   --fas-tab-background-active: var(--fas-light-gray);
   --fas-tab-active-color: var(--fas-primary-color);
   --fas-tab-item-font-size: #{rem-calc(12)};
@@ -75,8 +61,57 @@ fas-tabs {
   --fas-tab-content-padding: 1rem;
 
   // Foundation for Sites Tabs styles
-  @include foundation-tabs;
 
   // Foundation for Angular Sites Tabs styles
   display: block;
+}
+
+.fas-tabs__tabs {
+  @include tabs-container;
+
+  // Vertical
+  &.vertical {
+    @include tabs-container-vertical;
+  }
+
+  // Simple
+  &.simple {
+    > li > a {
+      padding: 0;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  // Primary color
+  &.primary {
+    background: $primary-color;
+
+    > li > a {
+      color: var(--fas-primary-color-contrast);
+
+      &:hover,
+      &:focus {
+        background: var(--fas-primary-color-tinted);
+      }
+    }
+  }
+}
+
+.fas-tabs__tabs-title {
+  @include tabs-title;
+}
+
+.fas-tabs__tabs-content {
+  @include tabs-content;
+
+  &.vertical {
+    @include tabs-content-vertical;
+  }
+}
+
+.fas-tabs__tabs-panel {
+  @include tabs-panel;
 }

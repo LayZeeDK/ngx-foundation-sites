@@ -4,7 +4,7 @@ import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property'
 import { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
-  static hostSelector = '.tabs-title';
+  static hostSelector = '.fas-tabs__tabs-title';
 
   #getLabel: AsyncFactoryFn<TestElement> = this.locatorFor('a');
 

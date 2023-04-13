@@ -44,7 +44,7 @@ export const CollapsingTabs: Story = args => ({
       </fas-tab>
 
       <fas-tab id="panel3c" title="Collapsing tab 3">
-        <img class="thumbnail" src="/assets/img/generic/rectangle-3.jpg" />
+        <img class="thumbnail" src="https://get.foundation/sites/docs/assets/img/generic/rectangle-3.jpg" />
       </fas-tab>
 
       <fas-tab id="panel4c" title="Collapsing tab 4">

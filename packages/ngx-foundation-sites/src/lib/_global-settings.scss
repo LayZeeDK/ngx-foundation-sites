@@ -1,9 +1,21 @@
+// Foundation for Sites tools
+@import 'foundation-sites/scss/util/util';
+
+$fas-white: #fefefe;
+$fas-primary-color: #1779ba;
+$fas-black: #0a0a0a;
+
 // Foundation for Angular Sites default global settings
-// Must be included with every component
+// Must be included with every top-level component
 :root {
-  --fas-white: #fefefe;
-  --fas-primary-color: #1779ba;
+  --fas-white: $fas-white;
+  --fas-primary-color: $fas-primary-color;
+  --fas-primary-color-contrast: color-pick-contrast(
+    $fas-primary-color,
+    ($fas-white, $fas-black)
+  );
   --fas-primary-color-dark: #1468a0;
+  --fas-primary-color-tinted: smart-scale($fas-primary-color);
   --fas-secondary-color: #767676;
   --fas-success-color: #3adb76;
   --fas-warning-color: #ffae00;
