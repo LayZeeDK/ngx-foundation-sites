@@ -5,10 +5,6 @@
     "npm": "Use Yarn CLI instead of NPM CLI",
     "yarn": "1.22.19"
   },
-  "volta": {
-    "node": "18.15.0",
-    "yarn": "1.22.19"
-  },
   "scripts": {
     "postinstall": "ngcc --properties es2020 browser module main",
     "assets": "copyfiles README.md dist/packages/ngx-foundation-sites",
