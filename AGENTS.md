@@ -1,192 +1,120 @@
-# GitHub Copilot Coding Agent and Agent Mode
+# Copilot Agent Playbook
 
-This document provides guidance on using GitHub Copilot Coding agent and Agent mode in VS Code with the ngx-foundation-sites project.
+## 1. Repository at a Glance
 
-## Overview
+- **Purpose:** Angular component library that re-implements Zurb Foundation for
+  Sites UI primitives with modern Angular (v15) and CSS custom properties, plus
+  supporting Storybook documentation and Cypress E2E coverage.
+- **Workspace Type:** Nx monorepo (`nx.json`) with one primary buildable Angular
+  library, two auxiliary Storybook helper libraries, and a Cypress-based E2E
+  project.
+- **Languages & Tooling:** TypeScript, SCSS, Angular 15, Storybook 6.5, Cypress
+  11, Jest via `jest-preset-angular`, ESLint, Prettier. Nx Cloud remote caching
+  is enabled.
+- **Repo Scale:** ~3000 dependencies after install. Key runtime target is modern
+  browsers consuming the published Angular package.
 
-GitHub Copilot offers two primary modes for enhanced development assistance:
+## 2. Environment & Bootstrap (validated 2025-09-26)
 
-1. **GitHub Copilot Coding Agent** - AI-powered code completion and generation
-2. **Agent Mode in VS Code** - Interactive AI assistant for development tasks
+- **Node/NPM:** Use Node 18 (`.nvmrc` = `lts/hydrogen`). We ran with Node
+  v18.20.8 / npm 10.8.2. `npm install` works despite an `EBADENGINE` warning
+  from `yargs-parser@22` (expects Node ≥20); the warning is benign for now.
+- **Install:** Always run `npm install` (or `npm ci` in CI) from repo root.
+  Postinstall triggers `ngcc`, so expect ~25 s with warm cache. React peer
+  warnings from Storybook packages may appear; no action required unless
+  upgrading Storybook.
+- **Nx Cloud:** Commands may short-circuit via remote cache. If behavior seems
+  odd, add `--skip-nx-cache`.
+- **Optional but recommended:** `npm install -g @angular/cli` not required; Nx
+  handles Angular builds internally.
 
-## Prerequisites
+## 3. Verified Command Matrix
 
-- GitHub Copilot subscription (individual, business, or enterprise)
-- Visual Studio Code with GitHub Copilot extension
-- Node.js 18.x (as specified in `.nvmrc`)
-- npm 10.x (as specified in `package.json`)
+All commands executed from repo root using Node 18; durations include cache hits
+noted in parentheses.
 
-## Project Setup
+| Purpose                       | Command                                 | Preconditions & Notes                                                                                                               | Result                                                                                                                                                           |
+| ----------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Build Angular package         | `npm run build`                         | Requires dependencies. Invokes `nx build ngx-foundation-sites` (production). Postbuild runs `copyfiles` to copy README into `dist`. | ✅ 2025-09-26 – Hit Nx cache (~2 s). Produces `dist/packages/ngx-foundation-sites`.                                                                              |
+| Build Storybook static bundle | `npm run build:storybook`               | Needs build deps; outputs to `dist/storybook/ngx-foundation-sites`.                                                                 | ✅ 2025-09-26 – Fresh build ~1.5 min. Emits asset-size warnings (expected for Storybook) and tsconfig “unused file” warning for `.storybook/main.ts`.            |
+| Lint all projects             | `npm run lint`                          | Runs ESLint across all libs/e2e.                                                                                                    | ✅ 2025-09-26 – Nx cache (~1 s).                                                                                                                                 |
+| Unit tests                    | `npm test`                              | Runs all project Jest suites.                                                                                                       | ✅ 2025-09-26 – Nx cache (<1 s).                                                                                                                                 |
+| Cypress E2E (CI profile)      | `npm run e2e:ci`                        | Launches headless Storybook + Cypress via `nx run ngx-foundation-sites-e2e:e2e:ci`. First execution downloads Cypress binary.       | ✅ 2025-09-26 – Cache for Nx target; Storybook dev server spent ~2 min to compile, Cypress suite ~14 s. No failures.                                             |
+| Live Storybook                | `npm start` (alias `npm run storybook`) | Starts dev server on port 4400; long-running process. Stop manually with Ctrl+C.                                                    | ⚠️ Not re-run in this session, but configuration confirmed in `project.json`. Use after install when iterating UI.                                               |
+| License whitelisting          | `npm run verify-license-compliance`     | Uses `lisense` against `lisense.json`.                                                                                              | ✅ 2025-09-26 – Reports 5 modules intentionally outside whitelist (`@nrwl/nx-cloud`, two internal Storybook libs, `trim`, `union`). Treat as informational gate. |
+| Formatting                    | `npm run format`                        | Runs `nx format:write`.                                                                                                             | ⚠️ Not exercised; use before committing format-heavy changes.                                                                                                    |
 
-### Environment Setup
+**Always execute install → lint/tests/build in that order before submitting
+PRs.** For long-running UI tasks, rely on `npm run storybook` and terminate
+manually.
 
-This project uses specific versions of Node.js and Yarn for consistency:
+## 4. CI & Quality Gates
 
-```bash
-# Use the project's Node.js version
-nvm use 18.20.8
+- `.github/workflows/ci.yml` runs on push/PR: four jobs (Build, Lint, Test, E2E)
+  on Ubuntu using Yarn (`yarn build`, etc.). Yarn merely proxies scripts; parity
+  with local npm runs is excellent.
+- Build job also executes `yarn build:storybook --configuration=ci` and
+  `yarn verify-license-compliance`.
+- `.github/workflows/copilot-setup-steps.yml` mirrors environment bootstrap
+  (checkout → Node via `.nvmrc` → `npm ci`).
+- No additional required checks documented, but expect PRs to pass GitHub
+  Actions.
 
-# Verify versions
-node --version  # Should be 18.20.8
-npm --version  # Should be 10.8.2
-```
+## 5. Project Layout Cheat Sheet
 
-### Installation
+- **Root files:** `package.json` (Nx + scripts), `package-lock.json`, `nx.json`,
+  `tsconfig.base.json`, `jest.config.ts`, `jest.preset.js`, `.eslintrc.json`,
+  `.prettierrc`, `.nvmrc`, `lisense.json`, `README.md` (usage), `LICENSE`.
+- **Primary library:** `packages/ngx-foundation-sites/`
+  - Source exports in `src/lib/**`; components grouped by feature (card, tabs,
+    progress-bar).
+  - Storybook config `.storybook/`; entry `src/storybook/styles.scss` sets
+    global theme.
+  - Jest setup in `src/test-setup.ts`; Angular packaging via `ng-package.json`.
+- **Testing helpers:** `packages/ngx-foundation-sites/testing/` (secondary entry
+  point).
+- **Storybook helper libs:** `packages/storybook/ui-markdown` and `ui-security`,
+  each with standard Nx Angular library setup.
+- **E2E app:** `packages/ngx-foundation-sites-e2e/` – Cypress specs in
+  `src/e2e/tabs/*`, page objects under `src/support/tabs`. Configured to drive
+  Storybook stories instead of a standalone app.
+- **Tooling:** `.github/actions/setup-dependencies` composite action wrapping
+  `npm ci`.
 
-```bash
-# Install dependencies (frozen lockfile for consistency)
-npm ci
+## 6. Tips, Gotchas, and Efficiencies
 
-# Verify installation
-npm run build
-npm run test
-```
+- **Trust Nx Targets:** Project configs are in each `project.json`. Prefer
+  `nx run <project>:<target>` if deviating from npm scripts.
+- **Remote Cache Awareness:** If a target unexpectedly reports success without
+  running, it likely came from Nx Cloud. Append `--skip-nx-cache` for clean
+  reruns when validating performance-sensitive fixes.
+- **Storybook Warnings:** Large bundle warnings are normal until components are
+  code-split; don’t treat as failures unless size budgets matter.
+- **License Gate:** `lisense` command currently flags five packages every time.
+  Documented above; expect to justify in PRs but no action needed during routine
+  builds.
+- **React Peer Warnings:** Storybook pulls lightweight React dependencies for
+  docs UI. Ignore unless bumping Storybook; no React code exists in the library
+  itself.
+- **Node Option Warning in Cypress:** `NODE_OPTIONS` are injected globally
+  (`--max-old-space-size=6144`). Cypress logs “Most NODE_OPTIONs are not
+  supported”; harmless.
+- **SCSS Overrides:** Theming lives in `src/storybook/styles.scss`. Angular
+  component theming uses CSS custom properties; watch for specificity hacks like
+  `:root:root`.
+- **Formatting & Lint:** ESLint enforces module boundaries; avoid cross-library
+  imports outside configured paths.
 
-## GitHub Copilot Integration
+## 7. Working Protocol
 
-### VS Code Extensions
+1. `nvm use` (or otherwise ensure Node 18) → `npm install`.
+2. Implement changes within `packages/**`; update exports in
+   `packages/ngx-foundation-sites/src/index.ts` when exposing new APIs.
+3. Validate with `npm run lint`, `npm test`, `npm run build`, plus
+   `npm run build:storybook` or `npm run e2e:ci` if relevant.
+4. Run `npm run verify-license-compliance` when dependencies change.
+5. Package outputs land in `dist/**`; clean with
+   `nx run-many --target=build --all --skip-nx-cache` if caches get stale.
 
-Install the following extensions:
-
-1. **GitHub Copilot** - Core AI code completion
-2. **GitHub Copilot Chat** - Interactive AI assistance
-3. **GitHub Copilot Labs** - Experimental features (optional)
-
-### Configuration
-
-Add the following to your VS Code `settings.json`:
-
-```json
-{
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
-    "plaintext": false
-  },
-  "github.copilot.inlineSuggest.enable": true,
-  "github.copilot.advanced": {
-    "listCount": 10,
-    "inlineSuggestCount": 3
-  }
-}
-```
-
-## Agent Mode Usage
-
-### Starting Agent Mode
-
-1. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
-2. Type "GitHub Copilot: Open Chat"
-3. Use the chat panel for interactive assistance
-
-### Common Commands
-
-- `@workspace` - Ask questions about the workspace
-- `@terminal` - Get help with terminal commands
-- `@vscode` - VS Code specific assistance
-
-### Project-Specific Prompts
-
-When working with this Angular/Nx workspace, use these context-aware prompts:
-
-```
-Generate a new Angular component for Foundation Sites
-Help me create a Storybook story for the card component
-Explain the Nx workspace configuration
-Generate unit tests for the progress bar component
-```
-
-## Best Practices
-
-### Code Generation
-
-1. **Be Specific**: Provide clear context about the component type (Angular, Foundation Sites)
-2. **Include Dependencies**: Mention required imports and dependencies
-3. **Follow Patterns**: Reference existing components in the project
-
-Example prompt:
-```
-Create an Angular component for a Foundation Sites button that follows the existing component pattern in this project, including proper typing and Storybook integration.
-```
-
-### Testing
-
-1. **Test Generation**: Ask Copilot to generate tests that match existing patterns
-2. **Coverage**: Request tests for edge cases and accessibility
-3. **Mock Setup**: Get help with proper mocking for Angular services
-
-### Documentation
-
-1. **Component Docs**: Generate JSDoc comments for components
-2. **README Updates**: Keep documentation current with code changes
-3. **Story Documentation**: Maintain Storybook story descriptions
-
-## Workspace Context
-
-### Project Structure
-
-```
-packages/
-├── ngx-foundation-sites/        # Main library
-├── ngx-foundation-sites-e2e/    # E2E tests
-└── storybook/                   # Storybook utilities
-```
-
-### Key Technologies
-
-- **Angular 15.0.4** - Component framework
-- **Foundation Sites 6.7.5** - CSS framework
-- **Nx 15.8.9** - Workspace management
-- **Storybook** - Component documentation
-- **Jest** - Unit testing
-- **Cypress** - E2E testing
-
-### Available Scripts
-
-```bash
-npm run build          # Build the library
-npm run test           # Run unit tests
-npm run lint           # Lint the code
-npm run start          # Start Storybook
-npm run e2e            # Run E2E tests
-npm run format         # Format code
-```
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Version Mismatch**: Ensure Node.js 18.15.0 and Yarn 1.22.19
-2. **Cache Issues**: Clear `node_modules` and reinstall
-3. **Build Errors**: Run `yarn build` before testing components
-
-### Getting Help
-
-1. Use `@workspace` in Copilot Chat for project-specific questions
-2. Reference existing components for patterns
-3. Check the CI workflow in `.github/workflows/ci.yml` for build steps
-
-## Security Considerations
-
-- Review generated code before committing
-- Ensure sensitive data is not included in prompts
-- Follow the project's existing security patterns
-- Use the project's linting rules to validate generated code
-
-## Contributing
-
-When using Copilot to contribute:
-
-1. Follow the existing code style and patterns
-2. Generate appropriate tests for new features
-3. Update documentation and stories as needed
-4. Run the full CI pipeline locally before submitting PRs
-
-## Resources
-
-- [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
-- [GitHub Copilot Best Practices](https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot)
-- [VS Code GitHub Copilot Extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-- [Foundation Sites Documentation](https://get.foundation/sites/docs/)
-- [Angular Documentation](https://angular.io/docs)
-- [Nx Documentation](https://nx.dev/getting-started/intro)
+**Follow this playbook and only fall back to manual searches when you discover
+contradictory or missing information.**
