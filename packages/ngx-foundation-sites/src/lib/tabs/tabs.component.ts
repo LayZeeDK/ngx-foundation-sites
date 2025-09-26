@@ -1,15 +1,20 @@
 import { NgFor } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   EventEmitter,
+  HostListener,
   Input,
+  OnDestroy,
   Output,
   QueryList,
+  ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FocusKeyManager } from '@angular/cdk/a11y';
 import {
   concatWith,
   from,
@@ -20,6 +25,7 @@ import {
 } from 'rxjs';
 
 import { FasTabComponent } from './tab.component';
+import { FasTabItemComponent } from './tab-item.component';
 
 @Component({
   standalone: true,
@@ -28,25 +34,19 @@ import { FasTabComponent } from './tab.component';
   selector: 'fas-tabs',
   exportAs: 'fasTabs',
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, FasTabItemComponent],
   template: `
-    <ul class="fas-tabs__tabs" [class.vertical]="vertical">
+    <ul class="fas-tabs__tabs" [class.vertical]="vertical" role="tablist">
       <li
-        *ngFor="let tab of tabs"
+        *ngFor="let tab of tabs; trackBy: trackByTab"
         class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
       >
-        <a
-          id="{{ tab.id }}-label"
-          routerLink="./"
-          [fragment]="tab.id"
-          [attr.aria-controls]="tab.id"
-          [attr.aria-selected]="tab.active"
-          role="tab"
-          (click)="selectTab(tab)"
-          >{{ tab.title }}</a
-        >
+        <fas-tab-item
+          [tab]="tab"
+          (tabSelected)="selectTab($event)"
+        ></fas-tab-item>
       </li>
     </ul>
 
@@ -55,12 +55,13 @@ import { FasTabComponent } from './tab.component';
     </div>
   `,
 })
-export class FasTabsComponent {
+export class FasTabsComponent implements AfterViewInit, OnDestroy {
   #collapsingDefault = false;
   #collapsing = this.#collapsingDefault;
   #untilDestroy = new Subscription();
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
+  #keyManager!: FocusKeyManager<FasTabItemComponent>;
 
   @Input()
   get collapsing(): boolean {
@@ -82,16 +83,36 @@ export class FasTabsComponent {
   @ContentChildren(FasTabComponent)
   protected tabs!: QueryList<FasTabComponent>;
 
+  @ViewChildren(FasTabItemComponent)
+  private tabItems!: QueryList<FasTabItemComponent>;
+
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  protected ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     this.#initializeTabActiveChange();
+    this.#initializeKeyManager();
   }
 
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  protected ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.#untilDestroy.unsubscribe();
+  }
+
+  @HostListener('keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (this.#keyManager) {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft' ||
+          event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        this.#keyManager.onKeydown(event);
+        
+        const activeItem = this.#keyManager.activeItem;
+        if (activeItem) {
+          this.selectTab(activeItem.tab);
+        }
+      }
+    }
   }
 
   protected selectTab(selectedTab: FasTabComponent): void {
@@ -101,6 +122,23 @@ export class FasTabsComponent {
       this.tabs.forEach(tab => (tab.active = false));
     } else {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
+    }
+  }
+
+  trackByTab(index: number, tab: FasTabComponent): string {
+    return tab.id;
+  }
+
+  #initializeKeyManager(): void {
+    this.#keyManager = new FocusKeyManager(this.tabItems)
+      .withHorizontalOrientation(this.vertical ? null : 'ltr')
+      .withVerticalOrientation(this.vertical)
+      .withWrap();
+
+    // Set the initially active item
+    const activeTabIndex = this.tabs.toArray().findIndex(tab => tab.active);
+    if (activeTabIndex >= 0) {
+      this.#keyManager.setActiveItem(activeTabIndex);
     }
   }
 
