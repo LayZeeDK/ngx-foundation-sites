@@ -16,7 +16,7 @@
 
 ## 2. Environment & Bootstrap (validated 2025-09-26)
 
-- **Node/NPM:** Use Node 18 (`.nvmrc` = `lts/hydrogen`). We ran with Node
+- **Node/NPM:** Use Node 18 (`.node-version` = `lts/hydrogen`). We ran with Node
   v18.20.8 / npm 10.8.2. `npm install` works despite an `EBADENGINE` warning
   from `yargs-parser@22` (expects Node ≥20); the warning is benign for now.
 - **Install:** Always run `npm install` (or `npm ci` in CI) from repo root.
@@ -55,7 +55,7 @@ manually.
 - Build job also executes `npm run build:storybook --configuration=ci` and
   `npm run verify-license-compliance`.
 - `.github/workflows/copilot-setup-steps.yml` mirrors environment bootstrap
-  (checkout → Node via `.nvmrc` → `npm ci`).
+  (checkout → Node via `.node-version` → `npm ci`).
 - No additional required checks documented, but expect PRs to pass GitHub
   Actions.
 
@@ -63,7 +63,8 @@ manually.
 
 - **Root files:** `package.json` (Nx + scripts), `package-lock.json`, `nx.json`,
   `tsconfig.base.json`, `jest.config.ts`, `jest.preset.js`, `.eslintrc.json`,
-  `.prettierrc`, `.nvmrc`, `lisense.json`, `README.md` (usage), `LICENSE`.
+  `.prettierrc`, `.node-version`, `lisense.json`, `README.md` (usage),
+  `LICENSE`.
 - **Primary library:** `packages/ngx-foundation-sites/`
   - Source exports in `src/lib/**`; components grouped by feature (card, tabs,
     progress-bar).
