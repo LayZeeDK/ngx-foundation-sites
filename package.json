@@ -1,9 +1,9 @@
 {
   "private": true,
   "engines": {
-    "node": "18.15.0",
+    "node": "^18.20.8",
     "npm": "Use Yarn CLI instead of NPM CLI",
-    "yarn": "1.22.19"
+    "yarn": "^1.22.22"
   },
   "scripts": {
     "postinstall": "ngcc --properties es2020 browser module main",
