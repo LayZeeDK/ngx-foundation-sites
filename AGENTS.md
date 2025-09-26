@@ -42,7 +42,7 @@ noted in parentheses.
 | Cypress E2E (CI profile)      | `npm run e2e:ci`                        | Launches headless Storybook + Cypress via `nx run ngx-foundation-sites-e2e:e2e:ci`. First execution downloads Cypress binary.       | ✅ 2025-09-26 – Cache for Nx target; Storybook dev server spent ~2 min to compile, Cypress suite ~14 s. No failures.                                             |
 | Live Storybook                | `npm start` (alias `npm run storybook`) | Starts dev server on port 4400; long-running process. Stop manually with Ctrl+C.                                                    | ⚠️ Not re-run in this session, but configuration confirmed in `project.json`. Use after install when iterating UI.                                               |
 | License whitelisting          | `npm run verify-license-compliance`     | Uses `lisense` against `lisense.json`.                                                                                              | ✅ 2025-09-26 – Reports 5 modules intentionally outside whitelist (`@nrwl/nx-cloud`, two internal Storybook libs, `trim`, `union`). Treat as informational gate. |
-| Formatting                    | `npm run format`                        | Runs `nx format:write`.                                                                                                             | ⚠️ Not exercised; use before committing format-heavy changes.                                                                                                    |
+| Formatting                    | `npm run format`                        | Runs `nx format:write`.                                                                                                             | ⚠️ Not exercised; always use before committing changes.                                                                                                          |
 
 **Always execute install → lint/tests/build in that order before submitting
 PRs.** For long-running UI tasks, rely on `npm run storybook` and terminate
@@ -118,3 +118,7 @@ manually.
 
 **Follow this playbook and only fall back to manual searches when you discover
 contradictory or missing information.**
+
+## 8. Git
+
+- Use Conventional Commits for Git commits and pull request titles.
