@@ -26,7 +26,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up dependencies
         uses: ./.github/actions/setup-dependencies
 
