@@ -1,4 +1,5 @@
 {
+  "name": "ngx-foundation-sites_source",
   "private": true,
   "engines": {
     "node": "^18.20.8",
