@@ -90,4 +90,34 @@ export class FasTabHarness extends ComponentHarness {
 
     return label.click();
   }
+
+  async sendKeys(...keys: string[]): Promise<void> {
+    const label = await this.#getLabel();
+
+    return label.sendKeys(...keys);
+  }
+
+  async pressEnter(): Promise<void> {
+    return this.sendKeys('Enter');
+  }
+
+  async pressSpace(): Promise<void> {
+    return this.sendKeys(' ');
+  }
+
+  async pressArrowRight(): Promise<void> {
+    return this.sendKeys('ArrowRight');
+  }
+
+  async pressArrowLeft(): Promise<void> {
+    return this.sendKeys('ArrowLeft');
+  }
+
+  async pressArrowDown(): Promise<void> {
+    return this.sendKeys('ArrowDown');
+  }
+
+  async pressArrowUp(): Promise<void> {
+    return this.sendKeys('ArrowUp');
+  }
 }

@@ -1,4 +1,3 @@
-import { FocusKeyManager } from '@angular/cdk/a11y';
 import { NgFor } from '@angular/common';
 import type { AfterViewInit, OnDestroy, TrackByFunction } from '@angular/core';
 import {
@@ -6,11 +5,9 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
-  HostListener,
   Input,
   Output,
   QueryList,
-  ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -18,7 +15,6 @@ import type { Observable } from 'rxjs';
 import { concatWith, from, map, mergeMap, Subscription } from 'rxjs';
 
 import { FasTabComponent } from './tab.component';
-import { FasTabItemComponent } from './tab-item.component';
 
 @Component({
   standalone: true,
@@ -27,19 +23,27 @@ import { FasTabItemComponent } from './tab-item.component';
   selector: 'fas-tabs',
   exportAs: 'fasTabs',
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
-  imports: [NgFor, RouterLink, FasTabItemComponent],
+  imports: [NgFor, RouterLink],
   template: `
     <ul class="fas-tabs__tabs" [class.vertical]="vertical" role="tablist">
       <li
-        *ngFor="let tab of tabs; trackBy: trackById"
+        *ngFor="let tab of tabs; trackBy: trackById; let i = index"
         class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
       >
-        <fas-tab-item
-          [tab]="tab"
-          (tabSelected)="selectTab($event)"
-        ></fas-tab-item>
+        <a
+          [id]="tab.id + '-label'"
+          routerLink="./"
+          [fragment]="tab.id"
+          [attr.aria-controls]="tab.id"
+          [attr.aria-selected]="tab.active"
+          [attr.tabindex]="tab.active ? 0 : -1"
+          role="tab"
+          (click)="selectTab(tab)"
+          (keydown)="onTabKeydown($event, i)"
+          >{{ tab.title }}</a
+        >
       </li>
     </ul>
 
@@ -54,7 +58,7 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
   #untilDestroy = new Subscription();
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
-  #keyManager!: FocusKeyManager<FasTabItemComponent>;
+  #activeTabIndex = 0;
 
   @Input()
   get collapsing(): boolean {
@@ -76,14 +80,11 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
   @ContentChildren(FasTabComponent)
   protected tabs!: QueryList<FasTabComponent>;
 
-  @ViewChildren(FasTabItemComponent)
-  private tabItems!: QueryList<FasTabItemComponent>;
-
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngAfterViewInit(): void {
     this.#initializeTabActiveChange();
-    this.#initializeKeyManager();
+    this.#updateActiveTabIndex();
   }
 
   // Use protected lifecycle hooks to minimize the public API surface
@@ -92,23 +93,40 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
     this.#untilDestroy.unsubscribe();
   }
 
-  @HostListener('keydown', ['$event'])
-  onKeydown(event: KeyboardEvent): void {
-    if (this.#keyManager) {
-      if (
-        event.key === 'ArrowRight' ||
-        event.key === 'ArrowLeft' ||
-        event.key === 'ArrowDown' ||
-        event.key === 'ArrowUp'
-      ) {
-        event.preventDefault();
-        this.#keyManager.onKeydown(event);
+  onTabKeydown(event: KeyboardEvent, currentIndex: number): void {
+    let newIndex = currentIndex;
+    const tabCount = this.tabs.length;
 
-        const activeItem = this.#keyManager.activeItem;
-        if (activeItem) {
-          this.selectTab(activeItem.tab);
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        event.preventDefault();
+        newIndex = (currentIndex + 1) % tabCount;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        event.preventDefault();
+        newIndex = (currentIndex - 1 + tabCount) % tabCount;
+        break;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        // Tab is already handled by click
+        return;
+      default:
+        return;
+    }
+
+    const newTab = this.tabs.toArray()[newIndex];
+    if (newTab) {
+      this.selectTab(newTab);
+      // Focus the new tab
+      setTimeout(() => {
+        const tabElement = document.getElementById(`${newTab.id}-label`);
+        if (tabElement) {
+          tabElement.focus();
         }
-      }
+      });
     }
   }
 
@@ -120,21 +138,14 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
     } else {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
+
+    this.#updateActiveTabIndex();
   }
 
   protected trackById: TrackByFunction<FasTabComponent> = (_, tab) => tab.id;
 
-  #initializeKeyManager(): void {
-    this.#keyManager = new FocusKeyManager(this.tabItems)
-      .withHorizontalOrientation(this.vertical ? null : 'ltr')
-      .withVerticalOrientation(this.vertical)
-      .withWrap();
-
-    // Set the initially active item
-    const activeTabIndex = this.tabs.toArray().findIndex(tab => tab.active);
-    if (activeTabIndex >= 0) {
-      this.#keyManager.setActiveItem(activeTabIndex);
-    }
+  #updateActiveTabIndex(): void {
+    this.#activeTabIndex = this.tabs.toArray().findIndex(tab => tab.active);
   }
 
   #initializeTabActiveChange(): void {

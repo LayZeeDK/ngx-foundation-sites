@@ -59,4 +59,26 @@ export class FasTabsHarness extends ComponentHarness {
 
     return tabs.hasClass('vertical');
   }
+
+  async sendKeys(...keys: string[]): Promise<void> {
+    const tabs = await this.#getTabs();
+
+    return tabs.sendKeys(...keys);
+  }
+
+  async pressArrowRight(): Promise<void> {
+    return this.sendKeys('ArrowRight');
+  }
+
+  async pressArrowLeft(): Promise<void> {
+    return this.sendKeys('ArrowLeft');
+  }
+
+  async pressArrowDown(): Promise<void> {
+    return this.sendKeys('ArrowDown');
+  }
+
+  async pressArrowUp(): Promise<void> {
+    return this.sendKeys('ArrowUp');
+  }
 }
