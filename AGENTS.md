@@ -122,3 +122,9 @@ contradictory or missing information.**
 ## 8. Git
 
 - Use Conventional Commits for Git commits and pull request titles.
+
+## 9. Public API
+
+The output of `packages/ngx-foundation-sites` is a public npm package. Don't
+cause breaking changes in its public API or peer dependencies unless asked to do
+so.
