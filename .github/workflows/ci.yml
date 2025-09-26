@@ -19,49 +19,49 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: Build package
-        run: yarn build
+        run: npm run build
       - name: Build Storybook
-        run: yarn build:storybook --configuration=ci
+        run: npm run build:storybook --configuration=ci
       - name: Verify license compliance
-        run: yarn verify-license-compliance
+        run: npm run verify-license-compliance
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
   test:
     name: Test
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: Test
-        run: yarn test
+        run: npm run test
 
   e2e:
     name: End-to-end test
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: End-to-end test
-        run: yarn e2e:ci
+        run: npm run e2e:ci

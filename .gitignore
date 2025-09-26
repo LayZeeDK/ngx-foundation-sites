@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 
 .angular
+
+# Nx
+.github/instructions/nx.instructions.md
