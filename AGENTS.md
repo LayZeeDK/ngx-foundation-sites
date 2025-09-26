@@ -51,10 +51,9 @@ manually.
 ## 4. CI & Quality Gates
 
 - `.github/workflows/ci.yml` runs on push/PR: four jobs (Build, Lint, Test, E2E)
-  on Ubuntu using Yarn (`yarn build`, etc.). Yarn merely proxies scripts; parity
-  with local npm runs is excellent.
-- Build job also executes `yarn build:storybook --configuration=ci` and
-  `yarn verify-license-compliance`.
+  on Ubuntu using npm (`npm run build`, etc.).
+- Build job also executes `npm run build:storybook --configuration=ci` and
+  `npm run verify-license-compliance`.
 - `.github/workflows/copilot-setup-steps.yml` mirrors environment bootstrap
   (checkout → Node via `.nvmrc` → `npm ci`).
 - No additional required checks documented, but expect PRs to pass GitHub

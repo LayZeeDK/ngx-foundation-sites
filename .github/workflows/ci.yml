@@ -24,11 +24,11 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: Build package
-        run: yarn build
+        run: npm run build
       - name: Build Storybook
-        run: yarn build:storybook --configuration=ci
+        run: npm run build:storybook --configuration=ci
       - name: Verify license compliance
-        run: yarn verify-license-compliance
+        run: npm run verify-license-compliance
 
   lint:
     name: Lint
@@ -40,7 +40,7 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
   test:
     name: Test
@@ -52,7 +52,7 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: Test
-        run: yarn test
+        run: npm run test
 
   e2e:
     name: End-to-end test
@@ -64,4 +64,4 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: End-to-end test
-        run: yarn e2e:ci
+        run: npm run e2e:ci

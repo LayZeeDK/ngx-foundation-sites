@@ -33,7 +33,7 @@ jobs:
       - name: Verify Copilot environment
         run: |
           echo "Node.js version: $(node --version)"
-          echo "Yarn version: $(yarn --version)"
+          echo "npm version: $(npm --version)"
           echo "Dependencies installed successfully for Copilot environment"
 
       - name: Display project information
