@@ -46,7 +46,7 @@ describe('Tabs', () => {
     const tab1 = await panel1.getTab();
     const tab2 = await panel2.getTab();
 
-    return { panel1, panel2, tab1, tab2, tabsComponent };
+    return { panel1, panel2, tab1, tab2, tabs, tabsComponent };
   }
 
   describe('OnInit', () => {
@@ -137,6 +137,73 @@ describe('Tabs', () => {
       );
 
       subscription.unsubscribe();
+    });
+  });
+
+  describe('Keyboard navigation', () => {
+    it('navigates to next tab with ArrowRight', async () => {
+      const { panel1, panel2, tab1 } = await setup();
+
+      // Press arrow right on the first tab
+      await tab1.pressArrowRight();
+
+      expect(await panel2.isActive()).toBe(true);
+      expect(await panel1.isActive()).toBe(false);
+    });
+
+    it('navigates to previous tab with ArrowLeft', async () => {
+      const { panel1, panel2, tab2 } = await setup();
+
+      // Start with second tab active
+      await tab2.selectTab();
+      await tab2.pressArrowLeft();
+
+      expect(await panel1.isActive()).toBe(true);
+      expect(await panel2.isActive()).toBe(false);
+    });
+
+    it('activates tab with Enter key', async () => {
+      const { panel2, tab2 } = await setup();
+
+      await tab2.pressEnter();
+
+      expect(await panel2.isActive()).toBe(true);
+    });
+
+    it('activates tab with Space key', async () => {
+      const { panel2, tab2 } = await setup();
+
+      await tab2.pressSpace();
+
+      expect(await panel2.isActive()).toBe(true);
+    });
+
+    it('wraps around when navigating past last tab', async () => {
+      const { fixture } = await render(
+        `
+          <fas-tabs>
+            <fas-tab id="panel1" title="Tab 1" [active]="true">Content 1</fas-tab>
+            <fas-tab id="panel2" title="Tab 2">Content 2</fas-tab>
+          </fas-tabs>
+        `,
+        {
+          imports: [fasTabsDeclarables],
+          providers: [provideRouter([]), provideLocationMocks()],
+        }
+      );
+
+      const loader = TestbedHarnessEnvironment.loader(fixture);
+      const tabs = await loader.getHarness(FasTabsHarness);
+      const panel1 = await tabs.getPanel({ id: 'panel1' });
+      const panel2 = await tabs.getPanel({ id: 'panel2' });
+      const tab1 = await panel1.getTab();
+
+      // Navigate past last tab should wrap to first
+      await tab1.pressArrowRight(); // Go to tab 2
+      await tab1.pressArrowRight(); // Should wrap to tab 1
+
+      expect(await panel1.isActive()).toBe(true);
+      expect(await panel2.isActive()).toBe(false);
     });
   });
 });
