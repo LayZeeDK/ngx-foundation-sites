@@ -13,11 +13,11 @@ clone this repository and build it locally to try it out:_
 1. Clone this repository to your local machine.
 2. Install package dependencies:
    ```pwsh
-   yarn install
+   npm install
    ```
 3. Build the latest bundle:
    ```pwsh
-   yarn build
+   npm run build
    ```
 4. Locate the library directory:
    ```pwsh
@@ -47,12 +47,12 @@ Documentation is currently only available locally:
 2. Install package dependencies:
 
    ```pwsh
-   yarn install
+   npm install
    ```
 
 3. Start the Storybook server:
    ```pwsh
-   yarn start
+   npm start
    ```
 
 ## Theming

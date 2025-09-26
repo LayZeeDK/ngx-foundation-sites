@@ -1,4 +1,6 @@
 name: Set up dependencies
+author: LayZeeDK
+description: Set up Node.js, npm, and install dependencies
 
 runs:
   using: composite
@@ -6,8 +8,8 @@ runs:
   steps:
     - uses: actions/setup-node@v3
       with:
-        cache: yarn
+        cache: npm
         node-version-file: '.nvmrc'
     - name: Install dependencies
-      run: yarn install --frozen-lockfile --non-interactive
+      run: npm ci
       shell: bash

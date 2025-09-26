@@ -13,8 +13,8 @@ GitHub Copilot offers two primary modes for enhanced development assistance:
 
 - GitHub Copilot subscription (individual, business, or enterprise)
 - Visual Studio Code with GitHub Copilot extension
-- Node.js 18.15.0 (as specified in `.nvmrc`)
-- Yarn 1.22.19 (as specified in `package.json`)
+- Node.js 18.x (as specified in `.nvmrc`)
+- npm 10.x (as specified in `package.json`)
 
 ## Project Setup
 
@@ -24,22 +24,22 @@ This project uses specific versions of Node.js and Yarn for consistency:
 
 ```bash
 # Use the project's Node.js version
-nvm use 18.15.0
+nvm use 18.20.8
 
 # Verify versions
-node --version  # Should be 18.15.0
-yarn --version  # Should be 1.22.19
+node --version  # Should be 18.20.8
+npm --version  # Should be 10.8.2
 ```
 
 ### Installation
 
 ```bash
 # Install dependencies (frozen lockfile for consistency)
-yarn install --frozen-lockfile
+npm ci
 
 # Verify installation
-yarn build
-yarn test
+npm run build
+npm run test
 ```
 
 ## GitHub Copilot Integration
@@ -144,12 +144,12 @@ packages/
 ### Available Scripts
 
 ```bash
-yarn build          # Build the library
-yarn test           # Run unit tests
-yarn lint           # Lint the code
-yarn start          # Start Storybook
-yarn e2e            # Run E2E tests
-yarn format         # Format code
+npm run build          # Build the library
+npm run test           # Run unit tests
+npm run lint           # Lint the code
+npm run start          # Start Storybook
+npm run e2e            # Run E2E tests
+npm run format         # Format code
 ```
 
 ## Troubleshooting
