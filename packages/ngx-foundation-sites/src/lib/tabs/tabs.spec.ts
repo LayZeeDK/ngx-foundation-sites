@@ -46,7 +46,7 @@ describe('Tabs', () => {
     const tab1 = await panel1.getTab();
     const tab2 = await panel2.getTab();
 
-    return { panel1, panel2, tab1, tab2, tabs, tabsComponent };
+    return { panel1, panel2, tab1, tab2, tabs, tabsComponent, fixture };
   }
 
   describe('OnInit', () => {
@@ -142,38 +142,43 @@ describe('Tabs', () => {
 
   describe('Keyboard navigation', () => {
     it('navigates to next tab with ArrowRight', async () => {
-      const { panel1, panel2, tab1 } = await setup();
+      const { panel1, panel2, tab1, fixture } = await setup();
 
       // Press arrow right on the first tab
       await tab1.pressArrowRight();
+      fixture.detectChanges();
 
       expect(await panel2.isActive()).toBe(true);
       expect(await panel1.isActive()).toBe(false);
     });
 
     it('navigates to previous tab with ArrowLeft', async () => {
-      const { panel1, panel2, tab2 } = await setup();
+      const { panel1, panel2, tab2, fixture } = await setup();
 
       // Start with second tab active
       await tab2.selectTab();
+      fixture.detectChanges();
       await tab2.pressArrowLeft();
+      fixture.detectChanges();
 
       expect(await panel1.isActive()).toBe(true);
       expect(await panel2.isActive()).toBe(false);
     });
 
     it('activates tab with Enter key', async () => {
-      const { panel2, tab2 } = await setup();
+      const { panel2, tab2, fixture } = await setup();
 
       await tab2.pressEnter();
+      fixture.detectChanges();
 
       expect(await panel2.isActive()).toBe(true);
     });
 
     it('activates tab with Space key', async () => {
-      const { panel2, tab2 } = await setup();
+      const { panel2, tab2, fixture } = await setup();
 
       await tab2.pressSpace();
+      fixture.detectChanges();
 
       expect(await panel2.isActive()).toBe(true);
     });

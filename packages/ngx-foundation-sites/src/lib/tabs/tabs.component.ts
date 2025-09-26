@@ -2,9 +2,11 @@ import { NgFor } from '@angular/common';
 import type { AfterViewInit, OnDestroy, TrackByFunction } from '@angular/core';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   EventEmitter,
+  inject,
   Input,
   Output,
   QueryList,
@@ -59,6 +61,7 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
   #activeTabIndex = 0;
+  #cdr = inject(ChangeDetectorRef);
 
   @Input()
   get collapsing(): boolean {
@@ -120,13 +123,6 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
     const newTab = this.tabs.toArray()[newIndex];
     if (newTab) {
       this.selectTab(newTab);
-      // Focus the new tab
-      setTimeout(() => {
-        const tabElement = document.getElementById(`${newTab.id}-label`);
-        if (tabElement) {
-          tabElement.focus();
-        }
-      });
     }
   }
 
@@ -140,6 +136,7 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
     }
 
     this.#updateActiveTabIndex();
+    this.#cdr.markForCheck();
   }
 
   protected trackById: TrackByFunction<FasTabComponent> = (_, tab) => tab.id;
