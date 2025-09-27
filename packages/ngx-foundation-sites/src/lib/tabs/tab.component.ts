@@ -75,7 +75,7 @@ export class FasTabComponent {
   protected constructor() {
     let idAttribute = this.#element.nativeElement.getAttribute('id');
 
-    if (!idAttribute) {
+    if (idAttribute == null || idAttribute === '') {
       idAttribute = `fas-tab-${serialNumber}`;
       serialNumber += 1;
     }

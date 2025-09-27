@@ -1,4 +1,9 @@
-import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import {
+  AsyncFactoryFn,
+  ComponentHarness,
+  HarnessPredicate,
+  TestElement,
+} from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import { FasTabHarnessFilters } from './tab-harness-filters';
@@ -28,7 +33,7 @@ export class FasTabHarness extends ComponentHarness {
     const label = await this.#getLabel();
     const maybePanelId = await label.getAttribute('aria-controls');
 
-    if (!maybePanelId) {
+    if (maybePanelId == null || maybePanelId === '') {
       throw new Error('No aria-controls attribute');
     }
 

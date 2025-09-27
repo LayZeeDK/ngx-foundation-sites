@@ -39,7 +39,7 @@ export class FasTabPanelHarness extends ComponentHarness {
     const host = await this.host();
     const maybeLabelId = await host.getAttribute('aria-labelledby');
 
-    if (!maybeLabelId) {
+    if (maybeLabelId == null || maybeLabelId === '') {
       throw new Error('No aria-labelledby attribute');
     }
 
