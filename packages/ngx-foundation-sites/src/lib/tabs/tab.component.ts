@@ -53,7 +53,7 @@ export class FasTabComponent {
     this.#title = title ?? this.#titleDefault;
   }
   @Output()
-  activeChange = new EventEmitter<boolean>();
+  readonly activeChange = new EventEmitter<boolean>();
 
   @HostBinding('attr.aria-hidden')
   protected get ariaHidden(): 'true' | null {

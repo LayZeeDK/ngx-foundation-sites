@@ -78,7 +78,7 @@ export class FasTabsComponent {
     this.#vertical = value ?? this.#verticalDefault;
   }
   @Output()
-  tabActiveChange = new EventEmitter<FasTabComponent>();
+  readonly tabActiveChange = new EventEmitter<FasTabComponent>();
 
   @ContentChildren(FasTabComponent)
   protected tabs!: QueryList<FasTabComponent>;
