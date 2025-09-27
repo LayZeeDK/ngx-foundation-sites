@@ -139,6 +139,25 @@ After generating an Angular library, add the following ESLint rule.
 {
   "overrides": [
     {
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@nrwl/nx/angular",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@angular-eslint/all"
+      ],
+      "rules": {
+        "@angular-eslint/component-max-inline-declarations": [
+          "error",
+          {
+            "template": 50,
+            "styles": 0,
+            "animations": 0
+          }
+        ],
+        "@angular-eslint/use-component-view-encapsulation": "off"
+      }
+    },
+    {
       "files": ["*.html"],
       "extends": [
         "plugin:@nrwl/nx/angular-template",
@@ -157,3 +176,5 @@ After generating an Angular library, add the following ESLint rule.
   ]
 }
 ```
+
+Keep existing rules unless they overlap.

@@ -6,7 +6,8 @@
       "files": ["*.ts"],
       "extends": [
         "plugin:@nrwl/nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@angular-eslint/all"
       ],
       "rules": {
         "@angular-eslint/directive-selector": [
@@ -25,7 +26,15 @@
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/use-lifecycle-interface": "error"
+        "@angular-eslint/component-max-inline-declarations": [
+          "error",
+          {
+            "template": 50,
+            "styles": 0,
+            "animations": 0
+          }
+        ],
+        "@angular-eslint/use-component-view-encapsulation": "off"
       }
     },
     {
