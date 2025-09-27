@@ -5,3 +5,11 @@ export { FasTabPanelHarness } from './lib/tabs/tab-panel.harness';
 export { FasTabHarness } from './lib/tabs/tab.harness';
 export type { FasTabsHarnessFilters } from './lib/tabs/tabs-harness-filters';
 export { FasTabsHarness } from './lib/tabs/tabs.harness';
+
+// PROGRESS BAR
+export { FasProgressBarHarnessFilters } from './lib/progress-bar/progress-bar-harness-filters';
+export { FasProgressBarHarness } from './lib/progress-bar/progress-bar.harness';
+export { FasProgressMeterHarnessFilters } from './lib/progress-bar/progress-meter-harness-filters';
+export { FasProgressMeterHarness } from './lib/progress-bar/progress-meter.harness';
+export { FasProgressMeterTextHarnessFilters } from './lib/progress-bar/progress-meter-text-harness-filters';
+export { FasProgressMeterTextHarness } from './lib/progress-bar/progress-meter-text.harness';
