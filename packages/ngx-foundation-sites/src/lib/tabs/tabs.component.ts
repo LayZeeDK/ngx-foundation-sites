@@ -1,15 +1,21 @@
 import { NgFor } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   EventEmitter,
+  HostListener,
+  inject,
   Input,
+  OnDestroy,
   Output,
   QueryList,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FocusKeyManager } from '@angular/cdk/a11y';
 import {
   concatWith,
   from,
@@ -30,23 +36,24 @@ import { FasTabComponent } from './tab.component';
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
   imports: [NgFor, RouterLink],
   template: `
-    <ul class="fas-tabs__tabs" [class.vertical]="vertical">
+    <ul class="fas-tabs__tabs" [class.vertical]="vertical" role="tablist">
       <li
-        *ngFor="let tab of tabs"
+        *ngFor="let tab of tabs; trackBy: trackByTab; let i = index"
         class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
       >
         <a
-          id="{{ tab.id }}-label"
+          [id]="tab.id + '-label'"
           routerLink="./"
           [fragment]="tab.id"
           [attr.aria-controls]="tab.id"
           [attr.aria-selected]="tab.active"
+          [attr.tabindex]="tab.active ? 0 : -1"
           role="tab"
           (click)="selectTab(tab)"
-          >{{ tab.title }}</a
-        >
+          (keydown)="onTabKeydown($event, i)"
+        >{{ tab.title }}</a>
       </li>
     </ul>
 
@@ -55,12 +62,14 @@ import { FasTabComponent } from './tab.component';
     </div>
   `,
 })
-export class FasTabsComponent {
+export class FasTabsComponent implements AfterViewInit, OnDestroy {
   #collapsingDefault = false;
   #collapsing = this.#collapsingDefault;
   #untilDestroy = new Subscription();
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
+  #activeTabIndex = 0;
+  #cdr = inject(ChangeDetectorRef);
 
   @Input()
   get collapsing(): boolean {
@@ -84,14 +93,49 @@ export class FasTabsComponent {
 
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  protected ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     this.#initializeTabActiveChange();
+    this.#updateActiveTabIndex();
   }
 
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  protected ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.#untilDestroy.unsubscribe();
+  }
+
+  onTabKeydown(event: KeyboardEvent, currentIndex: number): void {
+    let newIndex = currentIndex;
+    const tabCount = this.tabs.length;
+
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        event.preventDefault();
+        newIndex = (currentIndex + 1) % tabCount;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        event.preventDefault();
+        newIndex = (currentIndex - 1 + tabCount) % tabCount;
+        break;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        // For Enter and Space, we should activate the current tab, not navigate
+        const currentTab = this.tabs.toArray()[currentIndex];
+        if (currentTab) {
+          this.selectTab(currentTab);
+        }
+        return;
+      default:
+        return;
+    }
+
+    const newTab = this.tabs.toArray()[newIndex];
+    if (newTab) {
+      this.selectTab(newTab);
+    }
   }
 
   protected selectTab(selectedTab: FasTabComponent): void {
@@ -102,6 +146,17 @@ export class FasTabsComponent {
     } else {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
+    
+    this.#updateActiveTabIndex();
+    this.#cdr.markForCheck();
+  }
+
+  trackByTab(index: number, tab: FasTabComponent): string {
+    return tab.id;
+  }
+
+  #updateActiveTabIndex(): void {
+    this.#activeTabIndex = this.tabs.toArray().findIndex(tab => tab.active);
   }
 
   #initializeTabActiveChange(): void {
