@@ -26,9 +26,56 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "plugin:@typescript-eslint/all"
+      ],
       "rules": {
-        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/brace-style": "off",
+        "@typescript-eslint/class-literal-property-style": ["error", "getters"],
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          { "accessibility": "no-public" }
+        ],
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/lines-around-comment": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "forbid"
+          },
+
+          {
+            "selector": "variable",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "forbid"
+          },
+
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "forbid"
+          }
+        ],
+        "@typescript-eslint/no-extra-parens": "off",
+        "@typescript-eslint/no-extra-semi": "off",
+        "@typescript-eslint/no-extraneous-class": [
+          "error",
+          { "allowWithDecorator": true }
+        ],
+        "@typescript-eslint/no-magic-numbers": ["error", { "ignore": [0, 1] }],
+        "@typescript-eslint/no-type-alias": [
+          "error",
+          { "allowAliases": "always" }
+        ],
         "@typescript-eslint/no-unused-vars": [
           "error",
           {
@@ -39,13 +86,22 @@
             "varsIgnorePattern": "^_"
           }
         ],
-        "@typescript-eslint/explicit-member-accessibility": [
-          "error",
-          { "accessibility": "no-public" }
-        ],
-        "@typescript-eslint/explicit-module-boundary-types": "error",
-        "@typescript-eslint/explicit-function-return-type": "error",
-        "@typescript-eslint/no-parameter-properties": "error"
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/object-curly-spacing": "off",
+        "@typescript-eslint/prefer-readonly-parameter-types": "off",
+        "@typescript-eslint/promise-function-async": "off",
+        "@typescript-eslint/quotes": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/space-before-blocks": "off",
+        "@typescript-eslint/space-before-function-paren": "off",
+        "@typescript-eslint/space-infix-ops": "off",
+        "@typescript-eslint/type-annotation-spacing": "off"
+      }
+    },
+    {
+      "files": ["*.cy.ts", "*.cy.tsx"],
+      "rules": {
+        "@typescript-eslint/no-magic-numbers": "off"
       }
     },
     {
@@ -62,6 +118,35 @@
           "error",
           {
             "allowedNames": ["setup"]
+          }
+        ],
+        "@typescript-eslint/no-magic-numbers": "off"
+      }
+    },
+    {
+      "files": ["*.stories.ts", "*.stories.tsx"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "forbid"
+          },
+
+          {
+            "selector": "variable",
+            "format": ["camelCase", "PascalCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "forbid"
+          },
+
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "forbid"
           }
         ]
       }
