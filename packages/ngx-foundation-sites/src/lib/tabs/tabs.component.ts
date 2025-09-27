@@ -7,6 +7,7 @@ import {
   Input,
   Output,
   QueryList,
+  TrackByFunction,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -32,7 +33,7 @@ import { FasTabComponent } from './tab.component';
   template: `
     <ul class="fas-tabs__tabs" [class.vertical]="vertical">
       <li
-        *ngFor="let tab of tabs"
+        *ngFor="let tab of tabs; trackBy: trackById"
         class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
@@ -103,6 +104,8 @@ export class FasTabsComponent {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
   }
+
+  protected trackById: TrackByFunction<FasTabComponent> = (_, tab) => tab.id;
 
   #initializeTabActiveChange(): void {
     const tabActiveChange = from(this.tabs.toArray()).pipe(
