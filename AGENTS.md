@@ -136,8 +136,24 @@ so.
 After generating an Angular library, add the following ESLint rule.
 
 ```json
-"@angular-eslint/use-lifecycle-interface": "error"
+{
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@nrwl/nx/angular-template",
+        "plugin:@angular-eslint/template/all"
+      ],
+      "rules": {
+        "@angular-eslint/template/attributes-order": "off",
+        "@angular-eslint/template/i18n": [
+          "error",
+          {
+            "ignoreAttributes": ["role"]
+          }
+        ]
+      }
+    }
+  ]
+}
 ```
-
-The previous settings should be added to the overrides with the `*.ts` file
-pattern.
