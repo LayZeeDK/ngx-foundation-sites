@@ -98,26 +98,32 @@ export class FasTabHarness extends ComponentHarness {
   }
 
   async pressEnter(): Promise<void> {
-    return this.sendKeys('Enter');
+    const label = await this.#getLabel();
+    return label.dispatchEvent('keydown', { key: 'Enter', code: 'Enter' });
   }
 
   async pressSpace(): Promise<void> {
-    return this.sendKeys(' ');
+    const label = await this.#getLabel();
+    return label.dispatchEvent('keydown', { key: ' ', code: 'Space' });
   }
 
   async pressArrowRight(): Promise<void> {
-    return this.sendKeys('ArrowRight');
+    const label = await this.#getLabel();
+    return label.dispatchEvent('keydown', { key: 'ArrowRight', code: 'ArrowRight' });
   }
 
   async pressArrowLeft(): Promise<void> {
-    return this.sendKeys('ArrowLeft');
+    const label = await this.#getLabel();
+    return label.dispatchEvent('keydown', { key: 'ArrowLeft', code: 'ArrowLeft' });
   }
 
   async pressArrowDown(): Promise<void> {
-    return this.sendKeys('ArrowDown');
+    const label = await this.#getLabel();
+    return label.dispatchEvent('keydown', { key: 'ArrowDown', code: 'ArrowDown' });
   }
 
   async pressArrowUp(): Promise<void> {
-    return this.sendKeys('ArrowUp');
+    const label = await this.#getLabel();
+    return label.dispatchEvent('keydown', { key: 'ArrowUp', code: 'ArrowUp' });
   }
 }
