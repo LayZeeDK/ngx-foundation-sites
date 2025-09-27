@@ -114,7 +114,11 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
       case 'Enter':
       case ' ':
         event.preventDefault();
-        // Tab is already handled by click
+        // For Enter and Space, we should activate the current tab, not navigate
+        const currentTab = this.tabs.toArray()[currentIndex];
+        if (currentTab) {
+          this.selectTab(currentTab);
+        }
         return;
       default:
         return;
