@@ -130,3 +130,14 @@ contradictory or missing information.**
 The output of `packages/ngx-foundation-sites` is a public npm package. Don't
 cause breaking changes in its public API or peer dependencies unless asked to do
 so.
+
+## 10. Nx
+
+After generating an Angular library, add the following ESLint rule.
+
+```json
+"@angular-eslint/use-lifecycle-interface": "error"
+```
+
+The previous settings should be added to the overrides with the `*.ts` file
+pattern.

@@ -24,7 +24,8 @@
             "prefix": "fas",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/use-lifecycle-interface": "error"
       }
     },
     {

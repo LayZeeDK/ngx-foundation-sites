@@ -20,7 +20,8 @@
             "prefix": "sb",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/use-lifecycle-interface": "error"
       },
       "extends": [
         "plugin:@nrwl/nx/angular",
