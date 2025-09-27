@@ -1,5 +1,6 @@
 import { ElementRef, inject, Injectable, Renderer2 } from '@angular/core';
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class AriaRenderer {
   #host: ElementRef<HTMLElement> = inject(ElementRef);

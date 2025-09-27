@@ -10,6 +10,7 @@ interface ProgessBarState {
   readonly value: number;
 }
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class ProgressBarStore extends ComponentStore<ProgessBarState> {
   accessibleText$: Observable<string | null> = this.select(

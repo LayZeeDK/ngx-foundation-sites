@@ -16,6 +16,7 @@ export function provideProgressBarPresenter(): Provider[] {
   return [ProgressBarPresenter, AriaRenderer, StyleRenderer];
 }
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
   #aria = inject(AriaRenderer);

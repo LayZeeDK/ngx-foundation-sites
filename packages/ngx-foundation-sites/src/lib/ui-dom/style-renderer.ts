@@ -6,6 +6,7 @@ import {
   RendererStyleFlags2,
 } from '@angular/core';
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class StyleRenderer {
   #host: ElementRef<HTMLElement> = inject(ElementRef);
