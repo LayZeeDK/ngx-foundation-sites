@@ -142,21 +142,10 @@ describe('Tabs', () => {
 
   describe('Keyboard navigation', () => {
     it('navigates to next tab with ArrowRight', async () => {
-      const { panel1, panel2, fixture, tabsComponent } = await setup();
+      const { panel1, panel2, tab1, fixture } = await setup();
 
-      // Get the tab elements directly from the DOM
-      const tabElements = fixture.debugElement.queryAll(By.css('.fas-tabs__tabs-title a'));
-      const firstTabElement = tabElements[0];
-      
-      // Create and dispatch the keyboard event directly to the DOM element
-      const keydownEvent = new KeyboardEvent('keydown', {
-        key: 'ArrowRight',
-        code: 'ArrowRight',
-        bubbles: true,
-        cancelable: true
-      });
-      
-      firstTabElement.nativeElement.dispatchEvent(keydownEvent);
+      // Press arrow right on the first tab using harness
+      await tab1.pressArrowRight();
       fixture.detectChanges();
 
       expect(await panel2.isActive()).toBe(true);
@@ -164,25 +153,14 @@ describe('Tabs', () => {
     });
 
     it('navigates to previous tab with ArrowLeft', async () => {
-      const { panel1, panel2, fixture } = await setup();
+      const { panel1, panel2, tab2, fixture } = await setup();
 
       // Start with second tab active
-      const tabElements = fixture.debugElement.queryAll(By.css('.fas-tabs__tabs-title a'));
-      const secondTabElement = tabElements[1];
-      
-      // First click to activate second tab
-      secondTabElement.nativeElement.click();
+      await tab2.selectTab();
       fixture.detectChanges();
       
-      // Then test keyboard navigation
-      const keydownEvent = new KeyboardEvent('keydown', {
-        key: 'ArrowLeft',
-        code: 'ArrowLeft',
-        bubbles: true,
-        cancelable: true
-      });
-      
-      secondTabElement.nativeElement.dispatchEvent(keydownEvent);
+      // Press arrow left on the second tab using harness
+      await tab2.pressArrowLeft();
       fixture.detectChanges();
 
       expect(await panel1.isActive()).toBe(true);
@@ -190,42 +168,20 @@ describe('Tabs', () => {
     });
 
     it('activates tab with Enter key', async () => {
-      const { panel2, fixture } = await setup();
+      const { panel2, tab2, fixture } = await setup();
 
-      // Get the second tab element directly from the DOM
-      const tabElements = fixture.debugElement.queryAll(By.css('.fas-tabs__tabs-title a'));
-      const secondTabElement = tabElements[1];
-      
-      // Create and dispatch the keyboard event directly
-      const keydownEvent = new KeyboardEvent('keydown', {
-        key: 'Enter',
-        code: 'Enter',
-        bubbles: true,
-        cancelable: true
-      });
-      
-      secondTabElement.nativeElement.dispatchEvent(keydownEvent);
+      // Press Enter on the second tab using harness
+      await tab2.pressEnter();
       fixture.detectChanges();
 
       expect(await panel2.isActive()).toBe(true);
     });
 
     it('activates tab with Space key', async () => {
-      const { panel2, fixture } = await setup();
+      const { panel2, tab2, fixture } = await setup();
 
-      // Get the second tab element directly from the DOM
-      const tabElements = fixture.debugElement.queryAll(By.css('.fas-tabs__tabs-title a'));
-      const secondTabElement = tabElements[1];
-      
-      // Create and dispatch the keyboard event directly
-      const keydownEvent = new KeyboardEvent('keydown', {
-        key: ' ',
-        code: 'Space',
-        bubbles: true,
-        cancelable: true
-      });
-      
-      secondTabElement.nativeElement.dispatchEvent(keydownEvent);
+      // Press Space on the second tab using harness
+      await tab2.pressSpace();
       fixture.detectChanges();
 
       expect(await panel2.isActive()).toBe(true);
@@ -250,10 +206,13 @@ describe('Tabs', () => {
       const panel1 = await tabs.getPanel({ id: 'panel1' });
       const panel2 = await tabs.getPanel({ id: 'panel2' });
       const tab1 = await panel1.getTab();
+      const tab2 = await panel2.getTab();
 
       // Navigate past last tab should wrap to first
       await tab1.pressArrowRight(); // Go to tab 2
-      await tab1.pressArrowRight(); // Should wrap to tab 1
+      fixture.detectChanges();
+      await tab2.pressArrowRight(); // Should wrap to tab 1
+      fixture.detectChanges();
 
       expect(await panel1.isActive()).toBe(true);
       expect(await panel2.isActive()).toBe(false);
