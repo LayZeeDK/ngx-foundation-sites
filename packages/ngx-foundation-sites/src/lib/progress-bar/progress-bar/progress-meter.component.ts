@@ -25,9 +25,10 @@ import {
   viewProviders: [provideProgressMeterPresenter()],
 })
 export class FasProgressMeterComponent {
+  // Eagerly instantiate to initialize effects
   #presenter = inject(
     ProgressMeterPresenter
-  ); /* Eagerly instantiate to initialize effects */
+  );
   #progressBar = inject(ProgressBarStore);
 
   @Input()
