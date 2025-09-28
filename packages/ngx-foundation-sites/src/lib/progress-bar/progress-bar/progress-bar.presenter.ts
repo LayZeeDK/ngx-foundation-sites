@@ -24,6 +24,8 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
   #progressBarState = inject(ProgressBarStore);
   #style = inject(StyleRenderer);
 
+  color$ = this.select(state => state.color);
+
   constructor() {
     super(initalState);
 
@@ -37,7 +39,7 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
         (accessibleText, text) => accessibleText ?? text
       )
     );
-    this.#renderColorClasses(this.select(state => state.color));
+    this.#renderColorClasses(this.color$);
   }
 
   updateColor = this.updater<FasColor | null>(

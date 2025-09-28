@@ -6,6 +6,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import { take } from 'rxjs';
 
 import { ProgressBarStore } from './progress-bar.store';
 
@@ -29,6 +30,27 @@ export class FasProgressMeterTextComponent {
   @Input()
   set accessibleText(accessibleText: string | null) {
     this.#progressBar.updateAccessibleText(accessibleText);
+  }
+  get accessibleText(): string | null {
+    let accessibleText: string | null = null;
+
+    this.#progressBar.accessibleText$
+      .pipe(take(1))
+      .subscribe(x => {
+        /**
+         * Set the outer variable before returning from the getter
+         *
+         * @remarks Requires a synchronous observable.
+         */
+        accessibleText = x;
+      })
+      /**
+       * Unsubscribe to prevent memory leaks in case the observable is
+       * asynchronous.
+       */
+      .unsubscribe();
+
+    return accessibleText;
   }
 
   // Use protected lifecycle hooks to minimize the public API surface
