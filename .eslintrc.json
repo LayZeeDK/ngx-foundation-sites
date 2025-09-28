@@ -99,6 +99,13 @@
       }
     },
     {
+      "files": ["cypress.config.ts", "cypress.*.config.ts"],
+      "env": {
+        "node": true
+      },
+      "rules": {}
+    },
+    {
       "files": ["*.cy.ts", "*.cy.tsx"],
       "rules": {
         "@typescript-eslint/no-magic-numbers": "off"
