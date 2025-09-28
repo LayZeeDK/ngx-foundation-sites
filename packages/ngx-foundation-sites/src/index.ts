@@ -7,6 +7,7 @@ export { FasCardDividerComponent } from './lib/card/card-divider.component';
 export { FasCardSectionComponent } from './lib/card/card-section.component';
 export { FasCardComponent } from './lib/card/card.component';
 
+// eslint-disable-next-line multiline-comment-style -- Heading with sections
 // PROGRESS BAR
 // -> METER
 export { FasMeterComponent } from './lib/progress-bar/meter/meter.component';
