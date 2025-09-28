@@ -29,9 +29,9 @@ export class StyleRenderer {
   }
 
   toggleClasses(classes: Readonly<Record<string, boolean>>): void {
-    Object.entries(classes).forEach(([className, shouldAdd]) =>
-      this.toggleClass(className, shouldAdd)
-    );
+    Object.entries(classes).forEach(([className, shouldAdd]) => {
+      this.toggleClass(className, shouldAdd);
+    });
   }
 
   setStyle(

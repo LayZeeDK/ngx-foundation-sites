@@ -114,7 +114,9 @@ export class FasTabsComponent {
     );
 
     this.#untilDestroy.add(
-      tabActiveChange.subscribe(tab => this.tabActiveChange.emit(tab))
+      tabActiveChange.subscribe(tab => {
+        this.tabActiveChange.emit(tab);
+      })
     );
   }
 }

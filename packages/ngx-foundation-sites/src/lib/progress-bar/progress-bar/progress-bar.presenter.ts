@@ -48,33 +48,33 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
 
   #renderAriaValuemaxAttribute = this.effect<number>(
     pipe(
-      tap(meterMax =>
-        this.#aria.setAriaAttribute('valuemax', meterMax.toString())
-      )
+      tap(meterMax => {
+        this.#aria.setAriaAttribute('valuemax', meterMax.toString());
+      })
     )
   );
 
   #renderAriaValueminAttribute = this.effect<number>(
     pipe(
-      tap(meterMin =>
-        this.#aria.setAriaAttribute('valuemin', meterMin.toString())
-      )
+      tap(meterMin => {
+        this.#aria.setAriaAttribute('valuemin', meterMin.toString());
+      })
     )
   );
 
   #renderAriaValuenowAttribute = this.effect<number>(
     pipe(
-      tap(meterValue =>
-        this.#aria.setAriaAttribute('valuenow', meterValue.toString())
-      )
+      tap(meterValue => {
+        this.#aria.setAriaAttribute('valuenow', meterValue.toString());
+      })
     )
   );
 
   #renderAriaValuetextAttribute = this.effect<string | null>(
     pipe(
-      tap(accessibleText =>
-        this.#aria.setAriaAttribute('valuetext', accessibleText)
-      )
+      tap(accessibleText => {
+        this.#aria.setAriaAttribute('valuetext', accessibleText);
+      })
     )
   );
 
@@ -89,7 +89,9 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
           warning: activeColor === 'warning',
         })
       ),
-      tap(colorClasses => this.#style.toggleClasses(colorClasses))
+      tap(colorClasses => {
+        this.#style.toggleClasses(colorClasses);
+      })
     )
   );
 }

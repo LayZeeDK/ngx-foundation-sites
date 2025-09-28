@@ -7,7 +7,7 @@ import { ProgressBarStore } from './progress-bar.store';
 
 // No local UI state yet
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface ProgressMeterState { }
+interface ProgressMeterState {}
 
 export function provideProgressMeterPresenter(): Provider[] {
   return [ProgressMeterPresenter, StyleRenderer];
@@ -40,7 +40,9 @@ export class ProgressMeterPresenter extends ComponentStore<ProgressMeterState> {
   #renderWidthStyle = this.effect<number>(
     pipe(
       map(widthPercentage => `${widthPercentage}%`),
-      tap(widthValue => this.#style.setStyle('width', widthValue))
+      tap(widthValue => {
+        this.#style.setStyle('width', widthValue);
+      })
     )
   );
 }
