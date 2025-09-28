@@ -17,7 +17,7 @@ export const navigateTo = (options: NavigateToOptions) =>
     ...options,
     metaTitle:
       metaTitle +
-      (options.metaTitle != null && options.metaTitle !== ''
+      (options.metaTitle !== undefined && options.metaTitle !== ''
         ? `/${options.metaTitle}`
         : ''),
   });

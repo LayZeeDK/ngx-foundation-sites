@@ -1,5 +1,6 @@
 import type {
-  TestElement} from '@angular/cdk/testing';
+  TestElement
+} from '@angular/cdk/testing';
 import {
   ComponentHarness,
   HarnessPredicate
@@ -40,7 +41,7 @@ export class FasTabPanelHarness extends ComponentHarness {
     const host = await this.host();
     const maybeLabelId = await host.getAttribute('aria-labelledby');
 
-    if (maybeLabelId == null || maybeLabelId === '') {
+    if (maybeLabelId === null || maybeLabelId === '') {
       throw new Error('No aria-labelledby attribute');
     }
 

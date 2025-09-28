@@ -35,7 +35,7 @@ export class FasTabHarness extends ComponentHarness {
     const label = await this.#getLabel();
     const maybePanelId = await label.getAttribute('aria-controls');
 
-    if (maybePanelId == null || maybePanelId === '') {
+    if (maybePanelId === null || maybePanelId === '') {
       throw new Error('No aria-controls attribute');
     }
 
