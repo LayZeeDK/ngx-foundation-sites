@@ -237,7 +237,8 @@
       "files": ["*.cy.ts", "*.cy.tsx"],
       "rules": {
         "@typescript-eslint/no-magic-numbers": "off",
-        "max-lines-per-function": "off"
+        "max-lines-per-function": "off",
+        "max-statements": "off"
       }
     },
     {
@@ -260,7 +261,8 @@
           }
         ],
         "@typescript-eslint/no-magic-numbers": "off",
-        "max-lines-per-function": "off"
+        "max-lines-per-function": "off",
+        "max-statements": "off"
       }
     },
     {
