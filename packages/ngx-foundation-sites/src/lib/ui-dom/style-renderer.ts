@@ -36,7 +36,7 @@ export class StyleRenderer {
 
   setStyle(
     style: string,
-    value: string | number,
+    value: number | string,
     flags?: RendererStyleFlags2
   ): void {
     this.#renderer.setStyle(this.#host.nativeElement, style, value, flags);
