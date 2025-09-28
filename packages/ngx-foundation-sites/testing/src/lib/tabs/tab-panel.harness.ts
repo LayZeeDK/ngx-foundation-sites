@@ -32,7 +32,7 @@ export class FasTabPanelHarness extends ComponentHarness {
   async activate(): Promise<void> {
     const label = await this.#getTabElement();
 
-    label.click();
+    return label.click();
   }
 
   async getAriaLabelledBy(): Promise<string> {
