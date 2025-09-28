@@ -1,12 +1,13 @@
-import {
+import type {
   AsyncFactoryFn,
+  TestElement} from '@angular/cdk/testing';
+import {
   ComponentHarness,
-  HarnessPredicate,
-  TestElement,
+  HarnessPredicate
 } from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
-import { FasTabHarnessFilters } from './tab-harness-filters';
+import type { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
   static hostSelector = '.fas-tabs__tabs-title';

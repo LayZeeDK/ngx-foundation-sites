@@ -1,5 +1,7 @@
-import { Basics, BasicsArgs } from './basics.stories';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import type { BasicsArgs } from './basics.stories';
+import { Basics } from './basics.stories';
+import type { Meta, Story } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { fasProgressBarDeclarables } from './progress-bar-declarables';
 
 const meta: Meta = {

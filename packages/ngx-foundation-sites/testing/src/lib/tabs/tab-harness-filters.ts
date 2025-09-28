@@ -1,4 +1,4 @@
-import { BaseHarnessFilters } from '@angular/cdk/testing';
+import type { BaseHarnessFilters } from '@angular/cdk/testing';
 
 export interface FasTabHarnessFilters extends Readonly<BaseHarnessFilters> {
   readonly id?: RegExp | string;

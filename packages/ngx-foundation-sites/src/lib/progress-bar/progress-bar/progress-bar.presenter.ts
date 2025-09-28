@@ -1,8 +1,9 @@
-import { inject, Injectable, Provider } from '@angular/core';
+import type { Provider } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
-import { FasColor } from '../../colors/color';
+import type { FasColor } from '../../colors/color';
 import { defaultColor } from '../../colors/default-color';
 import { AriaRenderer } from '../../ui-dom/aria-renderer';
 import { StyleRenderer } from '../../ui-dom/style-renderer';

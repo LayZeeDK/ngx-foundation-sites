@@ -1,4 +1,4 @@
-import { BaseHarnessFilters } from '@angular/cdk/testing';
+import type { BaseHarnessFilters } from '@angular/cdk/testing';
 
 export interface FasTabPanelHarnessFilters
   extends Readonly<BaseHarnessFilters> {

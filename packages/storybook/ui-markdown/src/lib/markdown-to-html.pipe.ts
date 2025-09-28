@@ -1,5 +1,7 @@
-import { Pipe, PipeTransform, inject, SecurityContext } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import type { PipeTransform} from '@angular/core';
+import { Pipe, inject, SecurityContext } from '@angular/core';
+import type { SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { marked } from 'marked';
 
 @Pipe({

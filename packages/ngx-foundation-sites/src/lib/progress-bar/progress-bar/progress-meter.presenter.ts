@@ -1,4 +1,5 @@
-import { inject, Injectable, Provider } from '@angular/core';
+import type { Provider } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 

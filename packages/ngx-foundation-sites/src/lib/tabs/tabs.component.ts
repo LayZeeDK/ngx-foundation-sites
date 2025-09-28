@@ -1,4 +1,6 @@
 import { NgFor } from '@angular/common';
+import type {
+  TrackByFunction} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,16 +9,16 @@ import {
   Input,
   Output,
   QueryList,
-  TrackByFunction,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import type {
+  Observable} from 'rxjs';
 import {
   concatWith,
   from,
   map,
   mergeMap,
-  Observable,
   Subscription,
 } from 'rxjs';
 
