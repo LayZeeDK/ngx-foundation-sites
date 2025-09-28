@@ -25,6 +25,7 @@ export class FasTabHarness extends ComponentHarness {
       );
   }
 
+  // eslint-disable-next-line no-unused-private-class-members -- Keeep for future use
   async #getPanel(): Promise<TestElement> {
     const panelId = await this.getAriaControls();
 

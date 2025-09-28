@@ -25,7 +25,7 @@ import {
   viewProviders: [provideProgressMeterPresenter()],
 })
 export class FasProgressMeterComponent {
-  // Eagerly instantiate to initialize effects
+  // eslint-disable-next-line no-unused-private-class-members -- Eagerly instantiate to initialize effects
   #presenter = inject(
     ProgressMeterPresenter
   );
