@@ -9,7 +9,7 @@ import {
 // eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class StyleRenderer {
-  #host: ElementRef<HTMLElement> = inject(ElementRef);
+  #host = inject(ElementRef) as ElementRef<HTMLElement>;
   #renderer = inject(Renderer2);
 
   addClass(name: string): void {

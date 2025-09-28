@@ -10,6 +10,6 @@ export default defineConfig({
     viewportHeight: 1080,
     viewportWidth: 1920,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- See `@jscutlery/cypress-harness/preprocessor-config` import
-    ...getPreprocessorConfig(),
+    ...(getPreprocessorConfig() as Partial<Cypress.ConfigOptions['e2e']>),
   },
 });

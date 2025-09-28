@@ -12,6 +12,6 @@ export default defineConfig({
     viewportWidth: 1920,
     watchForFileChanges: false,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- See `@jscutlery/cypress-harness/preprocessor-config` import
-    ...getPreprocessorConfig(),
+    ...(getPreprocessorConfig() as Partial<Cypress.ConfigOptions['e2e']>),
   },
 });

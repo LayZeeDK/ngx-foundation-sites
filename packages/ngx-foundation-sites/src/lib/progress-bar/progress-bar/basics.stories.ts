@@ -37,7 +37,12 @@ to fill the progress bar.`,
 
 export default meta;
 
-export const Basics: Story = args => ({
+export interface BasicsArgs {
+  readonly min: number;
+  readonly max: number;
+  readonly value: number;
+}
+export const Basics: Story<BasicsArgs> = args => ({
   props: args,
   template: `
     <fas-progress-bar>

@@ -20,7 +20,7 @@ import { ProgressBarStore } from './progress-bar.store';
   template: `<ng-content></ng-content>`,
 })
 export class FasProgressMeterTextComponent {
-  #host: ElementRef<HTMLElement> = inject(ElementRef);
+  #host = inject(ElementRef) as ElementRef<HTMLElement>;
   #progressBar = inject(ProgressBarStore);
   get #textContent(): string | null {
     return this.#host.nativeElement.textContent;

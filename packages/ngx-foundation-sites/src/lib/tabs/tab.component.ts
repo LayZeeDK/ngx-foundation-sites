@@ -23,7 +23,7 @@ let serialNumber = 1;
   template: `<ng-content></ng-content>`,
 })
 export class FasTabComponent {
-  #element: ElementRef<HTMLElement> = inject(ElementRef);
+  #element = inject(ElementRef) as ElementRef<HTMLElement>;
   #id = '';
   #isActiveDefault = false;
   #isActive = this.#isActiveDefault;
