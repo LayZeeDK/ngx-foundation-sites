@@ -83,11 +83,8 @@ describe('Progress Bar Meter Accessibility', () => {
       // Verify tooltip is available
       MeterPage.getMeter().should('have.attr', 'title');
 
-      // Verify the meter shows in medium range (orange color)
+      // Verify the meter shows in medium range
       MeterPage.getMeter().should('have.attr', 'value', '45');
-
-      // Take a screenshot to document the accessibility implementation
-      cy.screenshot('meter-accessibility-demo');
     });
   });
 });
