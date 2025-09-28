@@ -1,6 +1,6 @@
 import { ComponentHarness, HarnessPredicate } from '@angular/cdk/testing';
 
-import { FasProgressMeterTextHarnessFilters } from './progress-meter-text-harness-filters';
+import type { FasProgressMeterTextHarnessFilters } from './progress-meter-text-harness-filters';
 
 export class FasProgressMeterTextHarness extends ComponentHarness {
   static hostSelector = 'fas-progress-meter-text';
@@ -18,13 +18,13 @@ export class FasProgressMeterTextHarness extends ComponentHarness {
   async getText(): Promise<string> {
     const host = await this.host();
     const text = await host.text();
-    
+
     return text.trim();
   }
 
   async getAccessibleText(): Promise<string | null> {
     const host = await this.host();
-    
+
     return host.getAttribute('aria-label');
   }
 }

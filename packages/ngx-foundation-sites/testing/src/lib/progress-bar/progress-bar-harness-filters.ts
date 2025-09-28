@@ -1,5 +1,5 @@
-import { BaseHarnessFilters } from '@angular/cdk/testing';
+import type { BaseHarnessFilters } from '@angular/cdk/testing';
 
 export interface FasProgressBarHarnessFilters extends BaseHarnessFilters {
-  readonly id?: string | RegExp;
+  readonly id?: RegExp | string;
 }

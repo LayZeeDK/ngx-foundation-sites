@@ -1,7 +1,7 @@
 import { ComponentHarness, HarnessPredicate } from '@angular/cdk/testing';
 
-import { FasProgressBarHarnessFilters } from './progress-bar-harness-filters';
-import { FasProgressMeterHarnessFilters } from './progress-meter-harness-filters';
+import type { FasProgressBarHarnessFilters } from './progress-bar-harness-filters';
+import type { FasProgressMeterHarnessFilters } from './progress-meter-harness-filters';
 import { FasProgressMeterHarness } from './progress-meter.harness';
 
 export class FasProgressBarHarness extends ComponentHarness {
@@ -49,31 +49,33 @@ export class FasProgressBarHarness extends ComponentHarness {
     const host = await this.host();
     const valueAttr = await host.getAttribute('aria-valuenow');
 
-    return valueAttr ? parseFloat(valueAttr) : null;
+    return valueAttr === null ? null : parseFloat(valueAttr);
   }
 
   async getMin(): Promise<number> {
     const host = await this.host();
     const minAttr = await host.getAttribute('aria-valuemin');
 
-    return minAttr ? parseFloat(minAttr) : 0;
+    return minAttr === null ? 0 : parseFloat(minAttr);
   }
 
   async getMax(): Promise<number> {
     const host = await this.host();
     const maxAttr = await host.getAttribute('aria-valuemax');
+    const defaultMaxValue = 100;
 
-    return maxAttr ? parseFloat(maxAttr) : 100;
+    return maxAttr === null ? defaultMaxValue : parseFloat(maxAttr);
   }
 
   async getColor(): Promise<string | null> {
     const host = await this.host();
     const classList = await host.getAttribute('class');
-    
-    if (!classList) return null;
+
+    if (classList === null) return null;
 
     // Extract color from class names (e.g., "primary", "secondary", etc.)
-    const colorMatch = classList.match(/\b(primary|secondary|success|warning|alert)\b/);
-    return colorMatch ? colorMatch[1] : null;
+    const colorMatch =
+      /\b(?<color>primary|secondary|success|warning|alert)\b/u.exec(classList);
+    return colorMatch?.groups?.['color'] ?? null;
   }
 }

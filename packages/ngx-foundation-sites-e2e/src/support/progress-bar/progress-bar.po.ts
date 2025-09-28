@@ -10,11 +10,14 @@ export interface NavigateToOptions {
 }
 
 export const getProgressBar = () => loader.getHarness(FasProgressBarHarness);
-export const getAllProgressBars = () => loader.getAllHarnesses(FasProgressBarHarness);
+export const getAllProgressBars = () =>
+  loader.getAllHarnesses(FasProgressBarHarness);
 export const getProgressBarWithId = (id: string) =>
   loader.getHarness(FasProgressBarHarness.with({ id }));
 export const navigateTo = (options: NavigateToOptions) =>
   Storybook.navigateTo({
     ...options,
-    metaTitle: metaTitle + (options.metaTitle ? `/${options.metaTitle}` : ''),
+    metaTitle:
+      metaTitle +
+      (typeof options.metaTitle === 'string' ? `/${options.metaTitle}` : ''),
   });

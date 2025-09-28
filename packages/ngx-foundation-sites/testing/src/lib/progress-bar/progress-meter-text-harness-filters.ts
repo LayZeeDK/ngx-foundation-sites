@@ -1,6 +1,6 @@
-import { BaseHarnessFilters } from '@angular/cdk/testing';
+import type { BaseHarnessFilters } from '@angular/cdk/testing';
 
 export interface FasProgressMeterTextHarnessFilters extends BaseHarnessFilters {
-  readonly text?: string | RegExp;
-  readonly accessibleText?: string | RegExp;
+  readonly text?: RegExp | string;
+  readonly accessibleText?: RegExp | string;
 }
