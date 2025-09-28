@@ -27,6 +27,7 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": [
+        "eslint:all",
         "plugin:@nrwl/nx/typescript",
         "plugin:@typescript-eslint/all"
       ],
@@ -95,7 +96,134 @@
         "@typescript-eslint/space-before-blocks": "off",
         "@typescript-eslint/space-before-function-paren": "off",
         "@typescript-eslint/space-infix-ops": "off",
-        "@typescript-eslint/type-annotation-spacing": "off"
+        "@typescript-eslint/type-annotation-spacing": "off",
+        "array-bracket-newline": "off",
+        "array-bracket-spacing": "off",
+        "array-element-newline": "off",
+        "arrow-parens": "off",
+        "arrow-spacing": "off",
+        "block-spacing": "off",
+        "callback-return": "off",
+        "class-methods-use-this": "off",
+        "comma-spacing": "off",
+        "comma-style": "off",
+        "computed-property-spacing": "off",
+        "constructor-super": "off",
+        "dot-location": "off",
+        "eol-last": "off",
+        "func-call-spacing": "off",
+        "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+        "function-call-argument-newline": "off",
+        "function-paren-newline": "off",
+        "generator-star-spacing": "off",
+        "getter-return": "off",
+        "global-require": "off",
+        "handle-callback-err": "off",
+        "id-blacklist": "off",
+        "id-length": [
+          "error",
+          {
+            "exceptions": ["_", "a", "b", "x", "xs", "y"]
+          }
+        ],
+        "implicit-arrow-linebreak": "off",
+        "indent-legacy": "off",
+        "jsx-quotes": "off",
+        "line-comment-position": "off",
+        "linebreak-style": "off",
+        "lines-around-directive": "off",
+        "max-len": "off",
+        "max-statements-per-line": "off",
+        "multiline-comment-style": "off",
+        "multiline-ternary": "off",
+        "new-cap": [
+          "error",
+          {
+            "capIsNewExceptions": [
+              "Attribute",
+              "Component",
+              "ContentChild",
+              "ContentChildren",
+              "Directive",
+              "Host",
+              "HostBinding",
+              "HostListener",
+              "Inject",
+              "Injectable",
+              "Input",
+              "NgModule",
+              "Optional",
+              "Output",
+              "Pipe",
+              "Self",
+              "SkipSelf",
+              "ViewChild",
+              "ViewChildren"
+            ]
+          }
+        ],
+        "new-parens": "off",
+        "newline-after-var": "off",
+        "newline-before-return": "off",
+        "newline-per-chained-call": "off",
+        "no-buffer-constructor": "off",
+        "no-catch-shadow": "off",
+        "no-class-assign": "off",
+        "no-dupe-args": "off",
+        "no-dupe-keys": "off",
+        "no-duplicate-imports": "off",
+        "no-eq-null": "off",
+        "no-func-assign": "off",
+        "no-floating-decimal": "off",
+        "no-import-assign": "off",
+        "no-new-object": "off",
+        "no-new-require": "off",
+        "no-new-symbol": "off",
+        "no-param-reassign": "off",
+        "no-path-concat": "off",
+        "no-process-env": "off",
+        "no-process-exit": "off",
+        "no-restricted-modules": "off",
+        "no-setter-return": "off",
+        "no-spaced-func": "off",
+        "no-mixed-operators": "off",
+        "no-mixed-requires": "off",
+        "no-mixed-spaces-and-tabs": "off",
+        "no-multi-spaces": "off",
+        "no-multiple-empty-lines": "off",
+        "no-native-reassign": "off",
+        "no-obj-calls": "off",
+        "no-ternary": "off",
+        "no-this-before-super": "off",
+        "no-trailing-spaces": "off",
+        "no-undef": "off",
+        "no-whitespace-before-property": "off",
+        "nonblock-statement-body-position": "off",
+        "object-curly-newline": "off",
+        "object-property-newline": "off",
+        "one-var-declaration-per-line": "off",
+        "one-var": ["error", "never"],
+        "operator-linebreak": "off",
+        "padded-blocks": "off",
+        "prefer-reflect": "off",
+        "quote-props": "off",
+        "require-jsdoc": "off",
+        "rest-spread-spacing": "off",
+        "semi-spacing": "off",
+        "semi-style": "off",
+        "sort-imports": "off",
+        "sort-keys": "off",
+        "space-in-parens": "off",
+        "space-unary-ops": "off",
+        "spaced-comment": "off",
+        "switch-colon-spacing": "off",
+        "template-curly-spacing": "off",
+        "template-tag-spacing": "off",
+        "valid-jsdoc": "off",
+        "wrap-iife": "off",
+        "wrap-regex": "off",
+        "yield-star-spacing": "off",
+        "yoda": "off"
       }
     },
     {
@@ -120,6 +248,9 @@
     },
     {
       "files": ["*.spec.ts", "*.spec.tsx"],
+      "env": {
+        "jest": true
+      },
       "rules": {
         "@typescript-eslint/explicit-function-return-type": [
           "error",
@@ -127,7 +258,8 @@
             "allowedNames": ["setup"]
           }
         ],
-        "@typescript-eslint/no-magic-numbers": "off"
+        "@typescript-eslint/no-magic-numbers": "off",
+        "max-lines-per-function": "off"
       }
     },
     {
