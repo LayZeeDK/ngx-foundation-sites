@@ -23,7 +23,7 @@ let serialNumber = 1;
   template: `<ng-content></ng-content>`,
 })
 export class FasTabComponent {
-  #element: ElementRef<HTMLElement> = inject(ElementRef);
+  #element = inject(ElementRef) as ElementRef<HTMLElement>;
   #id = '';
   #isActiveDefault = false;
   #isActive = this.#isActiveDefault;
@@ -53,7 +53,7 @@ export class FasTabComponent {
     this.#title = title ?? this.#titleDefault;
   }
   @Output()
-  activeChange = new EventEmitter<boolean>();
+  readonly activeChange = new EventEmitter<boolean>();
 
   @HostBinding('attr.aria-hidden')
   protected get ariaHidden(): 'true' | null {
@@ -75,7 +75,7 @@ export class FasTabComponent {
   protected constructor() {
     let idAttribute = this.#element.nativeElement.getAttribute('id');
 
-    if (!idAttribute) {
+    if (idAttribute === null || idAttribute === '') {
       idAttribute = `fas-tab-${serialNumber}`;
       serialNumber += 1;
     }

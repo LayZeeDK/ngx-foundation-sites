@@ -1,11 +1,13 @@
+import type {
+  TestElement
+} from '@angular/cdk/testing';
 import {
   ComponentHarness,
-  HarnessPredicate,
-  TestElement,
+  HarnessPredicate
 } from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
-import { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
+import type { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
 import { FasTabHarness } from './tab.harness';
 
 export class FasTabPanelHarness extends ComponentHarness {
@@ -32,14 +34,14 @@ export class FasTabPanelHarness extends ComponentHarness {
   async activate(): Promise<void> {
     const label = await this.#getTabElement();
 
-    label.click();
+    return label.click();
   }
 
   async getAriaLabelledBy(): Promise<string> {
     const host = await this.host();
     const maybeLabelId = await host.getAttribute('aria-labelledby');
 
-    if (!maybeLabelId) {
+    if (maybeLabelId === null || maybeLabelId === '') {
       throw new Error('No aria-labelledby attribute');
     }
 

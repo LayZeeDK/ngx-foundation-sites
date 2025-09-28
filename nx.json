@@ -30,6 +30,7 @@
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
+      "setParserOptionsProject": true,
       "unitTestRunner": "jest"
     },
     "@schematics/angular:component": {
@@ -37,6 +38,9 @@
     },
     "@nrwl/angular:component": {
       "style": "css"
+    },
+    "@nrwl/js:library": {
+      "setParserOptionsProject": true
     }
   },
   "npmScope": "ngx-foundation-sites",

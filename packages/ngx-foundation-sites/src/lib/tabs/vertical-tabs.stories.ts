@@ -1,6 +1,7 @@
 import { provideLocationMocks } from '@angular/common/testing';
 import { provideRouter } from '@angular/router';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import type { Meta, Story } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { fasTabsDeclarables } from './tabs-declarables';
 
 const meta: Meta = {

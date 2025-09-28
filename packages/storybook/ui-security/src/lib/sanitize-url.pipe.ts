@@ -1,5 +1,7 @@
-import { inject, Pipe, PipeTransform, SecurityContext } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import type { PipeTransform} from '@angular/core';
+import { inject, Pipe, SecurityContext } from '@angular/core';
+import type { SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({
   standalone: true,

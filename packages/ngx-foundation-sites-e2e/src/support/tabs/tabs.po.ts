@@ -15,5 +15,9 @@ export const getTabWithTitle = (title: string) =>
 export const navigateTo = (options: NavigateToOptions) =>
   Storybook.navigateTo({
     ...options,
-    metaTitle: metaTitle + (options.metaTitle ? `/${options.metaTitle}` : ''),
+    metaTitle:
+      metaTitle +
+      (typeof options.metaTitle !== 'undefined' && options.metaTitle !== ''
+        ? `/${options.metaTitle}`
+        : ''),
   });

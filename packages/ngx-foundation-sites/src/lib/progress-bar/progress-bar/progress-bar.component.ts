@@ -6,8 +6,9 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import { take } from 'rxjs';
 
-import { FasColor } from '../../colors/color';
+import type { FasColor } from '../../colors/color';
 import {
   ProgressBarPresenter,
   provideProgressBarPresenter,
@@ -32,6 +33,27 @@ export class FasProgressBarComponent {
   @Input()
   set color(color: FasColor | null) {
     this.#presenter.updateColor(color);
+  }
+  get color(): FasColor | null {
+    let color: FasColor | null = null;
+
+    this.#presenter.color$
+      .pipe(take(1))
+      .subscribe(x => {
+        /**
+         * Set the outer variable before returning from the getter
+         *
+         * @remarks Requires a synchronous observable.
+         */
+        color = x;
+      })
+      /**
+       * Unsubscribe to prevent memory leaks in case the observable is
+       * asynchronous.
+       */
+      .unsubscribe();
+
+    return color;
   }
 
   @HostBinding('role')

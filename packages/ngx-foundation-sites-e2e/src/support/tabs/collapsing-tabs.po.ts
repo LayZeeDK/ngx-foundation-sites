@@ -3,11 +3,11 @@ import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 import * as Tabs from './tabs.po';
 
 export const findFirstTab = () =>
-  cy.findByRole('tabpanel', { name: /^collapsing tab 1$/i });
+  cy.findByRole('tabpanel', { name: /^collapsing tab 1$/ui });
 export const getAllTabs = () =>
-  getTabstrip().getTabs({ title: /^collapsing tab \d+$/i });
+  getTabstrip().getTabs({ title: /^collapsing tab \d+$/ui });
 export const getFirstTab = () =>
-  getTabstrip().getTab({ title: /^collapsing tab 1$/i });
+  getTabstrip().getTab({ title: /^collapsing tab 1$/ui });
 export const getTabstrip = () =>
   loader.getHarness(FasTabsHarness.with({ id: 'collapsing-tabs' }));
 export const navigateTo = () =>

@@ -1,14 +1,17 @@
+import type {
+  RendererStyleFlags2
+} from '@angular/core';
 import {
   ElementRef,
   inject,
   Injectable,
-  Renderer2,
-  RendererStyleFlags2,
+  Renderer2
 } from '@angular/core';
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class StyleRenderer {
-  #host: ElementRef<HTMLElement> = inject(ElementRef);
+  #host = inject(ElementRef) as ElementRef<HTMLElement>;
   #renderer = inject(Renderer2);
 
   addClass(name: string): void {
@@ -28,14 +31,14 @@ export class StyleRenderer {
   }
 
   toggleClasses(classes: Readonly<Record<string, boolean>>): void {
-    Object.entries(classes).forEach(([className, shouldAdd]) =>
-      this.toggleClass(className, shouldAdd)
-    );
+    Object.entries(classes).forEach(([className, shouldAdd]) => {
+      this.toggleClass(className, shouldAdd);
+    });
   }
 
   setStyle(
     style: string,
-    value: string | number,
+    value: number | string,
     flags?: RendererStyleFlags2
   ): void {
     this.#renderer.setStyle(this.#host.nativeElement, style, value, flags);

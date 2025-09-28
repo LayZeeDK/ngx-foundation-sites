@@ -1,4 +1,5 @@
-import { inject, Injectable, Provider } from '@angular/core';
+import type { Provider } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
@@ -13,6 +14,7 @@ export function provideProgressMeterPresenter(): Provider[] {
   return [ProgressMeterPresenter, StyleRenderer];
 }
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class ProgressMeterPresenter extends ComponentStore<ProgressMeterState> {
   #progressBar = inject(ProgressBarStore);
@@ -27,7 +29,8 @@ export class ProgressMeterPresenter extends ComponentStore<ProgressMeterState> {
         this.#progressBar.max$,
         this.#progressBar.value$,
         (min, max, value) => {
-          const percentage = (value / (max - min)) * 100;
+          const percentageMultiplier = 100;
+          const percentage = (value / (max - min)) * percentageMultiplier;
 
           return Number.isNaN(percentage) ? 0 : percentage;
         }
@@ -38,7 +41,9 @@ export class ProgressMeterPresenter extends ComponentStore<ProgressMeterState> {
   #renderWidthStyle = this.effect<number>(
     pipe(
       map(widthPercentage => `${widthPercentage}%`),
-      tap(widthValue => this.#style.setStyle('width', widthValue))
+      tap(widthValue => {
+        this.#style.setStyle('width', widthValue);
+      })
     )
   );
 }

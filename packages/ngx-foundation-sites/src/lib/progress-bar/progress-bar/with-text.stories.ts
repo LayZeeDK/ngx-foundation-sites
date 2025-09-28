@@ -1,5 +1,7 @@
+import type { BasicsArgs } from './basics.stories';
 import { Basics } from './basics.stories';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import type { Meta, Story } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { fasProgressBarDeclarables } from './progress-bar-declarables';
 
 const meta: Meta = {
@@ -22,7 +24,8 @@ you use in the meter is automatically used in the \`aria-valuetext\` attribute.`
 
 export default meta;
 
-export const TextOnly: Story = args => ({
+type TextOnlyArgs = BasicsArgs;
+export const TextOnly: Story<TextOnlyArgs> = args => ({
   props: {
     ...Basics.args,
     ...args,
@@ -39,7 +42,10 @@ TextOnly.args = {
   value: 25,
 };
 
-export const WithAccessibleText: Story = args => ({
+interface WithAccessibleTextArgs extends TextOnlyArgs {
+  readonly accessibleTextSuffix: string;
+}
+export const WithAccessibleText: Story<WithAccessibleTextArgs> = args => ({
   props: {
     ...Basics.args,
     ...args,
@@ -54,7 +60,7 @@ export const WithAccessibleText: Story = args => ({
 });
 WithAccessibleText.args = {
   accessibleTextSuffix: ' percent',
-  value: TextOnly.args['value'],
+  value: TextOnly.args.value,
 };
 WithAccessibleText.parameters = {
   docs: {
@@ -65,7 +71,7 @@ To specify a different \`aria-valuetext\` attribute, use the \`accessibleText\` 
   },
 };
 
-export const AccessibleTextOnly: Story = args => ({
+export const AccessibleTextOnly: Story<WithAccessibleTextArgs> = args => ({
   props: {
     ...Basics.args,
     ...args,
@@ -79,8 +85,8 @@ export const AccessibleTextOnly: Story = args => ({
   `,
 });
 AccessibleTextOnly.args = {
-  accessibleTextSuffix: WithAccessibleText.args['accessibleTextSuffix'],
-  value: WithAccessibleText.args['value'],
+  accessibleTextSuffix: WithAccessibleText.args.accessibleTextSuffix,
+  value: WithAccessibleText.args.value,
 };
 AccessibleTextOnly.parameters = {
   docs: {

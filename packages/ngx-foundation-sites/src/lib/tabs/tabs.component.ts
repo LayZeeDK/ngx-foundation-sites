@@ -1,4 +1,7 @@
 import { NgFor } from '@angular/common';
+import type {
+  TrackByFunction
+} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -10,12 +13,14 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import type {
+  Observable
+} from 'rxjs';
 import {
   concatWith,
   from,
   map,
   mergeMap,
-  Observable,
   Subscription,
 } from 'rxjs';
 
@@ -32,7 +37,7 @@ import { FasTabComponent } from './tab.component';
   template: `
     <ul class="fas-tabs__tabs" [class.vertical]="vertical">
       <li
-        *ngFor="let tab of tabs"
+        *ngFor="let tab of tabs; trackBy: trackById"
         class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
@@ -77,7 +82,7 @@ export class FasTabsComponent {
     this.#vertical = value ?? this.#verticalDefault;
   }
   @Output()
-  tabActiveChange = new EventEmitter<FasTabComponent>();
+  readonly tabActiveChange = new EventEmitter<FasTabComponent>();
 
   @ContentChildren(FasTabComponent)
   protected tabs!: QueryList<FasTabComponent>;
@@ -95,7 +100,7 @@ export class FasTabsComponent {
   }
 
   protected selectTab(selectedTab: FasTabComponent): void {
-    const activeTab = this.tabs.find(t => t.active);
+    const activeTab = this.tabs.find(tab => tab.active);
 
     if (this.collapsing && activeTab === selectedTab) {
       this.tabs.forEach(tab => (tab.active = false));
@@ -104,6 +109,8 @@ export class FasTabsComponent {
     }
   }
 
+  protected trackById: TrackByFunction<FasTabComponent> = (_, tab) => tab.id;
+
   #initializeTabActiveChange(): void {
     const tabActiveChange = from(this.tabs.toArray()).pipe(
       concatWith(this.tabs.changes as Observable<FasTabComponent>),
@@ -111,7 +118,9 @@ export class FasTabsComponent {
     );
 
     this.#untilDestroy.add(
-      tabActiveChange.subscribe(tab => this.tabActiveChange.emit(tab))
+      tabActiveChange.subscribe(tab => {
+        this.tabActiveChange.emit(tab);
+      })
     );
   }
 }

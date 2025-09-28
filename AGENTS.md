@@ -130,3 +130,51 @@ contradictory or missing information.**
 The output of `packages/ngx-foundation-sites` is a public npm package. Don't
 cause breaking changes in its public API or peer dependencies unless asked to do
 so.
+
+## 10. Nx
+
+After generating an Angular library, add the following ESLint rule.
+
+```json
+{
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@nrwl/nx/angular",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@angular-eslint/all"
+      ],
+      "rules": {
+        "@angular-eslint/component-max-inline-declarations": [
+          "error",
+          {
+            "template": 50,
+            "styles": 0,
+            "animations": 0
+          }
+        ],
+        "@angular-eslint/use-component-view-encapsulation": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@nrwl/nx/angular-template",
+        "plugin:@angular-eslint/template/all"
+      ],
+      "rules": {
+        "@angular-eslint/template/attributes-order": "off",
+        "@angular-eslint/template/i18n": [
+          "error",
+          {
+            "ignoreAttributes": ["role"]
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+Keep existing rules unless they overlap.

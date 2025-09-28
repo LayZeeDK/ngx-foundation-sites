@@ -1,8 +1,9 @@
-import { inject, Injectable, Provider } from '@angular/core';
+import type { Provider } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { map, pipe, tap } from 'rxjs';
 
-import { FasColor } from '../../colors/color';
+import type { FasColor } from '../../colors/color';
 import { defaultColor } from '../../colors/default-color';
 import { AriaRenderer } from '../../ui-dom/aria-renderer';
 import { StyleRenderer } from '../../ui-dom/style-renderer';
@@ -16,11 +17,14 @@ export function provideProgressBarPresenter(): Provider[] {
   return [ProgressBarPresenter, AriaRenderer, StyleRenderer];
 }
 
+// eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()
 export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
   #aria = inject(AriaRenderer);
   #progressBarState = inject(ProgressBarStore);
   #style = inject(StyleRenderer);
+
+  color$ = this.select(state => state.color);
 
   constructor() {
     super(initalState);
@@ -35,7 +39,7 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
         (accessibleText, text) => accessibleText ?? text
       )
     );
-    this.#renderColorClasses(this.select(state => state.color));
+    this.#renderColorClasses(this.color$);
   }
 
   updateColor = this.updater<FasColor | null>(
@@ -47,33 +51,33 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
 
   #renderAriaValuemaxAttribute = this.effect<number>(
     pipe(
-      tap(meterMax =>
-        this.#aria.setAriaAttribute('valuemax', meterMax.toString())
-      )
+      tap(meterMax => {
+        this.#aria.setAriaAttribute('valuemax', meterMax.toString());
+      })
     )
   );
 
   #renderAriaValueminAttribute = this.effect<number>(
     pipe(
-      tap(meterMin =>
-        this.#aria.setAriaAttribute('valuemin', meterMin.toString())
-      )
+      tap(meterMin => {
+        this.#aria.setAriaAttribute('valuemin', meterMin.toString());
+      })
     )
   );
 
   #renderAriaValuenowAttribute = this.effect<number>(
     pipe(
-      tap(meterValue =>
-        this.#aria.setAriaAttribute('valuenow', meterValue.toString())
-      )
+      tap(meterValue => {
+        this.#aria.setAriaAttribute('valuenow', meterValue.toString());
+      })
     )
   );
 
   #renderAriaValuetextAttribute = this.effect<string | null>(
     pipe(
-      tap(accessibleText =>
-        this.#aria.setAriaAttribute('valuetext', accessibleText)
-      )
+      tap(accessibleText => {
+        this.#aria.setAriaAttribute('valuetext', accessibleText);
+      })
     )
   );
 
@@ -88,7 +92,9 @@ export class ProgressBarPresenter extends ComponentStore<ProgessBarState> {
           warning: activeColor === 'warning',
         })
       ),
-      tap(colorClasses => this.#style.toggleClasses(colorClasses))
+      tap(colorClasses => {
+        this.#style.toggleClasses(colorClasses);
+      })
     )
   );
 }

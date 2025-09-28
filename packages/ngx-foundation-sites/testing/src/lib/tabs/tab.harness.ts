@@ -1,7 +1,14 @@
-import { AsyncFactoryFn, ComponentHarness, HarnessPredicate, TestElement } from '@angular/cdk/testing';
+import type {
+  AsyncFactoryFn,
+  TestElement
+} from '@angular/cdk/testing';
+import {
+  ComponentHarness,
+  HarnessPredicate
+} from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
-import { FasTabHarnessFilters } from './tab-harness-filters';
+import type { FasTabHarnessFilters } from './tab-harness-filters';
 
 export class FasTabHarness extends ComponentHarness {
   static hostSelector = '.fas-tabs__tabs-title';
@@ -18,6 +25,7 @@ export class FasTabHarness extends ComponentHarness {
       );
   }
 
+  // eslint-disable-next-line no-unused-private-class-members -- Keeep for future use
   async #getPanel(): Promise<TestElement> {
     const panelId = await this.getAriaControls();
 
@@ -28,11 +36,11 @@ export class FasTabHarness extends ComponentHarness {
     const label = await this.#getLabel();
     const maybePanelId = await label.getAttribute('aria-controls');
 
-    if (!maybePanelId) {
+    if (maybePanelId === null || maybePanelId === '') {
       throw new Error('No aria-controls attribute');
     }
 
-    const spaceBetweenPattern = /^.+[ ].+$/;
+    const spaceBetweenPattern = /^.+[ ].+$/u;
 
     if (spaceBetweenPattern.test(maybePanelId)) {
       throw new Error('Multiple tab panels not supported');

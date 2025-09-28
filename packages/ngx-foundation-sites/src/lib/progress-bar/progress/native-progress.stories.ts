@@ -1,4 +1,5 @@
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import type { Meta, Story } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { FasProgressComponent } from './progress.component';
 
 const meta: Meta = {

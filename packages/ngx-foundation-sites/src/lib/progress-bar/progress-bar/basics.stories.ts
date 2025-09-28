@@ -1,4 +1,5 @@
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import type { Meta, Story } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { fasProgressBarDeclarables } from './progress-bar-declarables';
 
 const meta: Meta = {
@@ -37,7 +38,12 @@ to fill the progress bar.`,
 
 export default meta;
 
-export const Basics: Story = args => ({
+export interface BasicsArgs {
+  readonly min: number;
+  readonly max: number;
+  readonly value: number;
+}
+export const Basics: Story<BasicsArgs> = args => ({
   props: args,
   template: `
     <fas-progress-bar>
