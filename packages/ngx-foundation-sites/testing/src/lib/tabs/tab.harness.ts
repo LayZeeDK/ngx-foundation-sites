@@ -1,6 +1,7 @@
 import type {
   AsyncFactoryFn,
-  TestElement} from '@angular/cdk/testing';
+  TestElement
+} from '@angular/cdk/testing';
 import {
   ComponentHarness,
   HarnessPredicate
@@ -38,7 +39,7 @@ export class FasTabHarness extends ComponentHarness {
       throw new Error('No aria-controls attribute');
     }
 
-    const spaceBetweenPattern = /^.+[ ].+$/;
+    const spaceBetweenPattern = /^.+[ ].+$/u;
 
     if (spaceBetweenPattern.test(maybePanelId)) {
       throw new Error('Multiple tab panels not supported');

@@ -3,9 +3,9 @@ import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 import * as Tabs from './tabs.po';
 
 export const getAllTabs = () =>
-  getTabstrip().getTabs({ title: /^vertical tab \d+$/i });
+  getTabstrip().getTabs({ title: /^vertical tab \d+$/ui });
 export const getFirstTab = () =>
-  getTabstrip().getTab({ title: /^vertical tab 1$/i });
+  getTabstrip().getTab({ title: /^vertical tab 1$/ui });
 export const getTabstrip = () =>
   loader.getHarness(FasTabsHarness.with({ id: 'vertical-tabs' }));
 export const navigateTo = () =>
