@@ -40,7 +40,11 @@ describe('Progress Bar Meter Accessibility', () => {
     });
 
     it('has correct aria-describedby reference', () => {
-      MeterPage.getMeter().should('have.attr', 'aria-describedby', 'meter-description');
+      MeterPage.getMeter().should(
+        'have.attr',
+        'aria-describedby',
+        'meter-description'
+      );
       MeterPage.getDescriptionText().should('have.id', 'meter-description');
     });
 
@@ -52,7 +56,10 @@ describe('Progress Bar Meter Accessibility', () => {
 
     it('displays descriptive text explaining meter ranges', () => {
       MeterPage.getDescriptionText()
-        .should('contain.text', 'Storage usage meter showing current utilization levels')
+        .should(
+          'contain.text',
+          'Storage usage meter showing current utilization levels'
+        )
         .and('contain.text', 'Values below 33 are considered low')
         .and('contain.text', '33-66 are medium')
         .and('contain.text', 'above 66 are high usage');
@@ -71,16 +78,16 @@ describe('Progress Bar Meter Accessibility', () => {
     it('demonstrates accessibility in action', () => {
       // Verify the meter is properly labeled for screen readers
       MeterPage.getMeter().should('have.attr', 'aria-label');
-      
+
       // Verify descriptive text is linked
       MeterPage.getMeter().should('have.attr', 'aria-describedby');
-      
+
       // Verify tooltip is available
       MeterPage.getMeter().should('have.attr', 'title');
-      
+
       // Verify the meter shows in medium range (orange color)
       MeterPage.getMeter().should('have.attr', 'value', '45');
-      
+
       // Take a screenshot to document the accessibility implementation
       cy.screenshot('meter-accessibility-demo');
     });
