@@ -17,11 +17,11 @@ export const getMeterTitle = () => getMeter().should('have.attr', 'title');
 
 export const getMeterValue = () => getMeter().should('have.attr', 'value');
 
-export const checkAccessibilityAttributes = () =>
-  getMeter()
-    .should('have.attr', 'aria-label')
-    .and('have.attr', 'aria-describedby', 'meter-description')
-    .and('have.attr', 'title');
+export const checkAccessibilityAttributes = () => {
+  getMeter().should('have.attr', 'aria-label');
+  getMeter().should('have.attr', 'aria-describedby', 'meter-description');
+  getMeter().should('have.attr', 'title');
+};
 
 export const navigateToBasicMeter = () =>
   cy.visit('/iframe.html?id=media-progress-bar-native-meter--native-meter');
