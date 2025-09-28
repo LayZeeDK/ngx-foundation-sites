@@ -60,7 +60,6 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
   #untilDestroy = new Subscription();
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
-  #activeTabIndex = 0;
   #cdr = inject(ChangeDetectorRef);
 
   @Input()
@@ -87,7 +86,6 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngAfterViewInit(): void {
     this.#initializeTabActiveChange();
-    this.#updateActiveTabIndex();
   }
 
   // Use protected lifecycle hooks to minimize the public API surface
@@ -97,37 +95,34 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
   }
 
   onTabKeydown(event: KeyboardEvent, currentIndex: number): void {
-    let newIndex = currentIndex;
+    const newIndex = this.#getNewTabIndex(event.key, currentIndex);
+    if (newIndex !== null) {
+      event.preventDefault();
+      this.#selectTabByIndex(newIndex);
+    }
+  }
+
+  #getNewTabIndex(key: string, currentIndex: number): number | null {
     const tabCount = this.tabs.length;
 
-    switch (event.key) {
+    switch (key) {
       case 'ArrowRight':
       case 'ArrowDown':
-        event.preventDefault();
-        newIndex = (currentIndex + 1) % tabCount;
-        break;
+        return (currentIndex + 1) % tabCount;
       case 'ArrowLeft':
       case 'ArrowUp':
-        event.preventDefault();
-        newIndex = (currentIndex - 1 + tabCount) % tabCount;
-        break;
+        return (currentIndex - 1 + tabCount) % tabCount;
       case 'Enter':
       case ' ':
-        event.preventDefault();
-        // For Enter and Space, we should activate the current tab, not navigate
-        const currentTab = this.tabs.toArray()[currentIndex];
-        if (currentTab) {
-          this.selectTab(currentTab);
-        }
-        return;
+        return currentIndex;
       default:
-        return;
+        return null;
     }
+  }
 
-    const newTab = this.tabs.toArray()[newIndex];
-    if (newTab) {
-      this.selectTab(newTab);
-    }
+  #selectTabByIndex(index: number): void {
+    const tab = this.tabs.toArray()[index];
+    this.selectTab(tab);
   }
 
   protected selectTab(selectedTab: FasTabComponent): void {
@@ -139,15 +134,10 @@ export class FasTabsComponent implements AfterViewInit, OnDestroy {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
 
-    this.#updateActiveTabIndex();
     this.#cdr.markForCheck();
   }
 
   protected trackById: TrackByFunction<FasTabComponent> = (_, tab) => tab.id;
-
-  #updateActiveTabIndex(): void {
-    this.#activeTabIndex = this.tabs.toArray().findIndex(tab => tab.active);
-  }
 
   #initializeTabActiveChange(): void {
     const tabActiveChange = from(this.tabs.toArray()).pipe(

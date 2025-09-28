@@ -1,8 +1,13 @@
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { provideLocationMocks } from '@angular/common/testing';
+import type { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { render, screen } from '@testing-library/angular';
+import type {
+  FasTabPanelHarness,
+  FasTabHarness,
+} from 'ngx-foundation-sites/testing';
 import { FasTabsHarness } from 'ngx-foundation-sites/testing';
 
 import { FasTabComponent } from './tab.component';
@@ -47,6 +52,36 @@ describe('Tabs', () => {
     const tab2 = await panel2.getTab();
 
     return { panel1, panel2, tab1, tab2, tabs, tabsComponent, fixture };
+  }
+
+  async function setupWrapAroundTest(): Promise<{
+    fixture: ComponentFixture<unknown>;
+    panel1: FasTabPanelHarness;
+    panel2: FasTabPanelHarness;
+    tab1: FasTabHarness;
+    tab2: FasTabHarness;
+  }> {
+    const { fixture } = await render(
+      `
+        <fas-tabs>
+          <fas-tab id="panel1" title="Tab 1" [active]="true">Content 1</fas-tab>
+          <fas-tab id="panel2" title="Tab 2">Content 2</fas-tab>
+        </fas-tabs>
+      `,
+      {
+        imports: [fasTabsDeclarables],
+        providers: [provideRouter([]), provideLocationMocks()],
+      }
+    );
+
+    const loader = TestbedHarnessEnvironment.loader(fixture);
+    const tabs = await loader.getHarness(FasTabsHarness);
+    const panel1 = await tabs.getPanel({ id: 'panel1' });
+    const panel2 = await tabs.getPanel({ id: 'panel2' });
+    const tab1 = await panel1.getTab();
+    const tab2 = await panel2.getTab();
+
+    return { fixture, panel1, panel2, tab1, tab2 };
   }
 
   describe('OnInit', () => {
@@ -158,7 +193,7 @@ describe('Tabs', () => {
       // Start with second tab active
       await tab2.selectTab();
       fixture.detectChanges();
-      
+
       // Press arrow left on the second tab using harness
       await tab2.pressArrowLeft();
       fixture.detectChanges();
@@ -188,34 +223,16 @@ describe('Tabs', () => {
     });
 
     it('wraps around when navigating past last tab', async () => {
-      const { fixture } = await render(
-        `
-          <fas-tabs>
-            <fas-tab id="panel1" title="Tab 1" [active]="true">Content 1</fas-tab>
-            <fas-tab id="panel2" title="Tab 2">Content 2</fas-tab>
-          </fas-tabs>
-        `,
-        {
-          imports: [fasTabsDeclarables],
-          providers: [provideRouter([]), provideLocationMocks()],
-        }
-      );
-
-      const loader = TestbedHarnessEnvironment.loader(fixture);
-      const tabs = await loader.getHarness(FasTabsHarness);
-      const panel1 = await tabs.getPanel({ id: 'panel1' });
-      const panel2 = await tabs.getPanel({ id: 'panel2' });
-      const tab1 = await panel1.getTab();
-      const tab2 = await panel2.getTab();
+      const harnesses = await setupWrapAroundTest();
 
       // Navigate past last tab should wrap to first
-      await tab1.pressArrowRight(); // Go to tab 2
-      fixture.detectChanges();
-      await tab2.pressArrowRight(); // Should wrap to tab 1
-      fixture.detectChanges();
+      await harnesses.tab1.pressArrowRight();
+      harnesses.fixture.detectChanges();
+      await harnesses.tab2.pressArrowRight();
+      harnesses.fixture.detectChanges();
 
-      expect(await panel1.isActive()).toBe(true);
-      expect(await panel2.isActive()).toBe(false);
+      expect(await harnesses.panel1.isActive()).toBe(true);
+      expect(await harnesses.panel2.isActive()).toBe(false);
     });
   });
 });
