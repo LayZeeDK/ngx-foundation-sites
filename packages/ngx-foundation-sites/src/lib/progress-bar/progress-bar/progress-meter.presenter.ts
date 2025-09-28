@@ -28,7 +28,8 @@ export class ProgressMeterPresenter extends ComponentStore<ProgressMeterState> {
         this.#progressBar.max$,
         this.#progressBar.value$,
         (min, max, value) => {
-          const percentage = (value / (max - min)) * 100;
+          const percentageMultiplier = 100;
+          const percentage = (value / (max - min)) * percentageMultiplier;
 
           return Number.isNaN(percentage) ? 0 : percentage;
         }
