@@ -32,6 +32,14 @@ export class FasMeterComponent {
   @Input()
   value: number | null = null;
 
+  // Accessibility enhancements
+  @Input()
+  ariaLabel: string | null = null;
+  @Input()
+  ariaDescribedBy: string | null = null;
+  @Input()
+  title: string | null = null;
+
   @HostBinding('attr.high')
   protected get highAttribute(): string | null {
     return this.high === null ? null : String(this.high);
@@ -55,5 +63,19 @@ export class FasMeterComponent {
   @HostBinding('attr.value')
   protected get valueAttribute(): string | null {
     return this.value === null ? null : String(this.value);
+  }
+
+  // Accessibility attribute bindings
+  @HostBinding('attr.aria-label')
+  protected get ariaLabelAttribute(): string | null {
+    return this.ariaLabel;
+  }
+  @HostBinding('attr.aria-describedby')
+  protected get ariaDescribedByAttribute(): string | null {
+    return this.ariaDescribedBy;
+  }
+  @HostBinding('attr.title')
+  protected get titleAttribute(): string | null {
+    return this.title;
   }
 }
