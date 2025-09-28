@@ -1,5 +1,7 @@
 export const navigateTo = () =>
-  cy.visit('/iframe.html?id=media-progress-bar--with-accessibility-labels');
+  cy.visit(
+    '/iframe.html?id=media-progress-bar-native-meter--with-accessibility-labels'
+  );
 
 export const getMeter = () => cy.get('meter[fas-meter]');
 
@@ -22,6 +24,6 @@ export const checkAccessibilityAttributes = () =>
     .and('have.attr', 'title');
 
 export const navigateToBasicMeter = () =>
-  cy.visit('/iframe.html?id=media-progress-bar--native-meter');
+  cy.visit('/iframe.html?id=media-progress-bar-native-meter--native-meter');
 
 export const getBasicMeter = () => cy.get('meter[fas-meter]');

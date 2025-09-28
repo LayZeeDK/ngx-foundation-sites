@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { FasMeterComponent } from './meter.component';
 
 const meta: Meta = {
-  title: 'Media/Progress Bar',
+  title: 'Media/Progress Bar/Native Meter',
   decorators: [
     moduleMetadata({
       imports: [FasMeterComponent],
