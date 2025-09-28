@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import type {
-  TrackByFunction} from '@angular/core';
+  TrackByFunction
+} from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,7 +14,8 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type {
-  Observable} from 'rxjs';
+  Observable
+} from 'rxjs';
 import {
   concatWith,
   from,
@@ -98,7 +100,7 @@ export class FasTabsComponent {
   }
 
   protected selectTab(selectedTab: FasTabComponent): void {
-    const activeTab = this.tabs.find(t => t.active);
+    const activeTab = this.tabs.find(tab => tab.active);
 
     if (this.collapsing && activeTab === selectedTab) {
       this.tabs.forEach(tab => (tab.active = false));
