@@ -1,5 +1,9 @@
 import type { AsyncFactoryFn, TestElement } from '@angular/cdk/testing';
-import { ComponentHarness, HarnessPredicate } from '@angular/cdk/testing';
+import {
+  ComponentHarness,
+  HarnessPredicate,
+  TestKey,
+} from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import type { FasTabHarnessFilters } from './tab-harness-filters';
@@ -89,5 +93,41 @@ export class FasTabHarness extends ComponentHarness {
     const label = await this.#getLabel();
 
     return label.click();
+  }
+
+  async sendKeys(...keys: string[]): Promise<void> {
+    const label = await this.#getLabel();
+
+    return label.sendKeys(...keys);
+  }
+
+  async pressEnter(): Promise<void> {
+    const label = await this.#getLabel();
+    return label.sendKeys(TestKey.ENTER);
+  }
+
+  async pressSpace(): Promise<void> {
+    const label = await this.#getLabel();
+    return label.sendKeys(' ');
+  }
+
+  async pressArrowRight(): Promise<void> {
+    const label = await this.#getLabel();
+    return label.sendKeys(TestKey.RIGHT_ARROW);
+  }
+
+  async pressArrowLeft(): Promise<void> {
+    const label = await this.#getLabel();
+    return label.sendKeys(TestKey.LEFT_ARROW);
+  }
+
+  async pressArrowDown(): Promise<void> {
+    const label = await this.#getLabel();
+    return label.sendKeys(TestKey.DOWN_ARROW);
+  }
+
+  async pressArrowUp(): Promise<void> {
+    const label = await this.#getLabel();
+    return label.sendKeys(TestKey.UP_ARROW);
   }
 }

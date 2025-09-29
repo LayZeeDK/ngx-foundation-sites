@@ -1,10 +1,12 @@
 import { NgFor } from '@angular/common';
-import type { TrackByFunction } from '@angular/core';
+import type { AfterViewInit, OnDestroy, TrackByFunction } from '@angular/core';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   EventEmitter,
+  inject,
   Input,
   Output,
   QueryList,
@@ -25,21 +27,23 @@ import { FasTabComponent } from './tab.component';
   styleUrls: ['../_global-settings.scss', './tabs.component.scss'],
   imports: [NgFor, RouterLink],
   template: `
-    <ul class="fas-tabs__tabs" [class.vertical]="vertical">
+    <ul class="fas-tabs__tabs" [class.vertical]="vertical" role="tablist">
       <li
-        *ngFor="let tab of tabs; trackBy: trackById"
+        *ngFor="let tab of tabs; trackBy: trackById; let i = index"
         class="fas-tabs__tabs-title"
         [class.is-active]="tab.active"
         role="presentation"
       >
         <a
-          id="{{ tab.id }}-label"
+          [id]="tab.id + '-label'"
           routerLink="./"
           [fragment]="tab.id"
           [attr.aria-controls]="tab.id"
           [attr.aria-selected]="tab.active"
+          [attr.tabindex]="tab.active ? 0 : -1"
           role="tab"
           (click)="selectTab(tab)"
+          (keydown)="onTabKeydown($event, i)"
           >{{ tab.title }}</a
         >
       </li>
@@ -50,12 +54,13 @@ import { FasTabComponent } from './tab.component';
     </div>
   `,
 })
-export class FasTabsComponent {
+export class FasTabsComponent implements AfterViewInit, OnDestroy {
   #collapsingDefault = false;
   #collapsing = this.#collapsingDefault;
   #untilDestroy = new Subscription();
   #verticalDefault = false;
   #vertical = this.#verticalDefault;
+  #cdr = inject(ChangeDetectorRef);
 
   @Input()
   get collapsing(): boolean {
@@ -79,14 +84,45 @@ export class FasTabsComponent {
 
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  protected ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     this.#initializeTabActiveChange();
   }
 
   // Use protected lifecycle hooks to minimize the public API surface
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  protected ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.#untilDestroy.unsubscribe();
+  }
+
+  onTabKeydown(event: KeyboardEvent, currentIndex: number): void {
+    const newIndex = this.#getNewTabIndex(event.key, currentIndex);
+    if (newIndex !== null) {
+      event.preventDefault();
+      this.#selectTabByIndex(newIndex);
+    }
+  }
+
+  #getNewTabIndex(key: string, currentIndex: number): number | null {
+    const tabCount = this.tabs.length;
+
+    switch (key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        return (currentIndex + 1) % tabCount;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        return (currentIndex - 1 + tabCount) % tabCount;
+      case 'Enter':
+      case ' ':
+        return currentIndex;
+      default:
+        return null;
+    }
+  }
+
+  #selectTabByIndex(index: number): void {
+    const tab = this.tabs.toArray()[index];
+    this.selectTab(tab);
   }
 
   protected selectTab(selectedTab: FasTabComponent): void {
@@ -97,6 +133,8 @@ export class FasTabsComponent {
     } else {
       this.tabs.forEach(tab => (tab.active = tab === selectedTab));
     }
+
+    this.#cdr.markForCheck();
   }
 
   protected trackById: TrackByFunction<FasTabComponent> = (_, tab) => tab.id;
