@@ -26,9 +26,7 @@ import {
 })
 export class FasProgressMeterComponent {
   // eslint-disable-next-line no-unused-private-class-members -- Eagerly instantiate to initialize effects
-  #presenter = inject(
-    ProgressMeterPresenter
-  );
+  #presenter = inject(ProgressMeterPresenter);
   #progressBar = inject(ProgressBarStore);
 
   @Input()

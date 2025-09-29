@@ -1,4 +1,4 @@
-import type { PipeTransform} from '@angular/core';
+import type { PipeTransform } from '@angular/core';
 import { Pipe, inject, SecurityContext } from '@angular/core';
 import type { SafeHtml } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';

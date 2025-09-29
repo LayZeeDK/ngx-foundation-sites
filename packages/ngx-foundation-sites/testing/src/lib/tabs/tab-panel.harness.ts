@@ -1,10 +1,5 @@
-import type {
-  TestElement
-} from '@angular/cdk/testing';
-import {
-  ComponentHarness,
-  HarnessPredicate
-} from '@angular/cdk/testing';
+import type { TestElement } from '@angular/cdk/testing';
+import { ComponentHarness, HarnessPredicate } from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import type { FasTabPanelHarnessFilters } from './tab-panel-harness-filters';
