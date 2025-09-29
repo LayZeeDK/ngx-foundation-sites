@@ -178,3 +178,16 @@ After generating an Angular library, add the following ESLint rule.
 ```
 
 Keep existing rules unless they overlap.
+
+11. Testing
+
+- Every component must have Angular CDK-based component test harnesses
+- Every component should have unit tests that use its component test harnesses
+  -- one `*.spec.ts` file per section in the component's page in
+  [the official Foundation for Sites documentation](https://get.foundation/sites/docs/)
+- Every component should have end-to-end tests that use its component test
+  harnesses -- one `*.cy.ts` file per section in the component's page in
+  [the official Foundation for Sites documentation](https://get.foundation/sites/docs/)
+- End-to-end tests should use test utility functions from `*.po.ts` files that
+  follow the Page Object pattern and use the component test harnesses -- expand
+  the Page Object functions as necessary
