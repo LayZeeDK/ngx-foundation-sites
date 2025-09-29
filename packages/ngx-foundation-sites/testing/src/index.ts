@@ -13,3 +13,7 @@ export type { FasProgressMeterHarnessFilters } from './lib/progress-bar/progress
 export { FasProgressMeterHarness } from './lib/progress-bar/progress-meter.harness';
 export type { FasProgressMeterTextHarnessFilters } from './lib/progress-bar/progress-meter-text-harness-filters';
 export { FasProgressMeterTextHarness } from './lib/progress-bar/progress-meter-text.harness';
+export type { FasProgressHarnessFilters } from './lib/progress-bar/progress-harness-filters';
+export { FasProgressHarness } from './lib/progress-bar/progress.harness';
+export type { FasMeterHarnessFilters } from './lib/progress-bar/meter-harness-filters';
+export { FasMeterHarness } from './lib/progress-bar/meter.harness';
