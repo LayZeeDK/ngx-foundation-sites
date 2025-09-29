@@ -76,7 +76,9 @@ describe('FasMeterComponent', () => {
         </div>
       `);
 
-      const meter = await loader.getHarness(FasMeterHarness.with({ value: 0.7 }));
+      const meter = await loader.getHarness(
+        FasMeterHarness.with({ value: 0.7 })
+      );
       expect(await meter.getValue()).toBe(0.7);
     });
   });

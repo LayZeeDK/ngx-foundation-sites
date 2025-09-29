@@ -1,10 +1,10 @@
 import * as loader from '@jscutlery/cypress-harness';
 import { FasProgressHarness } from 'ngx-foundation-sites/testing';
-import * as ProgressBar from './progress-bar.po';
+import * as Storybook from '../storybook.po';
 
 export const getProgress = () => loader.getHarness(FasProgressHarness);
 export const navigateTo = () =>
-  ProgressBar.navigateTo({
-    metaTitle: 'Native Progress',
-    storyName: 'Native Progress',
+  Storybook.navigateTo({
+    metaTitle: 'Media/Progress Bar/Native Progress',
+    storyName: 'Simple',
   });

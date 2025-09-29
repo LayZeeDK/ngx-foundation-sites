@@ -64,9 +64,8 @@ export class FasMeterHarness extends ComponentHarness {
     if (classList === null) return null;
 
     // Extract color from class names
-    const colorMatch = /\b(?<color>primary|secondary|success|warning|alert)\b/u.exec(
-      classList
-    );
+    const colorMatch =
+      /\b(?<color>primary|secondary|success|warning|alert)\b/u.exec(classList);
     return colorMatch?.groups?.['color'] ?? null;
   }
 }

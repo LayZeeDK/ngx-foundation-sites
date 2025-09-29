@@ -9,10 +9,10 @@ describe('Native Progress', () => {
     NativeProgress.getProgress().should('exist');
   });
 
-  it('has default values', () => {
+  it('has story values', () => {
     NativeProgress.getProgress().then(progress => {
-      cy.wrap(progress.getValue()).should('equal', 0);
-      cy.wrap(progress.getMax()).should('equal', 1);
+      cy.wrap(progress.getValue()).should('equal', 75);
+      cy.wrap(progress.getMax()).should('equal', 100);
     });
   });
 

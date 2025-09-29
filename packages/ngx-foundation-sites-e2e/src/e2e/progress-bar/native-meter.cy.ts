@@ -9,14 +9,14 @@ describe('Native Meter', () => {
     NativeMeter.getMeter().should('exist');
   });
 
-  it('has default values', () => {
+  it('has story values', () => {
     NativeMeter.getMeter().then(meter => {
-      cy.wrap(meter.getValue()).should('equal', 0);
-      cy.wrap(meter.getMax()).should('equal', 1);
+      cy.wrap(meter.getValue()).should('equal', 30);
+      cy.wrap(meter.getMax()).should('equal', 100);
       cy.wrap(meter.getMin()).should('equal', 0);
-      cy.wrap(meter.getHigh()).should('equal', 1);
-      cy.wrap(meter.getLow()).should('equal', 0);
-      cy.wrap(meter.getOptimum()).should('equal', 0.5);
+      cy.wrap(meter.getHigh()).should('equal', 66);
+      cy.wrap(meter.getLow()).should('equal', 33);
+      cy.wrap(meter.getOptimum()).should('equal', 100);
     });
   });
 

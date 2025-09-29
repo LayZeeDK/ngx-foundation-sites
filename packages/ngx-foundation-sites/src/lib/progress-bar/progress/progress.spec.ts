@@ -69,7 +69,9 @@ describe('FasProgressComponent', () => {
         </div>
       `);
 
-      const progress = await loader.getHarness(FasProgressHarness.with({ value: 0.7 }));
+      const progress = await loader.getHarness(
+        FasProgressHarness.with({ value: 0.7 })
+      );
       expect(await progress.getValue()).toBe(0.7);
     });
   });
