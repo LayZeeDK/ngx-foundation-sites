@@ -1,12 +1,5 @@
-import type {
-  RendererStyleFlags2
-} from '@angular/core';
-import {
-  ElementRef,
-  inject,
-  Injectable,
-  Renderer2
-} from '@angular/core';
+import type { RendererStyleFlags2 } from '@angular/core';
+import { ElementRef, inject, Injectable, Renderer2 } from '@angular/core';
 
 // eslint-disable-next-line @angular-eslint/use-injectable-provided-in -- This is a component-level service
 @Injectable()

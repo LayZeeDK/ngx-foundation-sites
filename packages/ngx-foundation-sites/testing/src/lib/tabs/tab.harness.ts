@@ -1,11 +1,5 @@
-import type {
-  AsyncFactoryFn,
-  TestElement
-} from '@angular/cdk/testing';
-import {
-  ComponentHarness,
-  HarnessPredicate
-} from '@angular/cdk/testing';
+import type { AsyncFactoryFn, TestElement } from '@angular/cdk/testing';
+import { ComponentHarness, HarnessPredicate } from '@angular/cdk/testing';
 
 import { coerceBooleanProperty } from '../util-coercion/coerce-boolean-property';
 import type { FasTabHarnessFilters } from './tab-harness-filters';

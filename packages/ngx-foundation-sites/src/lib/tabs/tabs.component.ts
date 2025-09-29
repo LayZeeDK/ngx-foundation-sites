@@ -1,7 +1,5 @@
 import { NgFor } from '@angular/common';
-import type {
-  TrackByFunction
-} from '@angular/core';
+import type { TrackByFunction } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,16 +11,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import type {
-  Observable
-} from 'rxjs';
-import {
-  concatWith,
-  from,
-  map,
-  mergeMap,
-  Subscription,
-} from 'rxjs';
+import type { Observable } from 'rxjs';
+import { concatWith, from, map, mergeMap, Subscription } from 'rxjs';
 
 import { FasTabComponent } from './tab.component';
 
