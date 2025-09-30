@@ -15,5 +15,11 @@
  */
 
 // Import commands.js using ES2015 syntax:
+import * as Storybook from './storybook.po';
 import '@jscutlery/cypress-harness/support';
 import '@testing-library/cypress/add-commands';
+import 'cypress-storybook/cypress';
+
+before(() => {
+  Storybook.setup();
+});

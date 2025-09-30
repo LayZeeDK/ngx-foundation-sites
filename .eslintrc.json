@@ -245,7 +245,8 @@
       "files": ["*.po.ts", "*.po.tsx"],
       "rules": {
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-confusing-void-expression": "off"
       }
     },
     {
@@ -260,6 +261,7 @@
             "allowedNames": ["setup"]
           }
         ],
+        "@typescript-eslint/no-confusing-void-expression": "off",
         "@typescript-eslint/no-magic-numbers": "off",
         "max-lines-per-function": "off",
         "max-statements": "off"
