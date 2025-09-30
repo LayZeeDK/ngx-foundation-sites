@@ -1,5 +1,6 @@
 import { DocsPage } from './docs-page';
 import { addParameters } from '@storybook/angular';
+import 'cypress-storybook/angular';
 
 addParameters({
   docs: {
